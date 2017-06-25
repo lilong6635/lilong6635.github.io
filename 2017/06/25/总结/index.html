@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>远程仓库的概念 | blog of lilong</title>
+  <title>总结 | blog of lilong</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="远程仓库的概念概念所有的程序员，都可以通过这个远程仓库来进行版本库的共享，达到所有人的代码一致的效果！ 如何创建一个远程仓库远程仓库是一个裸仓库 如何初始化一个裸仓库git init –bare 平时初始化仓库的时候，直接使用git init，那么会在文件夹下创建一个.git文件夹来保存版本库信息 但是使用git init –bare 的时候，仓库信息相关的所有的文件，都直接暴露在当前文件夹下，就">
-<meta name="keywords" content="javascript,web">
+  <meta name="description" content="博学谷项目 第2天分支什么时候创建分支？分支主要用在多任务并行开发的情况下，每当要进行一个新任务的开发，就创建一新的分支来做！ 1. 创建分支git branch 分支名称git checkout -b 分支名称 2. 切换到分支git checkout 分支名称 3. 合并分支git merge 指定的分支将指定的分支合并到当前分支 4. 删除分支git branch -d 分支名称 5. 显示">
+<meta name="keywords" content="前端第二天">
 <meta property="og:type" content="article">
-<meta property="og:title" content="远程仓库的概念">
-<meta property="og:url" content="http://yoursite.com/2017/06/25/远程仓库的概念/index.html">
+<meta property="og:title" content="总结">
+<meta property="og:url" content="http://yoursite.com/2017/06/25/总结/index.html">
 <meta property="og:site_name" content="blog of lilong">
-<meta property="og:description" content="远程仓库的概念概念所有的程序员，都可以通过这个远程仓库来进行版本库的共享，达到所有人的代码一致的效果！ 如何创建一个远程仓库远程仓库是一个裸仓库 如何初始化一个裸仓库git init –bare 平时初始化仓库的时候，直接使用git init，那么会在文件夹下创建一个.git文件夹来保存版本库信息 但是使用git init –bare 的时候，仓库信息相关的所有的文件，都直接暴露在当前文件夹下，就">
-<meta property="og:updated_time" content="2017-06-25T03:49:29.096Z">
+<meta property="og:description" content="博学谷项目 第2天分支什么时候创建分支？分支主要用在多任务并行开发的情况下，每当要进行一个新任务的开发，就创建一新的分支来做！ 1. 创建分支git branch 分支名称git checkout -b 分支名称 2. 切换到分支git checkout 分支名称 3. 合并分支git merge 指定的分支将指定的分支合并到当前分支 4. 删除分支git branch -d 分支名称 5. 显示">
+<meta property="og:updated_time" content="2017-06-25T06:51:20.675Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="远程仓库的概念">
-<meta name="twitter:description" content="远程仓库的概念概念所有的程序员，都可以通过这个远程仓库来进行版本库的共享，达到所有人的代码一致的效果！ 如何创建一个远程仓库远程仓库是一个裸仓库 如何初始化一个裸仓库git init –bare 平时初始化仓库的时候，直接使用git init，那么会在文件夹下创建一个.git文件夹来保存版本库信息 但是使用git init –bare 的时候，仓库信息相关的所有的文件，都直接暴露在当前文件夹下，就">
+<meta name="twitter:title" content="总结">
+<meta name="twitter:description" content="博学谷项目 第2天分支什么时候创建分支？分支主要用在多任务并行开发的情况下，每当要进行一个新任务的开发，就创建一新的分支来做！ 1. 创建分支git branch 分支名称git checkout -b 分支名称 2. 切换到分支git checkout 分支名称 3. 合并分支git merge 指定的分支将指定的分支合并到当前分支 4. 删除分支git branch -d 分支名称 5. 显示">
   
     <link rel="alternate" href="/atom.xml" title="blog of lilong" type="application/atom+xml">
   
@@ -64,14 +64,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-远程仓库的概念" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-总结" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/06/25/远程仓库的概念/" class="article-date">
-  <time datetime="2017-06-25T03:47:29.000Z" itemprop="datePublished">2017-06-25</time>
+    <a href="/2017/06/25/总结/" class="article-date">
+  <time datetime="2017-06-25T06:47:23.000Z" itemprop="datePublished">2017-06-25</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/frontEnd/">frontEnd</a>►<a class="article-category-link" href="/categories/frontEnd/javascript/">javascript</a>
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
   </div>
 
   </div>
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      远程仓库的概念
+      总结
     </h1>
   
 
@@ -90,24 +90,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="远程仓库的概念"><a href="#远程仓库的概念" class="headerlink" title="远程仓库的概念"></a>远程仓库的概念</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>所有的程序员，都可以通过这个远程仓库来进行版本库的共享，达到所有人的代码一致的效果！</p>
-<h2 id="如何创建一个远程仓库"><a href="#如何创建一个远程仓库" class="headerlink" title="如何创建一个远程仓库"></a>如何创建一个远程仓库</h2><p>远程仓库是一个裸仓库</p>
-<p>如何初始化一个裸仓库<br>git init –bare</p>
-<p>平时初始化仓库的时候，直接使用git init，那么会在文件夹下创建一个.git文件夹来保存版本库信息</p>
-<p>但是使用git init –bare 的时候，仓库信息相关的所有的文件，都直接暴露在当前文件夹下，就相当于没有衣服，所以叫做裸仓库。</p>
-<p>裸仓库（远成仓库）中不进行任何的开发工作，他只是用来做版本库共享的！</p>
-<p>一般情况下远程仓库的文件夹名要用.git作为结尾</p>
-<h2 id="将本地仓库推送到远程仓库"><a href="#将本地仓库推送到远程仓库" class="headerlink" title="将本地仓库推送到远程仓库"></a>将本地仓库推送到远程仓库</h2><p>git push 远程仓库的地址 本地分支名称:远程分支名称</p>
-<p>如果本地分支名称和远程分支名称的名字一致，就可以直接写一个<br>举个例子： git push 远程仓库地址 master</p>
-<h2 id="如何将远程仓库获取到本地"><a href="#如何将远程仓库获取到本地" class="headerlink" title="如何将远程仓库获取到本地"></a>如何将远程仓库获取到本地</h2><p>git clone 远程仓库地址 本地文件夹名称</p>
+        <h1 id="博学谷项目-第2天"><a href="#博学谷项目-第2天" class="headerlink" title="博学谷项目 第2天"></a>博学谷项目 第2天</h1><h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><p>什么时候创建分支？<br>分支主要用在多任务并行开发的情况下，每当要进行一个新任务的开发，就创建一新的分支来做！</p>
+<h2 id="1-创建分支"><a href="#1-创建分支" class="headerlink" title="1. 创建分支"></a>1. 创建分支</h2><p>git branch 分支名称<br>git checkout -b 分支名称</p>
+<h2 id="2-切换到分支"><a href="#2-切换到分支" class="headerlink" title="2. 切换到分支"></a>2. 切换到分支</h2><p>git checkout 分支名称</p>
+<h2 id="3-合并分支"><a href="#3-合并分支" class="headerlink" title="3. 合并分支"></a>3. 合并分支</h2><p>git merge 指定的分支<br>将指定的分支合并到当前分支</p>
+<h2 id="4-删除分支"><a href="#4-删除分支" class="headerlink" title="4. 删除分支"></a>4. 删除分支</h2><p>git branch -d 分支名称</p>
+<h2 id="5-显示所有分支"><a href="#5-显示所有分支" class="headerlink" title="5. 显示所有分支"></a>5. 显示所有分支</h2><p>git branch</p>
+<h2 id="远程仓储"><a href="#远程仓储" class="headerlink" title="远程仓储"></a>远程仓储</h2><p>远程仓库用来共享版本库，多人开发的时候使用</p>
+<p>远程仓库其实是一个裸仓库</p>
+<p>裸仓库：没有.git文件夹，直接将所有的版本库信息暴露在文件夹下<br>裸仓库没有工作目录， 在裸仓库中不能进行开发工作</p>
+<ol>
+<li><p>创建远程仓库<br>git init –bare</p>
+</li>
+<li><p>获取远程仓库的版本<br>git clone 远程仓库地址  本地文件夹名称</p>
+</li>
+<li><p>把本地版本推送到远程仓库<br>git push 远程仓库地址 本地分支:远程分支</p>
+</li>
+</ol>
+<p>如果本地分支和远程分支同名，写一个即可<br>git push origin master</p>
+<ol>
+<li>从远程仓库获取更新后的版本<br>git pull<br>如果不写远程地址和分支名称，默认获取origin地址的master分支<br>git pull 远程仓库地址 要pull的分支</li>
+</ol>
+<h2 id="远程仓库地址管理"><a href="#远程仓库地址管理" class="headerlink" title="远程仓库地址管理"></a>远程仓库地址管理</h2><ol>
+<li><p>添加<br>git remote add 别名 地址</p>
+</li>
+<li><p>删除<br>git remote remove 别名</p>
+</li>
+<li><p>显示所有的<br>git remote</p>
+</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/06/25/远程仓库的概念/" data-id="cj4ccxger00073soifkjd54x5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/06/25/总结/" data-id="cj4ccxgej00053soi1arce0yk" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端第二天/">前端第二天</a></li></ul>
 
     </footer>
   </div>
@@ -115,19 +134,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/06/25/分支的相关命令/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          分支的相关命令
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/06/25/播客/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/06/25/复习昨天的内容/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">播客</div>
+      <div class="article-nav-title">复习昨天的内容</div>
     </a>
   
 </nav>
