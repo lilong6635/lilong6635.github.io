@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>复习昨天的内容 | blog of lilong</title>
+  <title>ssh协议介绍 | blog of lilong</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="复习昨天内容shell bash vicd change directorypwdls     ls -l    ls -a   ls -al     ls 文件夹路径touch    touch 文件路径mkdir    mkdir 文件夹路径rmdir   rmdir 文件夹路径rm        rm 文件（文件夹）路径catlessmvcptabecho&amp;gt;  &amp;gt;  普通模式插入">
-<meta name="keywords" content="前端,javascript">
+  <meta name="description" content="ssh协议介绍协议的介绍安全shell协议，此协议一般用作服务器之间的加密登录 http://域名:端口号/目录路径?参数=值#哈希值 git@github.com:avakpan/test1.git 用户名@域名:路径 加密算法对称性加密算法 非对称性加密算法 服务器免密登录如何实现因为在和服务进行通信的时候，会将本机的公钥顺带着发给服务器，如果我们之前就将自己的公钥添加到了服务器的允许登录的列">
+<meta name="keywords" content="ssh协议介绍,服务器免密登录如何实现">
 <meta property="og:type" content="article">
-<meta property="og:title" content="复习昨天的内容">
-<meta property="og:url" content="http://yoursite.com/2017/06/25/复习昨天的内容/index.html">
+<meta property="og:title" content="ssh协议介绍">
+<meta property="og:url" content="http://yoursite.com/2017/06/25/ssh协议介绍/index.html">
 <meta property="og:site_name" content="blog of lilong">
-<meta property="og:description" content="复习昨天内容shell bash vicd change directorypwdls     ls -l    ls -a   ls -al     ls 文件夹路径touch    touch 文件路径mkdir    mkdir 文件夹路径rmdir   rmdir 文件夹路径rm        rm 文件（文件夹）路径catlessmvcptabecho&amp;gt;  &amp;gt;  普通模式插入">
-<meta property="og:updated_time" content="2017-06-25T06:49:05.077Z">
+<meta property="og:description" content="ssh协议介绍协议的介绍安全shell协议，此协议一般用作服务器之间的加密登录 http://域名:端口号/目录路径?参数=值#哈希值 git@github.com:avakpan/test1.git 用户名@域名:路径 加密算法对称性加密算法 非对称性加密算法 服务器免密登录如何实现因为在和服务进行通信的时候，会将本机的公钥顺带着发给服务器，如果我们之前就将自己的公钥添加到了服务器的允许登录的列">
+<meta property="og:updated_time" content="2017-06-25T07:37:12.707Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="复习昨天的内容">
-<meta name="twitter:description" content="复习昨天内容shell bash vicd change directorypwdls     ls -l    ls -a   ls -al     ls 文件夹路径touch    touch 文件路径mkdir    mkdir 文件夹路径rmdir   rmdir 文件夹路径rm        rm 文件（文件夹）路径catlessmvcptabecho&amp;gt;  &amp;gt;  普通模式插入">
+<meta name="twitter:title" content="ssh协议介绍">
+<meta name="twitter:description" content="ssh协议介绍协议的介绍安全shell协议，此协议一般用作服务器之间的加密登录 http://域名:端口号/目录路径?参数=值#哈希值 git@github.com:avakpan/test1.git 用户名@域名:路径 加密算法对称性加密算法 非对称性加密算法 服务器免密登录如何实现因为在和服务进行通信的时候，会将本机的公钥顺带着发给服务器，如果我们之前就将自己的公钥添加到了服务器的允许登录的列">
   
     <link rel="alternate" href="/atom.xml" title="blog of lilong" type="application/atom+xml">
   
@@ -64,12 +64,16 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-复习昨天的内容" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-ssh协议介绍" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/06/25/复习昨天的内容/" class="article-date">
-  <time datetime="2017-06-25T06:45:21.000Z" itemprop="datePublished">2017-06-25</time>
+    <a href="/2017/06/25/ssh协议介绍/" class="article-date">
+  <time datetime="2017-06-25T07:36:36.000Z" itemprop="datePublished">2017-06-25</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/webFront/">webFront</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -78,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      复习昨天的内容
+      ssh协议介绍
     </h1>
   
 
@@ -86,30 +90,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="复习昨天内容"><a href="#复习昨天内容" class="headerlink" title="复习昨天内容"></a>复习昨天内容</h1><h2 id="shell-bash-vi"><a href="#shell-bash-vi" class="headerlink" title="shell bash vi"></a>shell bash vi</h2><p>cd change directory<br>pwd<br>ls     ls -l    ls -a   ls -al     ls 文件夹路径<br>touch    touch 文件路径<br>mkdir    mkdir 文件夹路径<br>rmdir   rmdir 文件夹路径<br>rm        rm 文件（文件夹）路径<br>cat<br>less<br>mv<br>cp<br>tab<br>echo<br>&gt;</p>
-<blockquote>
-<p>&gt;</p>
-</blockquote>
-<p>普通模式<br>插入模式<br>命令模式</p>
-<h2 id="版本控制工具"><a href="#版本控制工具" class="headerlink" title="版本控制工具"></a>版本控制工具</h2><p>本地<br>集中式<br>分布式</p>
-<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><p>一台电脑只需要执行一次<br>git config –global user.name 用户名<br>git config –global user.email 邮箱</p>
-<p>一个项目只需要执行一次<br>git init</p>
-<p>git status</p>
-<p>git add </p>
-<p>git commit </p>
-<p>git log</p>
-<p>git checkout </p>
-<p>git reset –hard 版本号</p>
-<p>git push</p>
-<p>git clone</p>
-
+        <h1 id="ssh协议介绍"><a href="#ssh协议介绍" class="headerlink" title="ssh协议介绍"></a>ssh协议介绍</h1><h2 id="协议的介绍"><a href="#协议的介绍" class="headerlink" title="协议的介绍"></a>协议的介绍</h2><p>安全shell协议，此协议一般用作服务器之间的加密登录</p>
+<p><a href="http://域名:端口号/目录路径?参数=值#哈希值" target="_blank" rel="external">http://域名:端口号/目录路径?参数=值#哈希值</a></p>
+<p>git@github.com:avakpan/test1.git</p>
+<p>用户名@域名:路径</p>
+<h1 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h1><p>对称性加密算法</p>
+<p>非对称性加密算法</p>
+<h2 id="服务器免密登录如何实现"><a href="#服务器免密登录如何实现" class="headerlink" title="服务器免密登录如何实现"></a>服务器免密登录如何实现</h2><p>因为在和服务进行通信的时候，会将本机的公钥顺带着发给服务器，如果我们之前就将自己的公钥添加到了服务器的允许登录的列表中，那么服务器在接收到我们的登录请求后，进行公钥的对比，如果一致，就允许登录！</p>
+<p>步骤如下：</p>
+<ol>
+<li><p>在自己的电脑上生成秘钥<br> ssh-keygen -t rsa</p>
+</li>
+<li><p>登录服务器，将自己电脑中的公钥（默认路径在 c:\users\用户名.ssh\rsa_id.pub）中的内容，存储到服务器中的.ssh文件夹下的authorized_keys中</p>
+</li>
+</ol>
+<p>github免密设置</p>
+<ol>
+<li><p>在自己的电脑上生成秘钥（如果没有的话）</p>
+</li>
+<li><p>在用户根目录中的.ssh文件夹中找到rsa_id.pub这个文件，复制里面所有的内容</p>
+</li>
+<li><p>打开github，找到设置页面（头像下面有settings）</p>
+</li>
+<li><p>左边栏中有ssh keys and gpg keys 点他</p>
+</li>
+<li><p>右上角有一个绿色的  new ssh key 点他</p>
+</li>
+<li><p>在key文本中粘贴刚才第2步复制的内容，点击下面的 add ssh key 即可</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"hello blog"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/06/25/复习昨天的内容/" data-id="cj4cejduk0001ekoizq1rvbyz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/06/25/ssh协议介绍/" data-id="cj4cejduw0002ekoiek1dktr4" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh协议介绍/">ssh协议介绍</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务器免密登录如何实现/">服务器免密登录如何实现</a></li></ul>
 
     </footer>
   </div>
@@ -117,19 +134,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/06/25/总结/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          总结
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/06/25/分支的相关命令/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/06/25/总结/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">分支的相关命令</div>
+      <div class="article-nav-title">总结</div>
     </a>
   
 </nav>
