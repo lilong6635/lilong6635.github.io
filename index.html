@@ -253,6 +253,197 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/29/javascript中的模块化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lilong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/87.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog of lilong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/29/javascript中的模块化/" itemprop="url">javascript中的模块化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-29T14:19:20+08:00">
+                2017-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/frontend/" itemprop="url" rel="index">
+                    <span itemprop="name">frontend</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><h2 id="简单的使用js文件作为模块的缺陷"><a href="#简单的使用js文件作为模块的缺陷" class="headerlink" title="简单的使用js文件作为模块的缺陷"></a>简单的使用js文件作为模块的缺陷</h2><ol>
+<li>全局变量污染</li>
+<li>引用js文件的时候，次序非常重要，而且比较麻烦</li>
+</ol>
+<h2 id="模块化的优势"><a href="#模块化的优势" class="headerlink" title="模块化的优势"></a>模块化的优势</h2><ol>
+<li>可以将公共的部分定义成模块，方便复用</li>
+<li>解决全局变量污染的问题</li>
+<li>模块之间的依赖关系，非常明确，而且在应用模块的时候，根本不需要考虑依赖的先后顺序问题。</li>
+</ol>
+<h2 id="前端模块化"><a href="#前端模块化" class="headerlink" title="前端模块化"></a>前端模块化</h2><h3 id="模块化的标准"><a href="#模块化的标准" class="headerlink" title="模块化的标准"></a>模块化的标准</h3><ol>
+<li><p>CommonJS: 是一个模块化的标准。Node.js在使用的一个模块化的标准</p>
+</li>
+<li><p>AMD: Async Module Definition, 在CommonJS基础上衍生出来的适用于前端开发中的模块化标准</p>
+</li>
+</ol>
+<p>AMD. 尽早将所有的模块全部加载进来  require.js</p>
+<ol>
+<li>CMD: Common Module Definition<br>在CommonJS基础上衍生出来的适用于前端开发中的模块化标准</li>
+</ol>
+<p>CMD. 用到之的时候再加载， as lazy as possible   sea.js</p>
+<p>AMD没有明显的BUG，CMD明显没有BUG</p>
+<h2 id="模块化的是实现（require-js）"><a href="#模块化的是实现（require-js）" class="headerlink" title="模块化的是实现（require.js）"></a>模块化的是实现（require.js）</h2><p>require.js 只是一个js文件，这个js文件可以帮助我们实现前端模块化，他遵循的标准就是AMD标准。</p>
+<h3 id="定义模块"><a href="#定义模块" class="headerlink" title="定义模块"></a>定义模块</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">//模块中所有的内容</span></div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"Hello, 我是一个模块"</span>);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="引用模块"><a href="#引用模块" class="headerlink" title="引用模块"></a>引用模块</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>([<span class="string">"模块的名称"</span>])</div></pre></td></tr></table></figure>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>如果模块只是执行一些代码实现指定的功能，那么直接引用该模块，功能即可实现。<br>但是如果模块的存在是为了给我们提供一些方法，对象，其他的内容让我们使用的话，就需要给这个模块一个产出，使用return语句将要提供给别人使用的内容进行返回，使用该模块的使用，需要在require的第二个参数的函数中书写一个形参来接收这个内容，就能达到使用的效果了！</p>
+<h2 id="模块依赖项的处理"><a href="#模块依赖项的处理" class="headerlink" title="模块依赖项的处理"></a>模块依赖项的处理</h2><p>如果定义一个模块的时候，这个模块要依赖于其他模块来实现，那么我们需要给这个模块指定依赖项</p>
+<p>define([“依赖项1”,”依赖项2”…”依赖项N”], function(){<br>    //模块的功能代码<br>})</p>
+<p>如果模块的依赖项有给模块提供内容使用，那么需要在当前模块的回调函数中添加形参来接收依赖项模块的返回值，这里的形参和依赖项是一一对应的，如果存在好多依赖项，有的依赖项有产出，有的没有，那我们一般会将所有有产出的依赖项放在前面，没有的放在后面，这样可以省略掉没有产出模块的形参</p>
+<h2 id="requirejs的入口文件设置"><a href="#requirejs的入口文件设置" class="headerlink" title="requirejs的入口文件设置"></a>requirejs的入口文件设置</h2><h3 id="data-main"><a href="#data-main" class="headerlink" title="data-main"></a>data-main</h3><p>可以给请求requirejs的script标签设置一个data-main属性，这个属性中放的是一个文件的路径，在requirejs加载完毕之后，会自动去执行data-main这个路径中指向的文件中的js代码！</p>
+<p><strong>data-main中的内容是异步加载的，如果下面有要基于data-main的功能实现的内容，那么requirejs不能保证data-main是在下面的内容之前执行的</strong></p>
+<h2 id="模块路径查找的问题"><a href="#模块路径查找的问题" class="headerlink" title="模块路径查找的问题"></a>模块路径查找的问题</h2><ol>
+<li><p>如果直接在html文件中书写script标签，在标签内使用require来加载某个模块，那么会以当前的这个html文件作为参照，去找相对路径</p>
+</li>
+<li><p>如果我们是在入口文件中使用require加载的模块，那么这个时候是参照data-main指定的这个入口文件所在的目录来找模块的路径的！</p>
+</li>
+<li><p>如果通过config指定了requirejs的baseUrl，那么所有的模块路径查找都会以这个baseUrl作为基础，去查找</p>
+</li>
+</ol>
+<h2 id="requirejs可以通过config来配置一些内容"><a href="#requirejs可以通过config来配置一些内容" class="headerlink" title="requirejs可以通过config来配置一些内容"></a>requirejs可以通过config来配置一些内容</h2><h3 id="baseUrl"><a href="#baseUrl" class="headerlink" title="baseUrl"></a>baseUrl</h3><p>require.config({<br>    //所有模块的路径查找，都会以这个baseUrl指定的路径为基础<br>    //一般情况下就是找所有模块都能够共享的目录，作为baseUrl<br>    baseUrl: “”,</p>
+<pre><code>//paths属性可以为每一个模块配置别名
+//以后在使用模块的时候，不需要再去写那么长的真实路径了，而直接使用别名即可
+paths: {
+    //键： 别名名称
+    //值： 真实的模块路径
+    &quot;xm&quot;: &quot;modules1/modules2/modules3/moduleXM&quot; 
+}
+</code></pre><p>});</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/27/javascript中跨域的概念/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1667,168 +1858,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/播客/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lilong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/87.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog of lilong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/25/播客/" itemprop="url">播客</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-25T11:32:39+08:00">
-                2017-06-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="博学谷项目-第2天"><a href="#博学谷项目-第2天" class="headerlink" title="博学谷项目 第2天"></a>博学谷项目 第2天</h1><h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><p>什么时候创建分支？<br>分支主要用在多任务并行开发的情况下，每当要进行一个新任务的开发，就创建一新的分支来做！</p>
-<h2 id="1-创建分支"><a href="#1-创建分支" class="headerlink" title="1. 创建分支"></a>1. 创建分支</h2><p>git branch 分支名称<br>git checkout -b 分支名称</p>
-<h2 id="2-切换到分支"><a href="#2-切换到分支" class="headerlink" title="2. 切换到分支"></a>2. 切换到分支</h2><p>git checkout 分支名称</p>
-<h2 id="3-合并分支"><a href="#3-合并分支" class="headerlink" title="3. 合并分支"></a>3. 合并分支</h2><p>git merge 指定的分支<br>将指定的分支合并到当前分支</p>
-<h2 id="4-删除分支"><a href="#4-删除分支" class="headerlink" title="4. 删除分支"></a>4. 删除分支</h2><p>git branch -d 分支名称</p>
-<h2 id="5-显示所有分支"><a href="#5-显示所有分支" class="headerlink" title="5. 显示所有分支"></a>5. 显示所有分支</h2><p>git branch</p>
-<h2 id="远程仓储"><a href="#远程仓储" class="headerlink" title="远程仓储"></a>远程仓储</h2><p>远程仓库用来共享版本库，多人开发的时候使用</p>
-<p>远程仓库其实是一个裸仓库</p>
-<p>裸仓库：没有.git文件夹，直接将所有的版本库信息暴露在文件夹下<br>裸仓库没有工作目录， 在裸仓库中不能进行开发工作</p>
-<ol>
-<li><p>创建远程仓库<br>git init –bare</p>
-</li>
-<li><p>获取远程仓库的版本<br>git clone 远程仓库地址  本地文件夹名称</p>
-</li>
-<li><p>把本地版本推送到远程仓库<br>git push 远程仓库地址 本地分支:远程分支</p>
-</li>
-</ol>
-<p>如果本地分支和远程分支同名，写一个即可<br>git push origin master</p>
-<ol>
-<li>从远程仓库获取更新后的版本<br>git pull<br>如果不写远程地址和分支名称，默认获取origin地址的master分支<br>git pull 远程仓库地址 要pull的分支</li>
-</ol>
-<h2 id="远程仓库地址管理"><a href="#远程仓库地址管理" class="headerlink" title="远程仓库地址管理"></a>远程仓库地址管理</h2><ol>
-<li><p>添加<br>git remote add 别名 地址</p>
-</li>
-<li><p>删除<br>git remote remove 别名</p>
-</li>
-<li><p>显示所有的<br>git remote</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1878,7 +1907,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1889,7 +1918,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -1900,7 +1929,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
