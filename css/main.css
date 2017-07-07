@@ -1678,7 +1678,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b0ffff;
+  background: #ffd742;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2858,11 +2858,11 @@ body {
   background-size: 100% auto;
 }
 .content-wrap {
-  background-color: rgba(255,255,255,0.6);
+  background-color: rgba(255,255,255,0.3);
   color: #000;
 }
 .sidebar-inner {
-  background-color: rgba(255,255,255,0.3);
+  background-color: rgba(255,255,255,0.1);
 }
 .menu .menu-item a {
   color: #000;

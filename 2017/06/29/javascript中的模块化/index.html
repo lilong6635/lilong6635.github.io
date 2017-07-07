@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="javascript,moduleify," />
+  <meta name="keywords" content="moduleify,javascript," />
 
 
 
@@ -94,13 +94,13 @@
 
 
 <meta name="description" content="模块化简单的使用js文件作为模块的缺陷 全局变量污染 引用js文件的时候，次序非常重要，而且比较麻烦  模块化的优势 可以将公共的部分定义成模块，方便复用 解决全局变量污染的问题 模块之间的依赖关系，非常明确，而且在应用模块的时候，根本不需要考虑依赖的先后顺序问题。  前端模块化模块化的标准 CommonJS: 是一个模块化的标准。Node.js在使用的一个模块化的标准  AMD: Async M">
-<meta name="keywords" content="javascript,moduleify">
+<meta name="keywords" content="moduleify,javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript中的模块化">
 <meta property="og:url" content="http://yoursite.com/2017/06/29/javascript中的模块化/index.html">
 <meta property="og:site_name" content="blog of lilong">
 <meta property="og:description" content="模块化简单的使用js文件作为模块的缺陷 全局变量污染 引用js文件的时候，次序非常重要，而且比较麻烦  模块化的优势 可以将公共的部分定义成模块，方便复用 解决全局变量污染的问题 模块之间的依赖关系，非常明确，而且在应用模块的时候，根本不需要考虑依赖的先后顺序问题。  前端模块化模块化的标准 CommonJS: 是一个模块化的标准。Node.js在使用的一个模块化的标准  AMD: Async M">
-<meta property="og:updated_time" content="2017-06-29T14:35:29.012Z">
+<meta property="og:updated_time" content="2017-07-07T04:36:44.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript中的模块化">
 <meta name="twitter:description" content="模块化简单的使用js文件作为模块的缺陷 全局变量污染 引用js文件的时候，次序非常重要，而且比较麻烦  模块化的优势 可以将公共的部分定义成模块，方便复用 解决全局变量污染的问题 模块之间的依赖关系，非常明确，而且在应用模块的时候，根本不需要考虑依赖的先后顺序问题。  前端模块化模块化的标准 CommonJS: 是一个模块化的标准。Node.js在使用的一个模块化的标准  AMD: Async M">
@@ -208,8 +208,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -219,7 +229,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -376,6 +386,7 @@
 <p>AMD没有明显的BUG，CMD明显没有BUG</p>
 <h2 id="模块化的是实现（require-js）"><a href="#模块化的是实现（require-js）" class="headerlink" title="模块化的是实现（require.js）"></a>模块化的是实现（require.js）</h2><p>require.js 只是一个js文件，这个js文件可以帮助我们实现前端模块化，他遵循的标准就是AMD标准。</p>
 <h3 id="定义模块"><a href="#定义模块" class="headerlink" title="定义模块"></a>定义模块</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">//模块中所有的内容</span></div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"Hello, 我是一个模块"</span>);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="引用模块"><a href="#引用模块" class="headerlink" title="引用模块"></a>引用模块</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>([<span class="string">"模块的名称"</span>])</div></pre></td></tr></table></figure>
 <h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>如果模块只是执行一些代码实现指定的功能，那么直接引用该模块，功能即可实现。<br>但是如果模块的存在是为了给我们提供一些方法，对象，其他的内容让我们使用的话，就需要给这个模块一个产出，使用return语句将要提供给别人使用的内容进行返回，使用该模块的使用，需要在require的第二个参数的函数中书写一个形参来接收这个内容，就能达到使用的效果了！</p>
 <h2 id="模块依赖项的处理"><a href="#模块依赖项的处理" class="headerlink" title="模块依赖项的处理"></a>模块依赖项的处理</h2><p>如果定义一个模块的时候，这个模块要依赖于其他模块来实现，那么我们需要给这个模块指定依赖项</p>
@@ -400,7 +411,7 @@ paths: {
     &quot;xm&quot;: &quot;modules1/modules2/modules3/moduleXM&quot; 
 }
 </code></pre><p>});</p>
-
+<!-- more -->
       
     </div>
 
@@ -429,9 +440,9 @@ paths: {
       
         <div class="post-tags">
           
-            <a href="/tags/javascript/" rel="tag"># javascript</a>
-          
             <a href="/tags/moduleify/" rel="tag"># moduleify</a>
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
           
         </div>
       
@@ -527,7 +538,7 @@ paths: {
 
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
+              <a href="/archives">
                 <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
@@ -538,10 +549,10 @@ paths: {
             
             
             <div class="site-state-item site-state-categories">
-              
+              <a href="/categories/index.html">
                 <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -549,10 +560,10 @@ paths: {
             
             
             <div class="site-state-item site-state-tags">
-              
+              <a href="/tags/index.html">
                 <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
-              
+              </a>
             </div>
           
 

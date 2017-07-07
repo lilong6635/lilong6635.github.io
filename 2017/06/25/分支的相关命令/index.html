@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="分支相关的命令创建分支git branch 分支名称 查看所有分支git branch 切换到指定分支git checkout 分支名 合并分支git merge 分支名将指定的分支 合并到 当前的分支 删除分支git branch -d 分支名称 删除分支的时候，如果分支修改的内容没有被合并，那么会提示不能删除，要删除需要合并，或者使用-D 创建并切换到新的分支git checkout -b 分">
+<meta name="description" content="分支相关的命令创建分支git branch 分支名称 查看所有分支git branch 切换到指定分支git checkout 分支名">
 <meta name="keywords" content="javascript,git shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分支的相关命令">
 <meta property="og:url" content="http://yoursite.com/2017/06/25/分支的相关命令/index.html">
 <meta property="og:site_name" content="blog of lilong">
-<meta property="og:description" content="分支相关的命令创建分支git branch 分支名称 查看所有分支git branch 切换到指定分支git checkout 分支名 合并分支git merge 分支名将指定的分支 合并到 当前的分支 删除分支git branch -d 分支名称 删除分支的时候，如果分支修改的内容没有被合并，那么会提示不能删除，要删除需要合并，或者使用-D 创建并切换到新的分支git checkout -b 分">
-<meta property="og:updated_time" content="2017-06-25T05:13:04.383Z">
+<meta property="og:description" content="分支相关的命令创建分支git branch 分支名称 查看所有分支git branch 切换到指定分支git checkout 分支名">
+<meta property="og:updated_time" content="2017-07-07T04:40:49.646Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分支的相关命令">
-<meta name="twitter:description" content="分支相关的命令创建分支git branch 分支名称 查看所有分支git branch 切换到指定分支git checkout 分支名 合并分支git merge 分支名将指定的分支 合并到 当前的分支 删除分支git branch -d 分支名称 删除分支的时候，如果分支修改的内容没有被合并，那么会提示不能删除，要删除需要合并，或者使用-D 创建并切换到新的分支git checkout -b 分">
+<meta name="twitter:description" content="分支相关的命令创建分支git branch 分支名称 查看所有分支git branch 切换到指定分支git checkout 分支名">
 
 
 
@@ -208,8 +208,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -219,7 +229,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -322,14 +332,14 @@
       
         <h1 id="分支相关的命令"><a href="#分支相关的命令" class="headerlink" title="分支相关的命令"></a>分支相关的命令</h1><h2 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h2><p>git branch 分支名称</p>
 <h2 id="查看所有分支"><a href="#查看所有分支" class="headerlink" title="查看所有分支"></a>查看所有分支</h2><p>git branch</p>
-<h2 id="切换到指定分支"><a href="#切换到指定分支" class="headerlink" title="切换到指定分支"></a>切换到指定分支</h2><p>git checkout 分支名</p>
+<h2 id="切换到指定分支"><a href="#切换到指定分支" class="headerlink" title="切换到指定分支"></a>切换到指定分支</h2><p>git checkout 分支名<br><a id="more"></a></p>
 <h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><p>git merge 分支名<br>将指定的分支 合并到 当前的分支</p>
 <h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><p>git branch -d 分支名称</p>
 <p>删除分支的时候，如果分支修改的内容没有被合并，那么会提示不能删除，要删除需要合并，或者使用-D</p>
 <h2 id="创建并切换到新的分支"><a href="#创建并切换到新的分支" class="headerlink" title="创建并切换到新的分支"></a>创建并切换到新的分支</h2><p>git checkout -b 分支名</p>
 <p>在分支进行切换之前，要对所有的内容进行一次add 和commit操作</p>
 <p>master分支是在仓库初始化之后，第一次提交完成的时候才出现的！</p>
-
+<!-- more -->
       
     </div>
 
@@ -456,7 +466,7 @@
 
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
+              <a href="/archives">
                 <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
@@ -467,10 +477,10 @@
             
             
             <div class="site-state-item site-state-categories">
-              
+              <a href="/categories/index.html">
                 <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -478,10 +488,10 @@
             
             
             <div class="site-state-item site-state-tags">
-              
+              <a href="/tags/index.html">
                 <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
-              
+              </a>
             </div>
           
 
