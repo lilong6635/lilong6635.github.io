@@ -1,6 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[立即执行函数表达式/数组的方法]]></title>
+    <url>%2F2017%2F07%2F07%2F%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[立即执行函数表达式将函数表达式直接加上()进行调用。tip: 只要函数能被当做表达式，就可以直接加()调用写法： (function(){})() (funciton(){}()) function(){}() function(){}() ! function(){}() ~ function(){}() ^ function(){}() 沙箱模式一个隔离的环境12345678(function(window)&#123; //变量的声明 //功能代码 //如果需要，就通过window对象向外界暴露接口 //window.jQuery = window.$ = jQuery&#125;)(window) 传参的目的 为了实现逻辑上的隔离，沙箱内部不使用外部的内容，外部也不使用沙箱内部的内容 便于代码压缩，因为内置对象无法被压缩，如果使用传参的方式，便可以压缩掉自己定义的这个形参 沙箱模式的用途 框架 类库 插件 组件 数组的方法 forEach 1234567数组.forEach(function(value, index, arr)&#123; &#125;)//遍历数组，遍历到每个元素的时候，都会调用这个回调函数，//value： 当前正在遍历的元素//index: 当前正在遍历的元素的索引//arr； 当前正在遍历的数组对象 map 12345678910数组.map(function(value, index, arr)&#123; &#125;)//遍历数组，遍历到每个元素的时候，都会调用这个回调函数，//value： 当前正在遍历的元素//index: 当前正在遍历的元素的索引//arr； 当前正在遍历的数组对象//map方法有返回值：//每次调用回到函数，都会产生一个返回值，将所有调用返回的返回值组合成一个新的数组，就是map方法的返回值了 filter12345678数组.filter(function(value, index, arr)&#123; &#125;)//遍历数组，遍历到每个元素的时候，都会调用这个回调函数，如果回调函数返回的是true，则当前元素会被加入到返回值数组当中//value： 当前正在遍历的元素//index: 当前正在遍历的元素的索引//arr； 当前正在遍历的数组对象 函数的四种调用模式 函数调用模式 12函数名();//this ---&gt; window 方法调用模式 123对象名.方法名();对象名[方法名]();//this ---&gt; 调用该方法的对象 构造函数调用模式 12new 函数名();//this ---&gt; new创建出来的对象 上下文调用模式 12函数名.call();函数名.apply(); 上下文调用模式上下文调用模式中可以改变函数中this的指向！ call1234函数名.call(obj, arg1...argN);//1. 调用该函数//2. 将函数中的this指向obj//3. 将call方法的第二个及以后所有的实参，依次传递给函数作为实参 apply1234函数名.apply(obj, 数组或者伪数组);//1. 调用该函数//2. 将函数中的this指向obj//3. 将第二个参数中的数组或者伪数组中的元素，拆解开依次传递给函数作为实参 上下文调用模式的应用 伪数组转数组 数组求最大值 借用方法 创建对象的两种模式 工厂模式 123456789function Person()&#123; var obj = &#123;&#125;; obj.name = ""; obj.age = 18; return obj;&#125;//this---&gt;window 因为调用模式是函数调用模式var p = Person(); 寄生模式 123456789function Person()&#123; var obj = &#123;&#125;; obj.name = ""; obj.age = 18; return obj;&#125;//this---&gt;new创建出来的对象 因为调用模式是构造函数调用模式var p = new Person(); 严格模式严格模式如何开启12"use strict"'use strict' 严格模式的特征 声明变量必须使用var 函数的形参不可以重名 ES6之前 对象的属性名不可以重名 eval函数有自己的作用域 不允许使用8进制数字 Object.defineProperty12345678//可以为对象添加属性，并且设置属性的特性Object.defineProperty(obj, propName, descriptor);//descriptor对象的属性说明 //writable： 设置属性是否可以被赋值，默认为false //configurable: 设置属性是否可以被删除，默认为false //enumerable: 设置属性是否可以被遍历，默认为false //value: 设置属性的值（默认值） //get set: 属性的设置器和获取器 两个方法，分别会在属性被赋值和取值的时候，被系统自动调用，不能和writable和value同时存在！]]></content>
+      <categories>
+        <category>javascript</category>
+        <category>webfront</category>
+      </categories>
+      <tags>
+        <tag>oriented object programming</tag>
+        <tag>prototype</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[面向对象中的闭包]]></title>
+    <url>%2F2017%2F07%2F07%2F%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%AD%E7%9A%84%E9%97%AD%E5%8C%85%2F</url>
+    <content type="text"><![CDATA[闭包概念闭包指的就是那些能够访问独立的变量的函数！ 闭包要解决的问题函数中声明的变量不能被函数外部直接使用 闭包的基本模型1234567function outer()&#123; var data = ""; function inner()&#123; //操作data &#125; return inner;&#125; 使用闭包设置和获取变量的值123456789101112function outer()&#123; var data = ""; var obj = &#123; setData: function(value)&#123; data = value; &#125;, getData: function()&#123; return data; &#125; &#125; return obj;&#125; 闭包的原理就是作用域的访问规则！ 闭包的作用 给函数提供一个私有的变量 保护变量，给变量的设置提供专有的渠道，在这个渠道中可以添加一些校验的逻辑 闭包的应用 for循环中注册点击事件的问题 for循环中setTimeout的问题 缓存 浏览器缓存 CDN 硬件缓存 缓存封装1234567891011121314function createCache()&#123; var cache = &#123;&#125;; var keys = []; return function(key, value)&#123; if(value)&#123; cache[key] = value; if(keys.push(key) &gt; 20)&#123; delete[keys.shift()]; &#125; &#125;else&#123; return cache[key]; &#125; &#125;&#125; jQuery缓存源码123456789function createCache()&#123; var keys = []; function cache(key, value)&#123; if(keys.push(key + " ") &gt; 20)&#123; delete cache[keys.shift()]; &#125; return (cache[key + " "] = value); &#125;&#125; 递归实现的斐波那契数列存在的性能问题由于存在大量的重复的计算，所以导致在40多之后，就算不出来了 解决方案 提供一个缓存，用这个缓存来存储计算出来的数据 每次在计算的时候，首先先从缓存中去获取,如果有，就直接返回 如果没有，就通过递归的方式去计算 计算出来之后，一定要记着保存到缓存中去，以便下次使用 1234567891011121314151617181920212223242526272829function createCache()&#123; var cache = &#123;&#125;; var keys = []; return function(key, value)&#123; if(value)&#123; cache[key] = value; if(keys.push(key) &gt; 20)&#123; delete[keys.shift()]; &#125; &#125;else&#123; return cache[key]; &#125; &#125;&#125;var cache = createCache();function fib(n)&#123; var num = cache(n); if(!num)&#123; if(n == 1 || n == 2)&#123; num = 1; &#125;else&#123; num = fib(n - 1) + fib(n - 2); &#125; cache(n, num); &#125; return num;&#125;]]></content>
+      <categories>
+        <category>javascript</category>
+        <category>webfront</category>
+      </categories>
+      <tags>
+        <tag>oriented object programming</tag>
+        <tag>prototype</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[递归/作用域/变量提升]]></title>
+    <url>%2F2017%2F07%2F07%2F%E9%80%92%E5%BD%92-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%2F</url>
+    <content type="text"><![CDATA[伪数组拥有数组通过数字作为下标访问元素的特征，并且拥有length属性，但是没有数组方法的对象就称作伪数组 arguments对象arguments对象是函数中的一个伪数组，在函数被调用的时候，会把所有的实参存到这个伪数组当中 属性 length: 传入的实参的个数 callee: arguments对象所在的函数，一般被用来实现递归！ 如何通过arguments对象实现重载？递归概念函数中直接或者间接的调用自己 两大要素 自己调用自己 结束条件 化归思想化归思想，将一个问题由难化易，由繁化简，由复杂化简单的过程称为化归，它是转化和归结的简称。 递归解决数学问题 前n项和 n! 求幂 求斐波那契数列的第n项 递归获取后代元素 先获取元素的所有的子元素 再去获取子元素的子元素，依次递归就可以获取到所有的后代元素123456789101112131415161718192021var list = [];function getChildren(ele)&#123; var children = ele.children; for(var i = 0; i &lt; children.length; i++)&#123; var child = children[i]; list.push(child); getChilren(child); &#125;&#125;function getChildren(ele)&#123; var list = []; var children = ele.children; for(var i = 0; i &lt; children.length; i++)&#123; var child = children[i]; list.push(child); var temp = getChilren(child); list = list.concat(temp); &#125; return list;&#125; 作用域变量起作用的范围 JS里面只有function（函数）可以创建作用域 JS中的作用域是词法作用域（静态作用域）变量的作用域只和函数的声明位置有关，和函数的调用无关！代码在写出来之后，就可以根据代码的书写结构确定变量的作用域，而不需要关心具体的运行的时候的状况。123456789var num = 123;function f1()&#123; console.log(num);&#125;funciton f2()&#123; var num = 456; f1();&#125;f2(); 块级作用域： js中没有块级作用域， 块级作用域就是代码块限定的作用域！ 作用域链函数可以创建作用域，函数中又可以声明函数，这样就形成了作用域嵌套作用域的链式访问结构，叫做作用域链！ 变量搜索原则当使用一个变量的时候 现在当前使用该变量的作用域中进行查找，找该变量的声明，如果有，就直接使用 如果没有就去上一级作用域中进行查找，找该变量的声明，如果有，就直接使用 如果没有，就继续沿着作用域链向上查找，直到找到全局作用域为止 变量提升js代码执行分两个阶段 预解析阶段 执行阶段 在预解析阶段，系统会将所有的变量声明，以及函数声明提升到其所在的作用域的最顶上，这个过程就叫做变量提升。 变量提升的特殊情况 函数同名： 都提升，后面的会把前面的覆盖掉 函数和变量同名： 只提升函数声明，忽略掉变量声明 变量提升是分作用域的，变量和函数的声明，只会被提升到其所在的作用域的最顶上 变量提升是分段(script标签)的， 在当前script标签中的声明，只会被提升到当前script标签的最顶上，不会跨标签提升 条件式函数声明（在条件语句中声明的函数）：会被当做函数表达式来处理，只提升函数名，不提升函数体！ （条件式函数声明不推荐使用！） 函数的形参： 在预解析之前，就已经完成了函数的形参的声明以及赋值，所以形参的声明和赋值不参与变量提升！ 变量提升的面试题！]]></content>
+      <categories>
+        <category>javascript</category>
+        <category>webfront</category>
+      </categories>
+      <tags>
+        <tag>oriented object programming</tag>
+        <tag>prototype</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[原型链]]></title>
+    <url>%2F2017%2F07%2F07%2F%E5%8E%9F%E5%9E%8B%E9%93%BE%2F</url>
+    <content type="text"><![CDATA[原型链对象都有原型，原型也是对象，原型也有原型，这样就形成了原型组成链条结构，称为原型链。 Object.prototypeObject.prototype是js中所有对象的原型链的最终一环，null标志着原型链的结束！Object.prototype中的所有的成员可以被js中所有的对象共享！ 属性搜索原则当使用对象访问一个属性的时候 现在对象本身进行查找，如果有，就直接使用 如果没有，就去对象的原型中进行查找，如果有，就直接使用 如果没有，就继续沿着原型链向上查找，直到找到为止，或者找到null为止 Object.prototype的成员 名称 说明 hasOwnProperty 判断对象本身是否拥有某个属性, 对象.hasOwnProperty(属性名) isPrototypeOf 判断当前对象是不是另外一个对象的原型 对象.isPrototypeOf(对象) propertyIsEnumerable 判断属性是否属于对象本身并且可以被for-in遍历 对象.propertyIsEnumerable(属性名) toString toLocaleString 将对象转换成字符串的，toLocaleString会将对象转成本地格式的字符串 valueOf 获取对象的值，一般用在值类型和引用类型运算的时候 函数的创建方式函数声明1function 函数名()&#123;&#125; 函数表达式1var 函数名 = function()&#123;&#125;; Function1var 函数名 = new Function(); Function不传参创建出来的是一个空函数，没有任何的功能1var func = new Function(); 传一个参数12var func = new Function(methodBody);//methodBody是一个字符串，里面是符合js语法规范的js代码！会被作为函数体创建新的函数！ 传多个参数123var func = new Function(arg1, arg2...argN, methodBody);//arg1...argN 都是形参的名称， 是字符串！//methodBody是一个字符串，里面是符合js语法规范的js代码！会被作为函数体创建新的函数！ eval（了解）eval可以将字符串转换成代码并直接执行， Funciton创建出来的是函数，需要调用才能执行！ 解析JSON格式的字符串123456789//如果直接将json格式的字符串传递给eval使用，eval会把&#123;&#125;当做代码块处理，报错！var jsonStr = '&#123;"name": "吴彦祖", age: 18&#125;';//解决办法：//1. 把变量的声明也作为字符串传递给evaleval("var obj = " + jsonStr);//2. 在json格式的字符串前后拼接()var o = eval("(" + jsonStr + ")"); Function和eval都有安全性问题！一般情况下不会使用这两个东西！ 函数的原型链函数也是一个对象，函数的构造函数是Function，所以可以分析出函数的原型链 函数 —-&gt; Function.prototype —&gt; Object.prototype —&gt; null 完整的原型链将对象的原型链和函数的原型链结合在一起就绘制成完整的原型链 绘制步骤 绘制对象的原型链 1.1. 绘制对象的构造函数 1.2. 绘制对象的构造函数的原型 1.3. 绘制对象本身 1.4. 绘制3者的三角关系 1.5. 继续沿着构造函数的原型链向上绘制，直到null为止 将构造函数当做对象，绘制函数的原型链 2.1. 绘制函数的构造函数Function 2.2. 绘制Function.prototype 2.3. 绘制3角关系 2.4. 继续沿着Function.prototype的原型向上绘制，直到null为止 绘制Object构造函数 3.1 找到Object构造函数和Object.prototype之间的关系绘制 3.2 将Object当做对象，找到和其构造函数Function的关系，以及原型的关系 将Function当做对象，绘制其原型链 instanceof 关键字12345678910对象 instanceof 构造函数//判断构造函数.prototype是不是在对象的原型链上//Object ---&gt; Function.prototype ---&gt; Object.prototype ---&gt; nullconsole.log(Object instanceof Function);console.log(Object instanceof Object);//Function ---&gt; Function.prototype ---&gt; Object.prototype ---&gt; nullconsole.log(Function instanceof Object);console.log(Function instanceof Function); 函数的成员 name : 函数的名称 length: 函数的形参的个数 caller： 函数是在哪个函数中被调用的，caller就指向那个外部函数（这个caller必须要在函数中去使用，才能访问到值！） arguments： 函数在被调用的时候，会把所有的实参存到这个对象里面（这个对象必须要在函数中去使用，才能访问到值！ 这个arguments是函数的属性，和之前学过的arguments不一样！） 静态成员和实例成员 静态成员： 通过构造函数访问的成员就是静态成员 实例成员： 通过实例对象访问的成员就是实例成员]]></content>
+      <categories>
+        <category>javascript</category>
+        <category>webfront</category>
+      </categories>
+      <tags>
+        <tag>oriented object programming</tag>
+        <tag>prototype</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[面向对象基础知识]]></title>
+    <url>%2F2017%2F07%2F07%2F%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%2F</url>
+    <content type="text"><![CDATA[JavaScript的组成 DOM: Document Object Model 提供了一整套操作页面元素的API BOM: Browser Object Model 提供了一整套操作浏览器相关内容的API ECMAScript: js的语法规范以及标准！ JavaScript中的数据类型基本数据类型 string number boolean 复合数据类型 Object function Array Date RegExp String Number Boolean Math 空类型 null undefined 获取数据类型的方式1234567var res = typeof 数据;//typeof关键字可以用来获取数据的数据类型，他的返回值表示数据的数据类型，返回值是一个字符串类型的值//typeof关键字获取除了function以外所有的引用类型的数据的类型的时候，获取到的都是 object//typeof null 获取到的是 object//typeof undefined 获取到的是 undefined 全等和等于的区别全等即判断数据的数据类型是否一致，也判断值是否一致 等于只判断值是否一样 引用类型和值类型参与运算的时候的规则12345678console.log([] == ![]);//1. console.log([] == false);//2. console.log([].valueOf() == false);//3. console.log([].toString() == false);//4. console.log("" == false);console.log(&#123;&#125; + 1);console.log(&#123;&#125; == !&#123;&#125;); 当值类型和数据和引用类型的数据发生运算的时候，首先需要调用该引用类型数据的valueOf方法，获取返回之后，尝试进行运算，如果可以运算，则得出结果，如果不能运算，继续调用该引用类型数据的toString方法，获取返回值，参与运算！ in关键字的使用for-in 用来遍历对象的属性123for(var k in obj)&#123; console.log(k); //k 代表的就是对象的属性，这个k是字符串类型&#125; 属性名 in 对象 判断对象能否访问指定的属性12var obj = &#123;name: "xyz"&#125;;console.log("name" in obj); delete关键字的使用删除没有使用var声明的变量1delete 变量名; 删除对象的属性12delete 对象名.属性delete 对象名[属性] tip: 访问一个不存在的变量，会报错，xx is not defined访问一个对象不存在的属性，不会报错，会返回undefined 逻辑中断||中断12表达式1||表达式2//如果表达式1为真，则返回表达式1，否则返回表达式2 &amp;&amp; 中断12表达式1&amp;&amp;表达式2//如果表达式1为假，则返回表达式1，否则返回表达式2 break和continuebreak 跳出整个循环，继续执行循环之后的代码continue 跳出本次循环， 执行下次循环异常处理语句123456789try&#123; //可能出现错误的代码&#125;catch(e)&#123; //出错后的处理代码 //e 就出错的错误信息&#125;finally&#123; //无论是否出错都会执行的代码 //一般情况下放释放资源的代码&#125; 手动抛出异常12throw anything;//throw可以手动抛出异常，可以抛出任何东西，throw出去的内容如果有trycatch语句，就会被catch捕获，catch中的e就是我们跑出去的异常信息 引用类型和值类型值类型存储的是数据本身的这种数据，就是值类型的数据 引用类型存储的是数据的地址，数据单独存储，这种数据，就是引用类型的数据 值类型和引用类型的赋值特征值类型值类型赋值，会将当前变量存储的数据直接复制一份交给新的变量，此时两个变量内容相同，但是存储空间完全独立，互不影响 引用类型赋值， 会将当前变量存储的数据的地址复制一份，交给新的变量，两个变量指向同一个对象，修改其中一个，另外一个也受到影响 对象的动态特性在对象创建完成之后，可以随时为对象新增成员（属性和方法）这种特性就是动态特性 调试工具的使用（练习）面向对象的基本概念面向过程解决问题的思维方式， 将解决问题的关注点方法在了解决问题的每一个详细的步骤上！ 面向对象解决问题的思维方式， 将解决问题的关注点方法在了解决问题所需要的一系列的对象身上！ 面向对象和面向过程的关系面向对象其实就是对面向过程的封装 什么是对象万物皆对象js中，无序的键值对集合，就是对象！]]></content>
+      <categories>
+        <category>javascript</category>
+        <category>webfront</category>
+      </categories>
+      <tags>
+        <tag>oriented object programming</tag>
+        <tag>basic data type</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[构造函数及原型]]></title>
+    <url>%2F2017%2F07%2F07%2F%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%8F%8A%E5%8E%9F%E5%9E%8B%2F</url>
+    <content type="text"><![CDATA[面向对象编程举例 初步实现（面向过程的方式） 函数封装 对象封装 创建对象的方式 字面量 12345678var obj = &#123; key: value, key1: value1&#125;;//$().css(&#123;&#125;)//$.ajax(&#123;&#125;)//复用性差 内置构造函数 12345var obj = new Object();obj.key = value;obj.key1 = value1;//复用性差 自定义构造函数 123456function Person()&#123; this.key = value; this.key1 = value1;&#125;var p = new Person(); 构造函数什么是构造函数构造函数就是一个函数，他和普通函数的区别在于，他一般被用来初始化对象！！ 构造函数的特点 首字母大写 一般和new关键字一起使用 不需要写return语句，默认返回new创建出来的对象 构造函数的执行过程 使用new关键字创建对象 调用构造函数，将构造函数中的this指向new创建出来的对象 执行构造函数中的代码，通过this为创建的对象新增属性和方法 默认的返回了new创建出来的对象 构造函数的注意事项 如果手动给构造函数写了return语句 如果return的是值类型的数据，对默认返回值不会有任何影响 如果return的是引用类型的数据，则返回的是该引用类型的数据 如果把构造函数当做普通函数来调用 this会指向window 返回值会和普通函数一样 构造函数写法存在的问题12345678910111213141516171819function Person()&#123; this.name = ""; //每次创建对象都会重新执行一次函数声明，也就是创建一个新的函数 //每个对象中都会有这么一个方法，但是每个方法的功能都是一样的，所以造成资源浪费 this.sayHello = function()&#123; &#125;;&#125;//解决方案：// 将方法的声明提出来放到构造函数外面，每次给对象的方法赋值的时候，直接将外面声明好的函数直接赋值给对象的方法，这样，所有的对象就都共享同一个方法了function sayHello()&#123;&#125;funciton Person()&#123; this.name = ""; this.sayHello = sayHello;&#125;//这么解决会造成全局变量污染以及代码结构混乱的问题 原型原型的概念构造函数在创建出来的时候，系统会默认的帮构造函数创建并且关联一个空对象，这个对象就是原型 原型的作用在原型中的所有的属性和方法，可以被和其关联的构造函数创建出来的所有的对象共享！ 原型的访问方式 构造函数.prototype 对象.proto (有兼容性问题) 原型的使用方式 利用对象的动态特性，给系统创建好的默认的原型中新增属性和方法 1Person.prototype.name = ""; 直接给构造函数.prototype属性赋值一个新的对象！ 原型的使用注意事项 一般将需要共享的内容放在原型当中，对象特有的东西放在对象本身中 使用对象.属性获取对象的属性的时候，会先在对象本身进行查找，如果有就使用，如果没有，就会去原型中进行查找 使用对象.属性 = 值，给对象的属性赋值的时候，会直接在直接在对象本身进行查找，如果有，就修改，如果没有，就新增这个属性 在使用构造函数.prototype=新的对象的时候， 赋值之前创建的对象和赋值之后创建的对象的原型不一样 面向对象的三大特性 封装：将功能的具体实现封装在对象内部，只对外界暴露指定的接口，外界在使用的时候，只需要关心接口如何使用，而不需要关心对象内部功能的具体实现，这就是封装 （ATM，电脑） 继承：自己没有的东西，别人有，拿过来使用，就是继承（js中的继承是基于对象的！） 多态：js中没有多态！ 继承的实现方式 混入式继承（mix-in） 123456789var obj = &#123;&#125;;var obj1 = &#123; name: "", age: 18&#125;for(var k in obj1)&#123; obj[k] = obj1[k];&#125; 原型继承 直接将要继承的对象，赋值给构造函数的prototype属性，这样创建出来的所有的对象能够访问的原型就是这个要继承的对象，也就是说实现了继承！ 123456789function Person()&#123; &#125;var obj = &#123; name: "", age: 18&#125;Person.prototype = obj; 利用混入的方式，将要继承的对象中的所有的方法和属性，添加到构造函数默认的原型中去 12345678910function Person()&#123; &#125;var obj = &#123; name: "", age: 18&#125;for(var k in obj)&#123; Person.prototype[k] = obj[k];&#125; 经典继承 123456789101112131415161718//Object.createvar obj1 = &#123; name: "", age: 18&#125;var obj = Object.create(obj1);//创建出来一个新的对象obj，obj的原型就是obj1function myCreate(obj)&#123; if(Object.create)&#123; return Object.create(obj); &#125;else&#123; function F()&#123;&#125; F.prototype = obj; return new F(); &#125;&#125; 如何安全的扩展内置对象1234567891011121314151617181920212223242526272829303132333435363738394041424344454647//我想随便创建一个数组出来，都可以直接使用该数组对象.sayHello调用方法// Array.prototype.sayHello = function()&#123;// console.log("我是一个小数组！！");// &#125;// var arr = []; //var arr = new Array();// arr.sayHello();// var arr1 = [];// arr1.sayHello();// Array.prototype.sayHello = 123;// var arr3 = new Array;// arr3.sayHello();//如果直接在内置对象上进行修改，修改Array，或者说修改Array.prototype, 由于Array，Array.prototype是被所有人共享的，大家都在使用，自己的修改会对别人产生影响，如果别人和我们做了一样的修改，那么就会产生冲突！！ 所以直接修改内置对象的方式不可取！！！//我们可以自己定义一个构造函数，让这个构造函数的原型,prototype很属性指向一个数组对象，那么之后对于这个数组对象的更改，不会影响到别人，而且，数组对象中有数组所有的方法， 我们通过自己的构造函数创建出来的对象，就既有我们自己新增的方法，又有数组本身的方法！function MyArray()&#123;&#125;MyArray.prototype = [];MyArray.prototype.sayHello = function()&#123; console.log("我又是一个小数组！！")&#125;var arr = new MyArray();//可以调用数组中的方法arr.sayHello();arr.push(5);arr.push(2);arr.push(3);arr.sort(function()&#123; return Math.random()-0.5;&#125;);console.log(arr);]]></content>
+      <categories>
+        <category>javascript</category>
+        <category>webfront</category>
+      </categories>
+      <tags>
+        <tag>oriented object programming</tag>
+        <tag>prototype</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[gulp使用方法总结]]></title>
     <url>%2F2017%2F07%2F07%2Fgulp%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93%2F</url>
     <content type="text"><![CDATA[gulp使用方法总结需要安装的内容安装nodehttps://nodejs.org/zh-cn/ 装完node之后会自动装好npm, 通过npm安装cnpmnpm install -g cnpm 安装全局的gulp命令cnpm install -g gulp-cli 初始化项目的npm包管理文件cnpm init -y 给当前项目下载gulp相关的包cnpm install gulp -D 给当前项目创建一个gulp的任务文件 guilpfile.js在这个文件中可以创建各种类型的任务，执行gulp命令的时候，会自动来这个文件中查找任务进行执行 在gulpfile.js中创建任务 引入gulp模块 使用gulp.task方法创建任务 使用gulp.src方法读取要操作的文件 方法的参数可以是一个文件的路径，也可以用数组传多个文件的路径，还可以写文件路径的通配符 下载需要使用的gulp插件，比如uglify cnpm install uglify -D 在gulpfile.js中引入uglify模块 使用gulp.pipe方法将src方法获取到的文件传递给uglify插件进行使用 使用gulp.pipe方法将uglify插件处理后的文件交给gulp.dest方法进行存储 dest方法需要一个参数，这个参数就是文件最终存放的目录路径 在命令行中执行gulp命令 gulp js]]></content>
@@ -61,8 +139,8 @@
         <category>frontend</category>
       </categories>
       <tags>
-        <tag>moduleify</tag>
         <tag>javascript</tag>
+        <tag>moduleify</tag>
       </tags>
   </entry>
   <entry>
@@ -132,23 +210,23 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[总结]]></title>
-    <url>%2F2017%2F06%2F25%2F%E6%80%BB%E7%BB%93%2F</url>
+    <title><![CDATA[git命令详解(续)]]></title>
+    <url>%2F2017%2F06%2F25%2Fgit%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3(%E7%BB%AD)%2F</url>
     <content type="text"><![CDATA[博学谷项目 第2天分支什么时候创建分支？分支主要用在多任务并行开发的情况下，每当要进行一个新任务的开发，就创建一新的分支来做！ 1. 创建分支git branch 分支名称git checkout -b 分支名称 2. 切换到分支git checkout 分支名称 3. 合并分支git merge 指定的分支将指定的分支合并到当前分支 4. 删除分支git branch -d 分支名称 5. 显示所有分支git branch 远程仓储远程仓库用来共享版本库，多人开发的时候使用 远程仓库其实是一个裸仓库 裸仓库：没有.git文件夹，直接将所有的版本库信息暴露在文件夹下裸仓库没有工作目录， 在裸仓库中不能进行开发工作 创建远程仓库git init –bare 获取远程仓库的版本git clone 远程仓库地址 本地文件夹名称 把本地版本推送到远程仓库git push 远程仓库地址 本地分支:远程分支 如果本地分支和远程分支同名，写一个即可git push origin master 从远程仓库获取更新后的版本git pull如果不写远程地址和分支名称，默认获取origin地址的master分支git pull 远程仓库地址 要pull的分支 远程仓库地址管理 添加git remote add 别名 地址 删除git remote remove 别名 显示所有的git remote]]></content>
       <categories>
         <category>javascript</category>
       </categories>
       <tags>
-        <tag>前端第二天</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[复习昨天的内容]]></title>
-    <url>%2F2017%2F06%2F25%2F%E5%A4%8D%E4%B9%A0%E6%98%A8%E5%A4%A9%E7%9A%84%E5%86%85%E5%AE%B9%2F</url>
+    <title><![CDATA[git bash 命令介绍]]></title>
+    <url>%2F2017%2F06%2F25%2Fgit%E5%91%BD%E4%BB%A4%E4%BB%8B%E7%BB%8D%2F</url>
     <content type="text"><![CDATA[复习昨天内容shell bash vicd change directorypwdls ls -l ls -a ls -al ls 文件夹路径touch touch 文件路径mkdir mkdir 文件夹路径rmdir rmdir 文件夹路径rm rm 文件（文件夹）路径catlessmvcptabecho&gt; &gt; 普通模式插入模式命令模式 版本控制工具本地集中式分布式 git一台电脑只需要执行一次git config –global user.name 用户名git config –global user.email 邮箱 一个项目只需要执行一次git init git status git add git commit git log git checkout git reset –hard 版本号 git push git clone]]></content>
       <tags>
-        <tag>javascript</tag>
         <tag>前端</tag>
+        <tag>javascript</tag>
       </tags>
   </entry>
   <entry>
