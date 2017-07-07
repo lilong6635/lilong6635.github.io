@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[gulp使用方法总结]]></title>
+    <url>%2F2017%2F07%2F07%2Fgulp%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[gulp使用方法总结需要安装的内容### nodehttps://nodejs.org/zh-cn/ 装完node之后会自动装好npm, 通过npm安装cnpmnpm install -g cnpm 安装全局的gulp命令cnpm install -g gulp-cli 初始化项目的npm包管理文件cnpm init -y 给当前项目下载gulp相关的包cnpm install gulp -D 给当前项目创建一个gulp的任务文件 guilpfile.js在这个文件中可以创建各种类型的任务，执行gulp命令的时候，会自动来这个文件中查找任务进行执行 在gulpfile.js中创建任务 引入gulp模块 使用gulp.task方法创建任务 使用gulp.src方法读取要操作的文件 方法的参数可以是一个文件的路径，也可以用数组传多个文件的路径，还可以写文件路径的通配符 下载需要使用的gulp插件，比如uglify cnpm install uglify -D 在gulpfile.js中引入uglify模块 使用gulp.pipe方法将src方法获取到的文件传递给uglify插件进行使用 使用gulp.pipe方法将uglify插件处理后的文件交给gulp.dest方法进行存储 dest方法需要一个参数，这个参数就是文件最终存放的目录路径 在命令行中执行gulp命令 gulp js]]></content>
+      <categories>
+        <category>javascript</category>
+        <category>webfront</category>
+      </categories>
+      <tags>
+        <tag>gulp</tag>
+        <tag>npm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[gulp的使用]]></title>
+    <url>%2F2017%2F07%2F07%2Fgulp%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[Gulp的安装和使用NodeNode是一个服务器端的js运行环境，还是当做web服务器来使用 npmNode Package Manager npm可以非常方便帮助我们管理项目开发当中的各种包资源！ npm init在项目文件夹中创建一个package.json文件，这个文件中包含当前项目所需的所有的包的信息 npm install 包名称@版本号 –save安装（下载）一个包 –save -S将当前的包信息保存到package.json–save-dev -D npm install会去将package.json中包含的所有的包进行下载安装！ npm info 包查看包的信息，包含版本信息 npm search 包名搜索相关的包！ browser-sync 的使用和gulp集成使用1234567891011121314151617181920//1. 为gulp安装browser-sync的包npm install browser-sync --save-dev//2. 在gulpfile中应用模块var browserSync = require("browser-sync").create();//3. 创建任务gulp.task("browser", function()&#123; //3.1 创建一个静态服务器 browserSync.init(&#123; server: &#123; //设置网站的根目录 baseDir: "./" &#125; &#125;) //3.2 监视文件的变化，执行指定的任务并且刷新浏览器 gulp.watch("要监视的文件", ["需要在文件改变后执行的任务"]); gulp.watch("要监视的文件", browserSync.reload);&#125;) 单独使用browser-sync12345//1. 全局安装browser-syncnpm install -g browser-sync//2. 执行browsersync命令browser-sync start --server --files "*.js, *.html, *.less" gulp的使用步骤12345678910111213141516171819202122232425262728//1. 全局安装gulp命令npm install -g gulp-cli//2. 在本地文件夹安装gulp相关的包//安装之前先执行以下 npm init -y这个命令生成一个package.json//要不然会把文件安装到用户根目录npm install gulp --save-devnpm install gulp -D//3. 创建一个gulpfile.js//4. 在gulpfile.js中引入gulp包var gulp = require("gulp");//5. 在gulpfile.js中创建新的任务gulp.task("任务名称", function()&#123; //任务内容 //5.1 操作哪些文件，就是用gulp.src方法去读取文件,若操作的文件有多个的话可以使用数组,或者是某个路径下的*.js gulp.src("./*.js") //5.2 通过gulp.pipe方法，将读取到的文件传递给下一个工作项(插件) .pipe(uglify()) //5.3 再通过pipe方法，将压缩好的内容传递给下一个工作项 //gulp.dest 是用来将当前管道中的内容保存到指定的位置，如果这个位置不存在 //他会自己创建的，文件名不需要指定，他会使用原来的文件名 .pipe(gulp.dest("./dist"))&#125;) gulp插件的使用过程12345678910//1. 下载插件包npm install 插件包名称 -D//2. 查看插件的文档 npmjs.com 搜索插件名称//3. 引入插件包var uglify = require("uglify");//4.在管道中使用插件.pipe(uglify()) gulp-rev]]></content>
+      <categories>
+        <category>javascript</category>
+        <category>webfront</category>
+      </categories>
+      <tags>
+        <tag>gulp</tag>
+        <tag>npm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[模块化的总结]]></title>
+    <url>%2F2017%2F06%2F29%2F%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[模块化CommonJSjs代码的模块化标准，不适用于前端开发，NodeJS在使用该标准实现模块化 AMDAsync Module Definition 异步模块定义 尽可能早的加载所有需要用到的模块，模块的加载都是异步的，如果要在模块加载完成后，利用模块中的内容实现某些功能，需要将代码写在 require的第二个参数的回调函数中12345678 //正确的写法 require(["views/assets/jquery/jquery"],function(value))&#123; console.log(value); //错误的写法 require(["views/assets/jquery/jquery"]); //因为加载是异步的,执行下面的代码console.log(value)的时候,第三方块的内容还没有加载完成,所以value是undefined; console.log(value);&#125; require.js CMDCommon Module Definition 通用模块定义 尽可能晚的加载模块，哪里用到了模块再去加载 sea.js ## require.js实现模块化 定义模块12345678//**依赖项是个数组**define(["当前模块的依赖项"...], function(使用形参接收依赖项的返回值)&#123; //当前模块中要实现的功能 //当前模块如果要提供内容给模块调用者使用，就需要通过return语句将需要体用给别人的内容进行返回 return 需要给别人提供的内容;&#125;) 引用模块1234require(["模块路径/模块别名"...], function()&#123; //这个函数会在模块加载完成之后，被调用起来 //如果想在模块加载完成后实现某些功能，那么代码都写到这个函数中！&#125;) data-main在引用require.js的script标签中可以通过data-main指定一个入口文件，这个入口文件中的内容，会在reuqirejs加载完毕之后，被自动执行。 data-main指定的这个文件是异步加载的！所以在下面如果有使用这个文件中相关内容的代码，就不能够保证执行正常 路径的说明 如果直接使用script在html当中引入模块，那么模块的路径查找会以当前html文件作为基础。 （没有配置baseUrl，也没有data-main属性） 如果使用data-main属性，那么这时候的模块路径查找，会以入口文件所在的路径作为基础去查找（没有设置baseUrl） 如果通过require.config()配置了baseUrl，那么所有的模块的路径查找，都会以这个baseUrl做为基础！ require.config方法的说明这个方法主要用来配置requirejs相关的内容 123456789101112require.config(&#123; //配置基础路径，所有的模块查找都以这个路径为基础 //这个路径一般情况下配置为绝对路径，并且设置为所有模块共享的路径 baseUrl: "/", //paths可以用来为单个路径设置别名，以后在使用模块的时候，直接使用别名即可，不需要再写完整的路径了 //如果模块是一个具名模块，那么这个别名一定要和具名模块的名称一致 //.js 不要！！！ paths: &#123; "jquery": "views/assets/jquery/jqeury.min" &#125;&#125;); 如何加载第三方内容实现了模块化的第三方内容加载直接使用require，就像使用正常模块一样即可！ 未实现模块化的第三方内容加载 需要考虑该内容是否有依赖项 需要考虑该内容是否有返回值（是否要提供内容给外部使用）如果有依赖项，需要通过require.config方法配置该模块的依赖项 1234567891011121314151617181920212223require.config(&#123; baseUrl: "/", paths: &#123; "jquery": "views/assets/jquery/jqeury.min", "animate": "animate/animate" &#125;, //配置的是第三方内容的依赖项以及输出项 shim: &#123; //模块别名： 配置信息 "animate": &#123; //deps属性可以用来配置**依赖项是个数组**; deps: ["jquery"], //export可以配置输出项 //输出项的内容其实就是在第三方内容中去查找和配置名称相对应的全局变量，将其值作为模块的输出值！ //exports后边的值是个**字符串**,require函数会在第三方的块里边去寻找全局变量,然后将全局变量的值返回 exports: "animate" &#125; &#125;&#125;);//用require函数调用实现和未实现模块化的内容也可以使用回调函数来引用模块的返回值require(["animate"],function(animate)&#123; animate();&#125;); 如果第三方内容没有实现模块化，并且没有依赖项，也没有输出项，直接require即可！！！ 具名模块匿名模块具名模块有名字123define("名字", [], function()&#123; &#125;) 匿名模块没名字123define([], function()&#123; &#125;)]]></content>
+      <categories>
+        <category>web</category>
+        <category>frontend</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>module</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[具名模块和匿名模块]]></title>
+    <url>%2F2017%2F06%2F29%2F%E5%85%B7%E5%90%8D%E6%A8%A1%E5%9D%97%E5%92%8C%E5%8C%BF%E5%90%8D%E6%A8%A1%E5%9D%97%2F</url>
+    <content type="text"><![CDATA[具名模块和匿名模块匿名模块123define([], function()&#123; &#125;) 具名模块123define("a", [], function()&#123; &#125;) 模块在声明的时候，给define传递个第一个参数可以是该模块的名称 在config中做配置的时候，别名尽量和具名模块的声明中的模块名称保持一致！可以保证不出错！！！]]></content>
+      <categories>
+        <category>web</category>
+        <category>frontend</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>module</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[javascript中的模块化]]></title>
+    <url>%2F2017%2F06%2F29%2Fjavascript%E4%B8%AD%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96%2F</url>
+    <content type="text"><![CDATA[模块化简单的使用js文件作为模块的缺陷 全局变量污染 引用js文件的时候，次序非常重要，而且比较麻烦 模块化的优势 可以将公共的部分定义成模块，方便复用 解决全局变量污染的问题 模块之间的依赖关系，非常明确，而且在应用模块的时候，根本不需要考虑依赖的先后顺序问题。 前端模块化模块化的标准 CommonJS: 是一个模块化的标准。Node.js在使用的一个模块化的标准 AMD: Async Module Definition, 在CommonJS基础上衍生出来的适用于前端开发中的模块化标准 AMD. 尽早将所有的模块全部加载进来 require.js CMD: Common Module Definition在CommonJS基础上衍生出来的适用于前端开发中的模块化标准 CMD. 用到之的时候再加载， as lazy as possible sea.js AMD没有明显的BUG，CMD明显没有BUG 模块化的是实现（require.js）require.js 只是一个js文件，这个js文件可以帮助我们实现前端模块化，他遵循的标准就是AMD标准。 定义模块1234define(function()&#123; //模块中所有的内容 console.log("Hello, 我是一个模块");&#125;) 引用模块1require(["模块的名称"]) 注意事项如果模块只是执行一些代码实现指定的功能，那么直接引用该模块，功能即可实现。但是如果模块的存在是为了给我们提供一些方法，对象，其他的内容让我们使用的话，就需要给这个模块一个产出，使用return语句将要提供给别人使用的内容进行返回，使用该模块的使用，需要在require的第二个参数的函数中书写一个形参来接收这个内容，就能达到使用的效果了！ 模块依赖项的处理如果定义一个模块的时候，这个模块要依赖于其他模块来实现，那么我们需要给这个模块指定依赖项 define([“依赖项1”,”依赖项2”…”依赖项N”], function(){ //模块的功能代码}) 如果模块的依赖项有给模块提供内容使用，那么需要在当前模块的回调函数中添加形参来接收依赖项模块的返回值，这里的形参和依赖项是一一对应的，如果存在好多依赖项，有的依赖项有产出，有的没有，那我们一般会将所有有产出的依赖项放在前面，没有的放在后面，这样可以省略掉没有产出模块的形参 requirejs的入口文件设置data-main可以给请求requirejs的script标签设置一个data-main属性，这个属性中放的是一个文件的路径，在requirejs加载完毕之后，会自动去执行data-main这个路径中指向的文件中的js代码！ data-main中的内容是异步加载的，如果下面有要基于data-main的功能实现的内容，那么requirejs不能保证data-main是在下面的内容之前执行的 模块路径查找的问题 如果直接在html文件中书写script标签，在标签内使用require来加载某个模块，那么会以当前的这个html文件作为参照，去找相对路径 如果我们是在入口文件中使用require加载的模块，那么这个时候是参照data-main指定的这个入口文件所在的目录来找模块的路径的！ 如果通过config指定了requirejs的baseUrl，那么所有的模块路径查找都会以这个baseUrl作为基础，去查找 requirejs可以通过config来配置一些内容baseUrlrequire.config({ //所有模块的路径查找，都会以这个baseUrl指定的路径为基础 //一般情况下就是找所有模块都能够共享的目录，作为baseUrl baseUrl: “”, //paths属性可以为每一个模块配置别名 //以后在使用模块的时候，不需要再去写那么长的真实路径了，而直接使用别名即可 paths: { //键： 别名名称 //值： 真实的模块路径 &quot;xm&quot;: &quot;modules1/modules2/modules3/moduleXM&quot; } });]]></content>
+      <categories>
+        <category>web</category>
+        <category>frontend</category>
+      </categories>
+      <tags>
+        <tag>moduleify</tag>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[javascript中跨域的概念]]></title>
+    <url>%2F2017%2F06%2F27%2Fjavascript%E4%B8%AD%E8%B7%A8%E5%9F%9F%E7%9A%84%E6%A6%82%E5%BF%B5%2F</url>
+    <content type="text"><![CDATA[同源策略 协议 域名 端口号 http://studyit.comhttp://www.studyit.com 在ajax请求中，如果所在的网页的域名和要请求的数据的域名产生的跨域，那么XHR对象的请求，会因为浏览器的同源策略而被阻断 ajax 请求中跨域问题的解决方案 jsonp返回的数据格式： 函数名({}) 12345678910111213141516171819202122232425262728293031323334 //平时写一个script标签 src属性赋值一个连接 //浏览器在解析到这个script标签的时候，会向src所指向的这个地址发送一个请求 //将请求下来的数据，当做js代码直接执行！ function jsonp(url, success)&#123; //随机生成一个函数名 var cbName = "jsonp" + parseInt(Math.random() * 100000000000); //把用户传递进来的这个回调函数，以随机生成的函数名作为名字存放到全局 //以便请求完成之后，直接调用 window[cbName] = success; var script = document.createElement("script"); script.src = url + "?callback="+cbName; document.body.appendChild(script); &#125; jsonp("http://bxg7.com/jsonp.php", function(data)&#123; console.log(data); &#125;)&lt;!-- more --&gt; jsonp("http://bxg7.com/jsonp.php", function(data)&#123; console.log(data); &#125;) //在jQuery的ajax函数中也可以通过jsop的属性来自动生成的回调函数命名 $.ajax(&#123; url: "http://bxg7.com/jsonp.php", //指定了数据请求要以jsop的形式进行 dataType: "jsonp", jsonp: "cb", success: function(data)&#123; console.log(data); &#125; &#125;); 后台给响应头加上Access-Control-Allow-Origin: * 反向代理3.1 打开httpd.conf找到如下两行 12#LoadModule proxy_module modules/mod_proxy.so#LoadModule proxy_http_module modules/mod_proxy_http.so 去掉前面的#，变成如下形式12LoadModule proxy_module modules/mod_proxy.soLoadModule proxy_http_module modules/mod_proxy_http.so 3.2 打开httpd-vhosts.conf找到要配置的域名的节点在virtualhost 节点中新增如下两行 12ProxyRequests offProxyPass /api http://api.botue.com http://studyit.com 在这个域名中要发送一个ajax请求 http://api.botue.com]]></content>
+      <categories>
+        <category>frontend</category>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>跨域</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[WAMP虚拟服务器的环境配置]]></title>
+    <url>%2F2017%2F06%2F27%2FWAMP%E8%99%9A%E6%8B%9F%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[wampwindows apache mysql php 配置 没有开启vhosts配置的情况下httpd.confDocumentRoot: 网站的根目录 123&lt;Directory "网站根目录"&gt; # 权限信息&lt;/Directory&gt; 随便通过哪个域名，只要是访问的本机，都会打开这个根目录中的文件 开启了vhosts的情况 2.1 开启vhosts配置找到httpd.conf中的#Include conf/extra/httpd-vhosts.conf去掉前面的#Include conf/extra/httpd-vhosts.conf 2.2 为每个域名配置指定的根目录 一个域名要配置下面的两个节点要改的内容一共4个 DocumentRoot 域名的根目录 ServerName 域名 ServerAlias www.域名 Directory 后面的路径要改成域名的根目录 这一步是在做权限配置1234567891011121314&lt;VirtualHost *:80&gt; DocumentRoot "网站根目录" ServerName 域名 ServerAlias www.域名 ErrorLog "logs/dummy-host.example.com-error.log" CustomLog "logs/dummy-host.example.com-access.log" common&lt;/VirtualHost&gt;&lt;Directory "网站根目录"&gt; Options Indexes FollowSymLinks AllowOverride all Order Deny,Allow Allow from all&lt;/Directory&gt; 给本机hosts文件中添加域名ip的映射找到hosts文件“c:\windows\system32\drivers\etc\hosts”在文件中追加1234ip 域名127.0.0.1 studyit.com127.0.0.1 www.studyit.com 省略掉index.php的配置方式打开httpd.conf配置文件 找到#LoadModule rewrite_module modules/mod_rewrite.so去掉#LoadModule rewrite_module modules/mod_rewrite.so 将.htaccess 放到网站根目录和views同级 即可]]></content>
+      <categories>
+        <category>javascript</category>
+        <category>frontEnd</category>
+      </categories>
+      <tags>
+        <tag>环境配置</tag>
+        <tag>虚拟服务器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[安装liver-sever的步骤及如何将md文件转换成html文件]]></title>
+    <url>%2F2017%2F06%2F26%2F%E5%AE%89%E8%A3%85liver-sever%E7%9A%84%E6%AD%A5%E9%AA%A4%2F</url>
+    <content type="text"><![CDATA[live-sever 的安装步骤 需要安装node(可以从百度上搜索下载) 打开命令提示符(cmd) 2.1 windows + r 可以打开运行窗口 2.2 输入cmd 敲回车 2.3 黑框框就出现了 在黑框框中输入以下命令, 命令运行成功之后live-server就装好了（这一步要联网） 1npm install live-server -g 打开你的html文件所在的目录，按住shift键，点击鼠标右键，选择在此处打开命令窗口又会出现一个黑框框， 在黑框框中输入如下命令 1live-sever 浏览器会自动打开 转md为html的方式 打开命令提示符（cmd 2.1 windows + r 可以打开运行窗口 2.2 输入cmd 敲回车 2.3 黑框框就出现了 在黑框框中输入以下命令, 1npm install -g i5ting_toc 打开你的md文件所在的目录，按住shift键，点击鼠标右键，选择在此处打开命令窗口又会出现一个黑框框， 在黑框框中输入如下命令 12i5ting_toc -f 文件名 -o//文件名要加后缀(可以用tab键来自动匹配对应的文件,命令中的空格就相当于代码中的空格) 浏览器会自动打开！ (文件夹中会多一个preview的文件夹，生成html就在里面)]]></content>
+      <categories>
+        <category>webFront</category>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>npm</tag>
+        <tag>live-sever</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[搭建个人博客的说明]]></title>
+    <url>%2F2017%2F06%2F25%2F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%AF%B4%E6%98%8E%2F</url>
+    <content type="text"><![CDATA[hexo 安装hexonpm install hexo-cli -g 创建一个博客文件夹在文件夹中执行 hexo init 在文件夹中直接执行 hexo s 在本地测试网页效果 新建文章hexo new “文章名称” 这句命令执行完毕之后，会在source/_posts/ 中生成以文章名为文件名的markdown文件 编辑文章找到对应的markdown文件，编辑内容即可 生成htmlhexo g 执行这条命令之后，会在public目录下生成所有的静态页面，只要将该目录下所有的文件进行发布，发布到github上，就可以通过github的静态页面托管服务来访问页面了 如何使用hexo d 来发布网站呢 安装 hexo-deployer-git npm install hexo-deployer-git –save 配置网站根目录下面的_config.yml 配置最下面的deloy节点 deploy: - type: git repo: github静态页面托管项目的地址 2.1 在public目录下执行 git init 并进行一次提交 按照正常流程创建博客， 编辑博客 执行hexo g 在 public 目录下去执行 hexo d]]></content>
+      <categories>
+        <category>webfrant</category>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>shell</tag>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ssh协议介绍]]></title>
+    <url>%2F2017%2F06%2F25%2Fssh%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D%2F</url>
+    <content type="text"><![CDATA[ssh协议介绍协议的介绍安全shell协议，此协议一般用作服务器之间的加密登录 http://域名:端口号/目录路径?参数=值#哈希值 git@github.com:avakpan/test1.git 用户名@域名:路径 加密算法对称性加密算法 非对称性加密算法 服务器免密登录如何实现因为在和服务进行通信的时候，会将本机的公钥顺带着发给服务器，如果我们之前就将自己的公钥添加到了服务器的允许登录的列表中，那么服务器在接收到我们的登录请求后，进行公钥的对比，如果一致，就允许登录！ 步骤如下： 在自己的电脑上生成秘钥 ssh-keygen -t rsa 登录服务器，将自己电脑中的公钥（默认路径在 c:\users\用户名.ssh\rsa_id.pub）中的内容，存储到服务器中的.ssh文件夹下的authorized_keys中 github免密设置 在自己的电脑上生成秘钥（如果没有的话） 在用户根目录中的.ssh文件夹中找到rsa_id.pub这个文件，复制里面所有的内容 打开github，找到设置页面（头像下面有settings） 左边栏中有ssh keys and gpg keys 点他 右上角有一个绿色的 new ssh key 点他 在key文本中粘贴刚才第2步复制的内容，点击下面的 add ssh key 即可 123function f()&#123; console.log("hello blog");&#125;]]></content>
+      <categories>
+        <category>javascript</category>
+        <category>webFront</category>
+      </categories>
+      <tags>
+        <tag>ssh协议介绍</tag>
+        <tag>服务器免密登录如何实现</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[总结]]></title>
+    <url>%2F2017%2F06%2F25%2F%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[博学谷项目 第2天分支什么时候创建分支？分支主要用在多任务并行开发的情况下，每当要进行一个新任务的开发，就创建一新的分支来做！ 1. 创建分支git branch 分支名称git checkout -b 分支名称 2. 切换到分支git checkout 分支名称 3. 合并分支git merge 指定的分支将指定的分支合并到当前分支 4. 删除分支git branch -d 分支名称 5. 显示所有分支git branch 远程仓储远程仓库用来共享版本库，多人开发的时候使用 远程仓库其实是一个裸仓库 裸仓库：没有.git文件夹，直接将所有的版本库信息暴露在文件夹下裸仓库没有工作目录， 在裸仓库中不能进行开发工作 创建远程仓库git init –bare 获取远程仓库的版本git clone 远程仓库地址 本地文件夹名称 把本地版本推送到远程仓库git push 远程仓库地址 本地分支:远程分支 如果本地分支和远程分支同名，写一个即可git push origin master 从远程仓库获取更新后的版本git pull如果不写远程地址和分支名称，默认获取origin地址的master分支git pull 远程仓库地址 要pull的分支 远程仓库地址管理 添加git remote add 别名 地址 删除git remote remove 别名 显示所有的git remote]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>前端第二天</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[复习昨天的内容]]></title>
+    <url>%2F2017%2F06%2F25%2F%E5%A4%8D%E4%B9%A0%E6%98%A8%E5%A4%A9%E7%9A%84%E5%86%85%E5%AE%B9%2F</url>
+    <content type="text"><![CDATA[复习昨天内容shell bash vicd change directorypwdls ls -l ls -a ls -al ls 文件夹路径touch touch 文件路径mkdir mkdir 文件夹路径rmdir rmdir 文件夹路径rm rm 文件（文件夹）路径catlessmvcptabecho&gt; &gt; 普通模式插入模式命令模式 版本控制工具本地集中式分布式 git一台电脑只需要执行一次git config –global user.name 用户名git config –global user.email 邮箱 一个项目只需要执行一次git init git status git add git commit git log git checkout git reset –hard 版本号 git push git clone]]></content>
+      <tags>
+        <tag>javascript</tag>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[分支的相关命令]]></title>
+    <url>%2F2017%2F06%2F25%2F%E5%88%86%E6%94%AF%E7%9A%84%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[分支相关的命令创建分支git branch 分支名称 查看所有分支git branch 切换到指定分支git checkout 分支名 合并分支git merge 分支名将指定的分支 合并到 当前的分支 删除分支git branch -d 分支名称 删除分支的时候，如果分支修改的内容没有被合并，那么会提示不能删除，要删除需要合并，或者使用-D 创建并切换到新的分支git checkout -b 分支名 在分支进行切换之前，要对所有的内容进行一次add 和commit操作 master分支是在仓库初始化之后，第一次提交完成的时候才出现的！]]></content>
+      <tags>
+        <tag>javascript</tag>
+        <tag>git shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[远程仓库的概念]]></title>
+    <url>%2F2017%2F06%2F25%2F%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E6%A6%82%E5%BF%B5%2F</url>
+    <content type="text"><![CDATA[远程仓库的概念概念所有的程序员，都可以通过这个远程仓库来进行版本库的共享，达到所有人的代码一致的效果！ 如何创建一个远程仓库远程仓库是一个裸仓库 如何初始化一个裸仓库git init –bare 平时初始化仓库的时候，直接使用git init，那么会在文件夹下创建一个.git文件夹来保存版本库信息 但是使用git init –bare 的时候，仓库信息相关的所有的文件，都直接暴露在当前文件夹下，就相当于没有衣服，所以叫做裸仓库。 裸仓库（远成仓库）中不进行任何的开发工作，他只是用来做版本库共享的！ 一般情况下远程仓库的文件夹名要用.git作为结尾 将本地仓库推送到远程仓库git push 远程仓库的地址 本地分支名称:远程分支名称 如果本地分支名称和远程分支名称的名字一致，就可以直接写一个举个例子： git push 远程仓库地址 master 如何将远程仓库获取到本地git clone 远程仓库地址 本地文件夹名称]]></content>
+      <categories>
+        <category>frontEnd</category>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[播客]]></title>
+    <url>%2F2017%2F06%2F25%2F%E6%92%AD%E5%AE%A2%2F</url>
+    <content type="text"><![CDATA[博学谷项目 第2天分支什么时候创建分支？分支主要用在多任务并行开发的情况下，每当要进行一个新任务的开发，就创建一新的分支来做！ 1. 创建分支git branch 分支名称git checkout -b 分支名称 2. 切换到分支git checkout 分支名称 3. 合并分支git merge 指定的分支将指定的分支合并到当前分支 4. 删除分支git branch -d 分支名称 5. 显示所有分支git branch 远程仓储远程仓库用来共享版本库，多人开发的时候使用 远程仓库其实是一个裸仓库 裸仓库：没有.git文件夹，直接将所有的版本库信息暴露在文件夹下裸仓库没有工作目录， 在裸仓库中不能进行开发工作 创建远程仓库git init –bare 获取远程仓库的版本git clone 远程仓库地址 本地文件夹名称 把本地版本推送到远程仓库git push 远程仓库地址 本地分支:远程分支 如果本地分支和远程分支同名，写一个即可git push origin master 从远程仓库获取更新后的版本git pull如果不写远程地址和分支名称，默认获取origin地址的master分支git pull 远程仓库地址 要pull的分支 远程仓库地址管理 添加git remote add 别名 地址 删除git remote remove 别名 显示所有的git remote]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2017%2F06%2F25%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+</search>
