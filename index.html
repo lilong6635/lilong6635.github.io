@@ -253,6 +253,164 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/gulp的使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lilong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/87.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog of lilong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/07/gulp的使用/" itemprop="url">gulp的使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-07T10:24:09+08:00">
+                2017-07-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/webfront/" itemprop="url" rel="index">
+                    <span itemprop="name">webfront</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Gulp的安装和使用"><a href="#Gulp的安装和使用" class="headerlink" title="Gulp的安装和使用"></a>Gulp的安装和使用</h1><h2 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h2><p>Node是一个服务器端的js运行环境，还是当做web服务器来使用</p>
+<h2 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h2><p>Node Package Manager</p>
+<p>npm可以非常方便帮助我们管理项目开发当中的各种包资源！</p>
+<p>npm init<br>在项目文件夹中创建一个package.json文件，这个文件中包含当前项目所需的所有的包的信息</p>
+<p>npm install 包名称@版本号 –save<br>安装（下载）一个包</p>
+<p>–save -S将当前的包信息保存到package.json<br>–save-dev  -D</p>
+<p>npm install<br>会去将package.json中包含的所有的包进行下载安装！</p>
+<p>npm info 包<br>查看包的信息，包含版本信息</p>
+<p>npm search 包名<br>搜索相关的包！</p>
+<h3 id="browser-sync-的使用"><a href="#browser-sync-的使用" class="headerlink" title="browser-sync 的使用"></a>browser-sync 的使用</h3><h4 id="和gulp集成使用"><a href="#和gulp集成使用" class="headerlink" title="和gulp集成使用"></a>和gulp集成使用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1. 为gulp安装browser-sync的包</span></div><div class="line">npm install browser-sync --save-dev</div><div class="line"></div><div class="line"><span class="comment">//2. 在gulpfile中应用模块</span></div><div class="line"><span class="keyword">var</span> browserSync = <span class="built_in">require</span>(<span class="string">"browser-sync"</span>).create();</div><div class="line"></div><div class="line"><span class="comment">//3. 创建任务</span></div><div class="line">gulp.task(<span class="string">"browser"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">//3.1 创建一个静态服务器</span></div><div class="line">	browserSync.init(&#123;</div><div class="line">		<span class="attr">server</span>: &#123;</div><div class="line">			<span class="comment">//设置网站的根目录</span></div><div class="line">			baseDir: <span class="string">"./"</span></div><div class="line">		&#125;</div><div class="line">	&#125;)</div><div class="line">	<span class="comment">//3.2 监视文件的变化，执行指定的任务并且刷新浏览器</span></div><div class="line">	gulp.watch(<span class="string">"要监视的文件"</span>, [<span class="string">"需要在文件改变后执行的任务"</span>]);</div><div class="line"></div><div class="line">	gulp.watch(<span class="string">"要监视的文件"</span>, browserSync.reload);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h4 id="单独使用browser-sync"><a href="#单独使用browser-sync" class="headerlink" title="单独使用browser-sync"></a>单独使用browser-sync</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1. 全局安装browser-sync</span></div><div class="line">npm install -g browser-sync</div><div class="line"></div><div class="line"><span class="comment">//2. 执行browsersync命令</span></div><div class="line">browser-sync start --server --files <span class="string">"*.js, *.html, *.less"</span></div></pre></td></tr></table></figure>
+<h2 id="gulp的使用步骤"><a href="#gulp的使用步骤" class="headerlink" title="gulp的使用步骤"></a>gulp的使用步骤</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1. 全局安装gulp命令</span></div><div class="line">npm install -g gulp-cli</div><div class="line"></div><div class="line"><span class="comment">//2. 在本地文件夹安装gulp相关的包</span></div><div class="line"><span class="comment">//安装之前先执行以下 npm init -y这个命令生成一个package.json</span></div><div class="line"><span class="comment">//要不然会把文件安装到用户根目录</span></div><div class="line"></div><div class="line">npm install gulp --save-dev</div><div class="line">npm install gulp -D</div><div class="line"></div><div class="line"><span class="comment">//3. 创建一个gulpfile.js</span></div><div class="line"></div><div class="line"><span class="comment">//4. 在gulpfile.js中引入gulp包</span></div><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">"gulp"</span>);</div><div class="line"></div><div class="line"><span class="comment">//5. 在gulpfile.js中创建新的任务</span></div><div class="line">gulp.task(<span class="string">"任务名称"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">//任务内容</span></div><div class="line"></div><div class="line">	<span class="comment">//5.1 操作哪些文件，就是用gulp.src方法去读取文件,若操作的文件有多个的话可以使用数组,或者是某个路径下的*.js</span></div><div class="line">	gulp.src(<span class="string">"./*.js"</span>)</div><div class="line">	<span class="comment">//5.2 通过gulp.pipe方法，将读取到的文件传递给下一个工作项(插件)</span></div><div class="line">	.pipe(uglify())</div><div class="line">	<span class="comment">//5.3 再通过pipe方法，将压缩好的内容传递给下一个工作项</span></div><div class="line">	<span class="comment">//gulp.dest 是用来将当前管道中的内容保存到指定的位置，如果这个位置不存在</span></div><div class="line">	<span class="comment">//他会自己创建的，文件名不需要指定，他会使用原来的文件名</span></div><div class="line">	.pipe(gulp.dest(<span class="string">"./dist"</span>))</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="gulp插件的使用过程"><a href="#gulp插件的使用过程" class="headerlink" title="gulp插件的使用过程"></a>gulp插件的使用过程</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1. 下载插件包</span></div><div class="line">npm install 插件包名称 -D</div><div class="line"></div><div class="line"><span class="comment">//2. 查看插件的文档  npmjs.com 搜索插件名称</span></div><div class="line"></div><div class="line"><span class="comment">//3. 引入插件包</span></div><div class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">"uglify"</span>);</div><div class="line"></div><div class="line"><span class="comment">//4.在管道中使用插件</span></div><div class="line">.pipe(uglify())</div></pre></td></tr></table></figure>
+<p>gulp-rev</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/29/模块化的总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1783,133 +1941,6 @@ paths: {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/复习昨天的内容/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lilong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/87.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog of lilong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/25/复习昨天的内容/" itemprop="url">复习昨天的内容</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-25T14:45:21+08:00">
-                2017-06-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="复习昨天内容"><a href="#复习昨天内容" class="headerlink" title="复习昨天内容"></a>复习昨天内容</h1><h2 id="shell-bash-vi"><a href="#shell-bash-vi" class="headerlink" title="shell bash vi"></a>shell bash vi</h2><p>cd change directory<br>pwd<br>ls     ls -l    ls -a   ls -al     ls 文件夹路径<br>touch    touch 文件路径<br>mkdir    mkdir 文件夹路径<br>rmdir   rmdir 文件夹路径<br>rm        rm 文件（文件夹）路径<br>cat<br>less<br>mv<br>cp<br>tab<br>echo<br>&gt;</p>
-<blockquote>
-<p>&gt;</p>
-</blockquote>
-<p>普通模式<br>插入模式<br>命令模式</p>
-<h2 id="版本控制工具"><a href="#版本控制工具" class="headerlink" title="版本控制工具"></a>版本控制工具</h2><p>本地<br>集中式<br>分布式</p>
-<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><p>一台电脑只需要执行一次<br>git config –global user.name 用户名<br>git config –global user.email 邮箱</p>
-<p>一个项目只需要执行一次<br>git init</p>
-<p>git status</p>
-<p>git add </p>
-<p>git commit </p>
-<p>git log</p>
-<p>git checkout </p>
-<p>git reset –hard 版本号</p>
-<p>git push</p>
-<p>git clone</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1959,7 +1990,7 @@ paths: {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1970,7 +2001,7 @@ paths: {
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -1981,7 +2012,7 @@ paths: {
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

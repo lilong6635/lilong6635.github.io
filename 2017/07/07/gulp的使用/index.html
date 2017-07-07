@@ -1,0 +1,741 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="gulp,npm," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Gulp的安装和使用NodeNode是一个服务器端的js运行环境，还是当做web服务器来使用 npmNode Package Manager npm可以非常方便帮助我们管理项目开发当中的各种包资源！ npm init在项目文件夹中创建一个package.json文件，这个文件中包含当前项目所需的所有的包的信息 npm install 包名称@版本号 –save安装（下载）一个包 –save -S将">
+<meta name="keywords" content="gulp,npm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gulp的使用">
+<meta property="og:url" content="http://yoursite.com/2017/07/07/gulp的使用/index.html">
+<meta property="og:site_name" content="blog of lilong">
+<meta property="og:description" content="Gulp的安装和使用NodeNode是一个服务器端的js运行环境，还是当做web服务器来使用 npmNode Package Manager npm可以非常方便帮助我们管理项目开发当中的各种包资源！ npm init在项目文件夹中创建一个package.json文件，这个文件中包含当前项目所需的所有的包的信息 npm install 包名称@版本号 –save安装（下载）一个包 –save -S将">
+<meta property="og:updated_time" content="2017-07-07T02:26:19.341Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gulp的使用">
+<meta name="twitter:description" content="Gulp的安装和使用NodeNode是一个服务器端的js运行环境，还是当做web服务器来使用 npmNode Package Manager npm可以非常方便帮助我们管理项目开发当中的各种包资源！ npm init在项目文件夹中创建一个package.json文件，这个文件中包含当前项目所需的所有的包的信息 npm install 包名称@版本号 –save安装（下载）一个包 –save -S将">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/07/gulp的使用/"/>
+
+
+
+
+
+  <title>gulp的使用 | blog of lilong</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">blog of lilong</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/gulp的使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lilong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/87.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog of lilong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">gulp的使用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-07T10:24:09+08:00">
+                2017-07-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/webfront/" itemprop="url" rel="index">
+                    <span itemprop="name">webfront</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Gulp的安装和使用"><a href="#Gulp的安装和使用" class="headerlink" title="Gulp的安装和使用"></a>Gulp的安装和使用</h1><h2 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h2><p>Node是一个服务器端的js运行环境，还是当做web服务器来使用</p>
+<h2 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h2><p>Node Package Manager</p>
+<p>npm可以非常方便帮助我们管理项目开发当中的各种包资源！</p>
+<p>npm init<br>在项目文件夹中创建一个package.json文件，这个文件中包含当前项目所需的所有的包的信息</p>
+<p>npm install 包名称@版本号 –save<br>安装（下载）一个包</p>
+<p>–save -S将当前的包信息保存到package.json<br>–save-dev  -D</p>
+<p>npm install<br>会去将package.json中包含的所有的包进行下载安装！</p>
+<p>npm info 包<br>查看包的信息，包含版本信息</p>
+<p>npm search 包名<br>搜索相关的包！</p>
+<h3 id="browser-sync-的使用"><a href="#browser-sync-的使用" class="headerlink" title="browser-sync 的使用"></a>browser-sync 的使用</h3><h4 id="和gulp集成使用"><a href="#和gulp集成使用" class="headerlink" title="和gulp集成使用"></a>和gulp集成使用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1. 为gulp安装browser-sync的包</span></div><div class="line">npm install browser-sync --save-dev</div><div class="line"></div><div class="line"><span class="comment">//2. 在gulpfile中应用模块</span></div><div class="line"><span class="keyword">var</span> browserSync = <span class="built_in">require</span>(<span class="string">"browser-sync"</span>).create();</div><div class="line"></div><div class="line"><span class="comment">//3. 创建任务</span></div><div class="line">gulp.task(<span class="string">"browser"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">//3.1 创建一个静态服务器</span></div><div class="line">	browserSync.init(&#123;</div><div class="line">		<span class="attr">server</span>: &#123;</div><div class="line">			<span class="comment">//设置网站的根目录</span></div><div class="line">			baseDir: <span class="string">"./"</span></div><div class="line">		&#125;</div><div class="line">	&#125;)</div><div class="line">	<span class="comment">//3.2 监视文件的变化，执行指定的任务并且刷新浏览器</span></div><div class="line">	gulp.watch(<span class="string">"要监视的文件"</span>, [<span class="string">"需要在文件改变后执行的任务"</span>]);</div><div class="line"></div><div class="line">	gulp.watch(<span class="string">"要监视的文件"</span>, browserSync.reload);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h4 id="单独使用browser-sync"><a href="#单独使用browser-sync" class="headerlink" title="单独使用browser-sync"></a>单独使用browser-sync</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1. 全局安装browser-sync</span></div><div class="line">npm install -g browser-sync</div><div class="line"></div><div class="line"><span class="comment">//2. 执行browsersync命令</span></div><div class="line">browser-sync start --server --files <span class="string">"*.js, *.html, *.less"</span></div></pre></td></tr></table></figure>
+<h2 id="gulp的使用步骤"><a href="#gulp的使用步骤" class="headerlink" title="gulp的使用步骤"></a>gulp的使用步骤</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1. 全局安装gulp命令</span></div><div class="line">npm install -g gulp-cli</div><div class="line"></div><div class="line"><span class="comment">//2. 在本地文件夹安装gulp相关的包</span></div><div class="line"><span class="comment">//安装之前先执行以下 npm init -y这个命令生成一个package.json</span></div><div class="line"><span class="comment">//要不然会把文件安装到用户根目录</span></div><div class="line"></div><div class="line">npm install gulp --save-dev</div><div class="line">npm install gulp -D</div><div class="line"></div><div class="line"><span class="comment">//3. 创建一个gulpfile.js</span></div><div class="line"></div><div class="line"><span class="comment">//4. 在gulpfile.js中引入gulp包</span></div><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">"gulp"</span>);</div><div class="line"></div><div class="line"><span class="comment">//5. 在gulpfile.js中创建新的任务</span></div><div class="line">gulp.task(<span class="string">"任务名称"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">//任务内容</span></div><div class="line"></div><div class="line">	<span class="comment">//5.1 操作哪些文件，就是用gulp.src方法去读取文件,若操作的文件有多个的话可以使用数组,或者是某个路径下的*.js</span></div><div class="line">	gulp.src(<span class="string">"./*.js"</span>)</div><div class="line">	<span class="comment">//5.2 通过gulp.pipe方法，将读取到的文件传递给下一个工作项(插件)</span></div><div class="line">	.pipe(uglify())</div><div class="line">	<span class="comment">//5.3 再通过pipe方法，将压缩好的内容传递给下一个工作项</span></div><div class="line">	<span class="comment">//gulp.dest 是用来将当前管道中的内容保存到指定的位置，如果这个位置不存在</span></div><div class="line">	<span class="comment">//他会自己创建的，文件名不需要指定，他会使用原来的文件名</span></div><div class="line">	.pipe(gulp.dest(<span class="string">"./dist"</span>))</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="gulp插件的使用过程"><a href="#gulp插件的使用过程" class="headerlink" title="gulp插件的使用过程"></a>gulp插件的使用过程</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1. 下载插件包</span></div><div class="line">npm install 插件包名称 -D</div><div class="line"></div><div class="line"><span class="comment">//2. 查看插件的文档  npmjs.com 搜索插件名称</span></div><div class="line"></div><div class="line"><span class="comment">//3. 引入插件包</span></div><div class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">"uglify"</span>);</div><div class="line"></div><div class="line"><span class="comment">//4.在管道中使用插件</span></div><div class="line">.pipe(uglify())</div></pre></td></tr></table></figure>
+<p>gulp-rev</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/gulp/" rel="tag"># gulp</a>
+          
+            <a href="/tags/npm/" rel="tag"># npm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/29/模块化的总结/" rel="next" title="模块化的总结">
+                <i class="fa fa-chevron-left"></i> 模块化的总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/87.png"
+               alt="Lilong" />
+          <p class="site-author-name" itemprop="name">Lilong</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Gulp的安装和使用"><span class="nav-number">1.</span> <span class="nav-text">Gulp的安装和使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Node"><span class="nav-number">1.1.</span> <span class="nav-text">Node</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm"><span class="nav-number">1.2.</span> <span class="nav-text">npm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#browser-sync-的使用"><span class="nav-number">1.2.1.</span> <span class="nav-text">browser-sync 的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#和gulp集成使用"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">和gulp集成使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单独使用browser-sync"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">单独使用browser-sync</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gulp的使用步骤"><span class="nav-number">1.3.</span> <span class="nav-text">gulp的使用步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gulp插件的使用过程"><span class="nav-number">1.3.1.</span> <span class="nav-text">gulp插件的使用过程</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lilong</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
