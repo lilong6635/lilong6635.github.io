@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[gulp使用方法总结]]></title>
     <url>%2F2017%2F07%2F07%2Fgulp%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93%2F</url>
-    <content type="text"><![CDATA[gulp使用方法总结需要安装的内容### nodehttps://nodejs.org/zh-cn/ 装完node之后会自动装好npm, 通过npm安装cnpmnpm install -g cnpm 安装全局的gulp命令cnpm install -g gulp-cli 初始化项目的npm包管理文件cnpm init -y 给当前项目下载gulp相关的包cnpm install gulp -D 给当前项目创建一个gulp的任务文件 guilpfile.js在这个文件中可以创建各种类型的任务，执行gulp命令的时候，会自动来这个文件中查找任务进行执行 在gulpfile.js中创建任务 引入gulp模块 使用gulp.task方法创建任务 使用gulp.src方法读取要操作的文件 方法的参数可以是一个文件的路径，也可以用数组传多个文件的路径，还可以写文件路径的通配符 下载需要使用的gulp插件，比如uglify cnpm install uglify -D 在gulpfile.js中引入uglify模块 使用gulp.pipe方法将src方法获取到的文件传递给uglify插件进行使用 使用gulp.pipe方法将uglify插件处理后的文件交给gulp.dest方法进行存储 dest方法需要一个参数，这个参数就是文件最终存放的目录路径 在命令行中执行gulp命令 gulp js]]></content>
+    <content type="text"><![CDATA[gulp使用方法总结需要安装的内容安装nodehttps://nodejs.org/zh-cn/ 装完node之后会自动装好npm, 通过npm安装cnpmnpm install -g cnpm 安装全局的gulp命令cnpm install -g gulp-cli 初始化项目的npm包管理文件cnpm init -y 给当前项目下载gulp相关的包cnpm install gulp -D 给当前项目创建一个gulp的任务文件 guilpfile.js在这个文件中可以创建各种类型的任务，执行gulp命令的时候，会自动来这个文件中查找任务进行执行 在gulpfile.js中创建任务 引入gulp模块 使用gulp.task方法创建任务 使用gulp.src方法读取要操作的文件 方法的参数可以是一个文件的路径，也可以用数组传多个文件的路径，还可以写文件路径的通配符 下载需要使用的gulp插件，比如uglify cnpm install uglify -D 在gulpfile.js中引入uglify模块 使用gulp.pipe方法将src方法获取到的文件传递给uglify插件进行使用 使用gulp.pipe方法将uglify插件处理后的文件交给gulp.dest方法进行存储 dest方法需要一个参数，这个参数就是文件最终存放的目录路径 在命令行中执行gulp命令 gulp js]]></content>
       <categories>
         <category>javascript</category>
         <category>webfront</category>
