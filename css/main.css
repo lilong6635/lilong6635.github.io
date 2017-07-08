@@ -1678,7 +1678,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ac63b8;
+  background: #177ac7;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2868,10 +2868,10 @@ body {
   color: #000;
 }
 .header-inner {
-  background-color: rgba(255,255,255,0.3);
+  background-color: rgba(255,255,255,0.1);
 }
 .sidebar {
-  background-color: rgba(255,255,255,0.3);
+  background-color: rgba(255,255,255,0.1);
 }
 .post-header .post-title .post-title-link {
   color: #000;
