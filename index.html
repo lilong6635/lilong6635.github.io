@@ -297,6 +297,179 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/10/angular中ng-bind和ng-filter指令的使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lilong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/87.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog of lilong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/10/angular中ng-bind和ng-filter指令的使用/" itemprop="url">angular中ng-bind和ng-filter指令的使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-10T17:07:14+08:00">
+                2017-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/webfront/" itemprop="url" rel="index">
+                    <span itemprop="name">webfront</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="ng-bind"><a href="#ng-bind" class="headerlink" title="ng-bind"></a>ng-bind</h2><p>单向绑定数据，类似于innerText操作，会将标签中的内容全部替换！<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">ng-bind</span>=<span class="string">"数据"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="ngSanitize-ng-bind-html"><a href="#ngSanitize-ng-bind-html" class="headerlink" title="ngSanitize ng-bind-html"></a>ngSanitize ng-bind-html</h2><p>ngSanitize提供了可以将html代码渲染成dom元素的指令 ng-bind-html<br>使用方式</p>
+<ol>
+<li>引入文件 angular-sanitize.js</li>
+<li>作为模块的依赖项，引入到模块中</li>
+<li>直接使用ng-bind-html即可</li>
+</ol>
+<h2 id="ng-show-ng-hide-ng-if-ng-switch-ng-switch-when"><a href="#ng-show-ng-hide-ng-if-ng-switch-ng-switch-when" class="headerlink" title="ng-show ng-hide ng-if ng-switch ng-switch-when"></a>ng-show ng-hide ng-if ng-switch ng-switch-when</h2><p>都是布尔值，控制元素的显示和隐藏</p>
+<p>ng-show ng-hide 是给元素添加了display:none<br>ng-if 如果是false，就将元素直接删掉了</p>
+<p>ng-switch， 只有满足ng-switch-when 条件的才会出现，不满足的就删掉了</p>
+<h2 id="ng-submit-ng-blur-ng-change-ng-dblclick"><a href="#ng-submit-ng-blur-ng-change-ng-dblclick" class="headerlink" title="ng-submit ng-blur ng-change ng-dblclick"></a>ng-submit ng-blur ng-change ng-dblclick</h2><h2 id="过滤器的使用"><a href="#过滤器的使用" class="headerlink" title="过滤器的使用"></a>过滤器的使用</h2><p><a href="https://docs.angularjs.org/api/ng/filter" target="_blank" rel="external">官方文档</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">ng-bind</span>=<span class="string">"数据 | 过滤器名称 : 过滤器参数 : 过滤器参数 "</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- nore -->
+<p>filter过滤器的使用<br>filter过滤器是用来顾虑数组的，所以只能用在数组上<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">ng-repeat</span>=<span class="string">"数据 | filter : 可以直接是一个值"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">当传递一个值的时候，会在数组中对象的所有属性中去查找这个值，如果找到，就筛选出来</div><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">ng-repeat</span>=<span class="string">"数据 | filter : 还可以是一个对象"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">当传递一个对象的时候，会在数组中对象的指定的属性（传递的对象的属性名）中去查找这个对象的属性值，如果找到，就筛选出来</div></pre></td></tr></table></figure></p>
+<p>过滤器不仅可以通过指令在视图中调用<br>也可以通过js代码来调用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1. 注入$filter服务</span></div><div class="line"><span class="comment">//2. 调用$filter获取过滤器</span></div><div class="line"><span class="keyword">var</span> currency = $filter(<span class="string">"currency"</span>);</div><div class="line"><span class="comment">//3. 调用获取到的过滤器对数据进行过滤</span></div><div class="line">currency(要过滤的数据, 参数, 参数)</div></pre></td></tr></table></figure>
+<h2 id="服务的使用"><a href="#服务的使用" class="headerlink" title="服务的使用"></a>服务的使用</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建服务</span></div><div class="line">angular</div><div class="line">	.module(<span class="string">"app"</span>, [])</div><div class="line">	.service(<span class="string">"服务名称"</span>, [<span class="string">"依赖项"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">获取依赖项</span>)</span>&#123;</div><div class="line">		<span class="comment">//通过使用this添加内容。来给使用该服务的地方暴露接口</span></div><div class="line">		<span class="keyword">this</span>.方法 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">	&#125;])</div><div class="line">	<span class="comment">//使用服务</span></div><div class="line">	.controller(<span class="string">"c1"</span>, [<span class="string">"服务名称"</span>, fucntion(获取传入的服务)&#123;</div><div class="line">		传入的服务.方法()<span class="comment">//这里就直接可以调用到服务中的内容了</span></div><div class="line">	&#125;])</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//如果服务和当前要使用服务的内容不在同一的模块中，那么首先需要将包含该服务的模块，作为依赖项引入到要使用该服务的模块当中，再去按照上面的方式使用该服务！</span></div></pre></td></tr></table></figure>
+<h2 id="todoMVC案例"><a href="#todoMVC案例" class="headerlink" title="todoMVC案例"></a>todoMVC案例</h2><ol>
+<li>展示任务列表</li>
+<li>添加任务</li>
+<li>删除一条任务</li>
+<li>修改任务</li>
+<li>切换任务选中状态(单个或批量)</li>
+<li>清除已完成任务</li>
+<li>显示未完成任务数</li>
+<li>显示不同状态的任务<pre><code>以及当前任务高亮处理
+</code></pre></li>
+<li>根据URL变化显示相应任务</li>
+</ol>
+<!-- nore -->
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/jquery-validate/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1816,165 +1989,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/gulp的使用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lilong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/87.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog of lilong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/07/gulp的使用/" itemprop="url">gulp的使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-07T10:24:09+08:00">
-                2017-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/webfront/" itemprop="url" rel="index">
-                    <span itemprop="name">webfront</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Gulp的安装和使用"><a href="#Gulp的安装和使用" class="headerlink" title="Gulp的安装和使用"></a>Gulp的安装和使用</h1><h2 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h2><p>Node是一个服务器端的js运行环境，还是当做web服务器来使用</p>
-<h2 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h2><p>Node Package Manager</p>
-<p>npm可以非常方便帮助我们管理项目开发当中的各种包资源！</p>
-<p>npm init<br>在项目文件夹中创建一个package.json文件，这个文件中包含当前项目所需的所有的包的信息</p>
-<p>npm install 包名称@版本号 –save<br>安装（下载）一个包</p>
-<p>–save -S将当前的包信息保存到package.json<br>–save-dev  -D</p>
-<p>npm install<br>会去将package.json中包含的所有的包进行下载安装！</p>
-<p>npm info 包<br>查看包的信息，包含版本信息</p>
-<p>npm search 包名<br>搜索相关的包！</p>
-<h3 id="browser-sync-的使用"><a href="#browser-sync-的使用" class="headerlink" title="browser-sync 的使用"></a>browser-sync 的使用</h3><h4 id="和gulp集成使用"><a href="#和gulp集成使用" class="headerlink" title="和gulp集成使用"></a>和gulp集成使用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1. 为gulp安装browser-sync的包</span></div><div class="line">npm install browser-sync --save-dev</div><div class="line"></div><div class="line"><span class="comment">//2. 在gulpfile中应用模块</span></div><div class="line"><span class="keyword">var</span> browserSync = <span class="built_in">require</span>(<span class="string">"browser-sync"</span>).create();</div><div class="line"></div><div class="line"><span class="comment">//3. 创建任务</span></div><div class="line">gulp.task(<span class="string">"browser"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">//3.1 创建一个静态服务器</span></div><div class="line">	browserSync.init(&#123;</div><div class="line">		<span class="attr">server</span>: &#123;</div><div class="line">			<span class="comment">//设置网站的根目录</span></div><div class="line">			baseDir: <span class="string">"./"</span></div><div class="line">		&#125;</div><div class="line">	&#125;)</div><div class="line">	<span class="comment">//3.2 监视文件的变化，执行指定的任务并且刷新浏览器</span></div><div class="line">	gulp.watch(<span class="string">"要监视的文件"</span>, [<span class="string">"需要在文件改变后执行的任务"</span>]);</div><div class="line"></div><div class="line">	gulp.watch(<span class="string">"要监视的文件"</span>, browserSync.reload);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<h4 id="单独使用browser-sync"><a href="#单独使用browser-sync" class="headerlink" title="单独使用browser-sync"></a>单独使用browser-sync</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1. 全局安装browser-sync</span></div><div class="line">npm install -g browser-sync</div><div class="line"></div><div class="line"><span class="comment">//2. 执行browsersync命令</span></div><div class="line">browser-sync start --server --files <span class="string">"*.js, *.html, *.less"</span></div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/07/gulp的使用/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2024,7 +2038,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2046,7 +2060,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

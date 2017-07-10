@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[angular中ng-bind和ng-filter指令的使用]]></title>
+    <url>%2F2017%2F07%2F10%2Fangular%E4%B8%ADng-bind%E5%92%8Cng-filter%E6%8C%87%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[ng-bind单向绑定数据，类似于innerText操作，会将标签中的内容全部替换！1&lt;p ng-bind="数据"&gt;&lt;/p&gt; ngSanitize ng-bind-htmlngSanitize提供了可以将html代码渲染成dom元素的指令 ng-bind-html使用方式 引入文件 angular-sanitize.js 作为模块的依赖项，引入到模块中 直接使用ng-bind-html即可 ng-show ng-hide ng-if ng-switch ng-switch-when都是布尔值，控制元素的显示和隐藏 ng-show ng-hide 是给元素添加了display:noneng-if 如果是false，就将元素直接删掉了 ng-switch， 只有满足ng-switch-when 条件的才会出现，不满足的就删掉了 ng-submit ng-blur ng-change ng-dblclick过滤器的使用官方文档 1&lt;p ng-bind="数据 | 过滤器名称 : 过滤器参数 : 过滤器参数 "&gt;&lt;/p&gt; filter过滤器的使用filter过滤器是用来顾虑数组的，所以只能用在数组上1234&lt;p ng-repeat="数据 | filter : 可以直接是一个值"&gt;&lt;/p&gt;当传递一个值的时候，会在数组中对象的所有属性中去查找这个值，如果找到，就筛选出来&lt;p ng-repeat="数据 | filter : 还可以是一个对象"&gt;&lt;/p&gt;当传递一个对象的时候，会在数组中对象的指定的属性（传递的对象的属性名）中去查找这个对象的属性值，如果找到，就筛选出来 过滤器不仅可以通过指令在视图中调用也可以通过js代码来调用 12345//1. 注入$filter服务//2. 调用$filter获取过滤器var currency = $filter("currency");//3. 调用获取到的过滤器对数据进行过滤currency(要过滤的数据, 参数, 参数) 服务的使用123456789101112131415//创建服务angular .module("app", []) .service("服务名称", ["依赖项", function(获取依赖项)&#123; //通过使用this添加内容。来给使用该服务的地方暴露接口 this.方法 = function()&#123;&#125; &#125;]) //使用服务 .controller("c1", ["服务名称", fucntion(获取传入的服务)&#123; 传入的服务.方法()//这里就直接可以调用到服务中的内容了 &#125;])//如果服务和当前要使用服务的内容不在同一的模块中，那么首先需要将包含该服务的模块，作为依赖项引入到要使用该服务的模块当中，再去按照上面的方式使用该服务！ todoMVC案例 展示任务列表 添加任务 删除一条任务 修改任务 切换任务选中状态(单个或批量) 清除已完成任务 显示未完成任务数 显示不同状态的任务以及当前任务高亮处理 根据URL变化显示相应任务]]></content>
+      <categories>
+        <category>javascript</category>
+        <category>webfront</category>
+      </categories>
+      <tags>
+        <tag>angular</tag>
+        <tag>ng-bind</tag>
+        <tag>ng-filter</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[jquery-validate]]></title>
     <url>%2F2017%2F07%2F07%2Fjquery-validate%2F</url>
     <content type="text"><![CDATA[jquery-validate插件的使用介绍1234567891011121314151617181920212223242526272829303132333435363738394041424344454647// validate方法是注册一个验证事件// 而不是说调用该方法才会验证！$("form").validate(&#123; sendForm: false, // onKeyup: true, // onBlur: true, // onChange: true, // onSubmit: false, // valid: function()&#123; // //当整个表单通过验证的时候，会调用该回调方法 // console.log("验证通过了"); // &#125;, // invalid: function()&#123; // console.log("验证不通过"); // &#125;, // eachField: function()&#123; // console.log("eachField被调用了", this); // &#125;, eachValidField: function()&#123; // console.log("eachValidField,被调用了", this); this.next().show().removeClass("error").addClass("success"); &#125;, eachInvalidField: function()&#123; // console.log("eachInvalidField,被调用了", this); this.next().show().removeClass("success").addClass("error"); &#125;, conditional: &#123; "isShuaiGe": function()&#123; return this.val() == "潘明"; &#125;, "isBeauty": function()&#123; return this.val() == "教主"; &#125; &#125;, description: &#123; "username": &#123; required: "用户名不能为空", conditional: "你输入的不是美女", valid: "输入正确！" &#125;, "phone": &#123; pattern: "手机号码不正确", required: "请输入手机号码", valid: "输入正确" &#125; &#125;&#125;);]]></content>
@@ -22,8 +36,8 @@
         <category>webfront</category>
       </categories>
       <tags>
-        <tag>plugs</tag>
         <tag>uploadify</tag>
+        <tag>plugs</tag>
       </tags>
   </entry>
   <entry>
