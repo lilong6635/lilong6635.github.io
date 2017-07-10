@@ -297,6 +297,172 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/gulp使用方法总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lilong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/87.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog of lilong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/07/gulp使用方法总结/" itemprop="url">gulp使用方法总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-07T12:51:36+08:00">
+                2017-07-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/webfront/" itemprop="url" rel="index">
+                    <span itemprop="name">webfront</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="gulp使用方法总结"><a href="#gulp使用方法总结" class="headerlink" title="gulp使用方法总结"></a>gulp使用方法总结</h1><h2 id="需要安装的内容"><a href="#需要安装的内容" class="headerlink" title="需要安装的内容"></a>需要安装的内容</h2><h3 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h3><p><a href="https://nodejs.org/zh-cn/" target="_blank" rel="external">https://nodejs.org/zh-cn/</a>　　</p>
+<h3 id="装完node之后会自动装好npm-通过npm安装cnpm"><a href="#装完node之后会自动装好npm-通过npm安装cnpm" class="headerlink" title="装完node之后会自动装好npm, 通过npm安装cnpm"></a>装完node之后会自动装好npm, 通过npm安装cnpm</h3><p>npm install -g cnpm </p>
+<h3 id="安装全局的gulp命令"><a href="#安装全局的gulp命令" class="headerlink" title="安装全局的gulp命令"></a>安装全局的gulp命令</h3><p>cnpm install -g gulp-cli</p>
+<h3 id="初始化项目的npm包管理文件"><a href="#初始化项目的npm包管理文件" class="headerlink" title="初始化项目的npm包管理文件"></a>初始化项目的npm包管理文件</h3><p>cnpm init -y</p>
+<h3 id="给当前项目下载gulp相关的包"><a href="#给当前项目下载gulp相关的包" class="headerlink" title="给当前项目下载gulp相关的包"></a>给当前项目下载gulp相关的包</h3><p>cnpm install gulp -D</p>
+<h3 id="给当前项目创建一个gulp的任务文件-guilpfile-js"><a href="#给当前项目创建一个gulp的任务文件-guilpfile-js" class="headerlink" title="给当前项目创建一个gulp的任务文件 guilpfile.js"></a>给当前项目创建一个gulp的任务文件 guilpfile.js</h3><p>在这个文件中可以创建各种类型的任务，执行gulp命令的时候，会自动来这个文件中查找任务进行执行</p>
+<h3 id="在gulpfile-js中创建任务"><a href="#在gulpfile-js中创建任务" class="headerlink" title="在gulpfile.js中创建任务"></a>在gulpfile.js中创建任务</h3><ol>
+<li>引入gulp模块</li>
+<li>使用gulp.task方法创建任务</li>
+<li><p>使用gulp.src方法读取要操作的文件  方法的参数可以是一个文件的路径，也可以用数组传多个文件的路径，还可以写文件路径的通配符</p>
+</li>
+<li><p>下载需要使用的gulp插件，比如uglify    cnpm install uglify -D</p>
+</li>
+<li><p>在gulpfile.js中引入uglify模块</p>
+</li>
+<li><p>使用gulp.pipe方法将src方法获取到的文件传递给uglify插件进行使用</p>
+</li>
+<li><p>使用gulp.pipe方法将uglify插件处理后的文件交给gulp.dest方法进行存储  dest方法需要一个参数，这个参数就是文件最终存放的目录路径</p>
+</li>
+<li><p>在命令行中执行gulp命令   gulp js</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/gulp的使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1731,149 +1897,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/git命令详解(续)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lilong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/87.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog of lilong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/25/git命令详解(续)/" itemprop="url">git命令详解(续)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-25T14:47:23+08:00">
-                2017-06-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="博学谷项目-第2天"><a href="#博学谷项目-第2天" class="headerlink" title="博学谷项目 第2天"></a>博学谷项目 第2天</h1><h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><p>什么时候创建分支？<br>分支主要用在多任务并行开发的情况下，每当要进行一个新任务的开发，就创建一新的分支来做！</p>
-<h2 id="1-创建分支"><a href="#1-创建分支" class="headerlink" title="1. 创建分支"></a>1. 创建分支</h2><p>git branch 分支名称<br>git checkout -b 分支名称</p>
-<h2 id="2-切换到分支"><a href="#2-切换到分支" class="headerlink" title="2. 切换到分支"></a>2. 切换到分支</h2><p>git checkout 分支名称</p>
-<h2 id="3-合并分支"><a href="#3-合并分支" class="headerlink" title="3. 合并分支"></a>3. 合并分支</h2><p>git merge 指定的分支<br>将指定的分支合并到当前分支</p>
-<h2 id="4-删除分支"><a href="#4-删除分支" class="headerlink" title="4. 删除分支"></a>4. 删除分支</h2><p>git branch -d 分支名称</p>
-<h2 id="5-显示所有分支"><a href="#5-显示所有分支" class="headerlink" title="5. 显示所有分支"></a>5. 显示所有分支</h2><p>git branch</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/25/git命令详解(续)/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1923,7 +1946,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1945,7 +1968,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
