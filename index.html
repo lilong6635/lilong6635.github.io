@@ -297,6 +297,327 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/16/angular中服务的创建方式-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lilong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/87.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog of lilong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/16/angular中服务的创建方式-1/" itemprop="url">angular中服务的创建方式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-16T22:12:56+08:00">
+                2017-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/angularjs/" itemprop="url" rel="index">
+                    <span itemprop="name">angularjs</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/angularjs/angular中服务的创建方式/" itemprop="url" rel="index">
+                    <span itemprop="name">angular中服务的创建方式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="服务的创建方式"><a href="#服务的创建方式" class="headerlink" title="服务的创建方式"></a>服务的创建方式</h2><ol>
+<li><p>service</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">模块对象</div><div class="line">	.service(<span class="string">"服务名"</span>, [<span class="string">"注入服务"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">注入的服务</span>)</span>&#123;</div><div class="line">		<span class="comment">//通过this给服务添加属性和方法，最终提供给调用服务的人使用</span></div><div class="line">		<span class="comment">//最终用户获取到的服务对象，其实就是使用本函数，构造出来</span></div><div class="line">		<span class="comment">//也就是说用new的方式创建出来的</span></div><div class="line">		<span class="keyword">this</span>.数据: 数据</div><div class="line">		<span class="keyword">this</span>.方法= <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">		&#125;</div><div class="line">	&#125;])</div></pre></td></tr></table></figure>
+</li>
+<li><p>factory</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">模块对象</div><div class="line">	.factory(<span class="string">"服务名"</span>, [<span class="string">"注入服务"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">注入的服务</span>)</span>&#123;</div><div class="line">		<span class="comment">//通过给obj对象添加属性和方法，最终提供给调用服务的人使用</span></div><div class="line">		<span class="comment">//最终用户获取到的服务对象，其实就是使用本函数，使用工厂模式创建的</span></div><div class="line">		<span class="keyword">var</span> obj = &#123;&#125;;</div><div class="line">			数据: 数据,</div><div class="line">			方法: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> obj;</div><div class="line">	&#125;])</div></pre></td></tr></table></figure>
+</li>
+<li><p>value</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">模块名称</div><div class="line">	.value(<span class="string">"服务名称"</span>, &#123;<span class="comment">//最终提供服务的对象，就是本对象！&#125;)</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>constant</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">模块名称</div><div class="line">	.constant(<span class="string">"服务名称"</span>, &#123;<span class="comment">//最终提供服务的对象，就是本对象！&#125;)</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>provider</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">模块名称</div><div class="line">	.provider(<span class="string">"服务名称"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="comment">//这里可以声明一些变量，来保存服务的配置信息！</span></div><div class="line">		<span class="keyword">return</span> &#123;</div><div class="line">			<span class="comment">//这个对象其实就是在config方法中获取到的 服务Provider 对象</span></div><div class="line">			<span class="comment">//这个对象中必须包含一个$get方法</span></div><div class="line">			$get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">				<span class="keyword">return</span> &#123;</div><div class="line">					<span class="comment">//这个对象就是最终的服务对象，用户所使用的服务就是本对象！</span></div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Dirty-Check-脏检查机制，ng双向数据绑定的原理"><a href="#Dirty-Check-脏检查机制，ng双向数据绑定的原理" class="headerlink" title="Dirty-Check 脏检查机制，ng双向数据绑定的原理"></a>Dirty-Check 脏检查机制，ng双向数据绑定的原理</h2><p>在angular初始化的时候，会先创建模块对象，初始化该模块，初始化模块的时候，会在该模块所管辖的view范围内，搜索所有的ng指令，找到指令之后，为每一个指令绑定一个$watcher,这个watcher会在数据或者dom元素发生改变的时候，被调用！</p>
+<p>每当有一个watcher被触发，那么就会开启一次新的$digest, $digest中，会对所有的$watcher，一次执行来检测是否有数据变化，如果有变换，会重新启动一次$digest, 依次循环，直到检测不到任何变化为止，最终开始更新dom操作！！</p>
+<p>$apply 其实就是将相应的操作做了一个包装，先执行只写操作，然后再去调用$digest开始在脏检查</p>
+<p>在angular中angular负责的所有的内容，都会默认的被$apply进行包裹，如果使用到了非angular控制的内容，比如setTimeout， 在这个里面的数据操作，将不会触发watcher，也就不会进行脏检查，所以，我们需要手动进行在脏检查</p>
+<ol>
+<li><p>调用$apply来执行数据操作</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$scope.$apply(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">//做需要的数据操作</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>做完数据操作之后，手动调用$digest方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//做完数据操作</span></div><div class="line">$scope.$digest();</div></pre></td></tr></table></figure>
+</li>
+</ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/16/angular中服务的创建方式-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/16/angular双向绑定的原理和脏检测介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lilong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/87.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog of lilong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/16/angular双向绑定的原理和脏检测介绍/" itemprop="url">angular双向绑定的原理和脏检测介绍</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-16T22:08:39+08:00">
+                2017-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/angularjs/" itemprop="url" rel="index">
+                    <span itemprop="name">angularjs</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/angularjs/双向绑定的原理及脏检测的介绍/" itemprop="url" rel="index">
+                    <span itemprop="name">双向绑定的原理及脏检测的介绍</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">angular</div><div class="line">	.module(<span class="string">"app"</span>, [])</div><div class="line">	.controller(<span class="string">"c1"</span>, [<span class="string">"$scope"</span>, <span class="string">"$window"</span>, <span class="string">"$timeout"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope, $window, $setTimeout</span>)</span>&#123;</div><div class="line">		<span class="comment">// var Math = $window.Math;</span></div><div class="line">		<span class="comment">// $scope.getRandom = function()&#123;</span></div><div class="line">		<span class="comment">// 	return Math.random();</span></div><div class="line">		<span class="comment">// &#125;'</span></div><div class="line">		<span class="comment">// $scope.name = "123";</span></div><div class="line"></div><div class="line">		<span class="comment">// console.log($setTimeout);</span></div><div class="line"></div><div class="line">		</div><div class="line"></div><div class="line">		setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">			<span class="comment">//直接在setTimeout中操作$scope.name</span></div><div class="line">			<span class="comment">//由于这句代码，不是angular来维护的，那么他最终就不会通过$apply的方式被调用，$apply中的数据监测也不会被开启</span></div><div class="line">			<span class="comment">//所以这一步操作并不能更新视图</span></div><div class="line">			<span class="comment">// $scope.name = 123;</span></div><div class="line"></div><div class="line">			<span class="comment">//如果想要实现视图的更新，那么就必须进行操作之后，手动进行脏监测</span></div><div class="line">			<span class="comment">//$apply可以手动调用，用来手动开开启一次脏监测循环</span></div><div class="line">			<span class="comment">// $scope.$apply(function()&#123;</span></div><div class="line">			<span class="comment">// 	$scope.name = 123;</span></div><div class="line">			<span class="comment">// &#125;)</span></div><div class="line"></div><div class="line">			<span class="comment">//也可以自己手动调用 $digest方法进行脏数据监测</span></div><div class="line">			<span class="comment">// $scope.name = 123;</span></div><div class="line">			<span class="comment">// $scope.$digest();</span></div><div class="line">		&#125;, <span class="number">2000</span>);</div><div class="line"></div><div class="line">	&#125;])</div><div class="line"></div><div class="line"><span class="comment">//Vue中是通过 Object.defineProperty这个方式实现双向绑定的</span></div><div class="line"></div><div class="line"><span class="comment">//React是通过虚拟DOM实现的双向数据绑定</span></div><div class="line"></div><div class="line"><span class="comment">//Angular，是通过 脏检测（dirty-check） 机制 实现双向数据绑定</span></div><div class="line"></div><div class="line"><span class="comment">//$watchers 里面存放所有的 $watcher！</span></div><div class="line"></div><div class="line"><span class="comment">//angular初始化的时候，会检测所有的指令，为每一个指令单独生成一个watcher存放 $watchers中去，当当前视图发生改变的时候，就会触发相应的watcher</span></div><div class="line"></div><div class="line"><span class="comment">//angular会在每次页面中有内容改动的时候，调用$digest方法</span></div><div class="line"></div><div class="line"><span class="comment">//调用$digest方法的时候，会去$watchers中将所有的监视方法执行一次，检测当前的数据和之前一次的状态是否这一致，如果一致，就不做任何处理，继续去执行下一个watcher， 如果状态不一致，重新来一次digest</span></div><div class="line"></div><div class="line"><span class="comment">//直到所有的watcher所监视的内容都完全一致了，没有变化了，就进行dom更新</span></div><div class="line"></div><div class="line"><span class="comment">//重新digest的次数不超过10次</span></div><div class="line"></div><div class="line"><span class="comment">//执行$digest方法的时机：</span></div><div class="line">	<span class="comment">//1. 页面中有内容变化的时候</span></div><div class="line">	<span class="comment">//2. controller中有对数据进行操作的内容的时候</span></div><div class="line">	<span class="comment">//3. $http </span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//$apply 方法，  他会将angular中所有的操作进行包装，包装后的结果就是，先执行用户要执行的代码，再调用$digest</span></div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/16/angular指令介绍/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1590,342 +1911,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/uploadify的使用总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lilong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/87.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog of lilong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/07/uploadify的使用总结/" itemprop="url">uploadify的使用总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-07T20:25:54+08:00">
-                2017-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/webfront/" itemprop="url" rel="index">
-                    <span itemprop="name">webfront</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="uploadify插件的使用总结"><a href="#uploadify插件的使用总结" class="headerlink" title="uploadify插件的使用总结"></a>uploadify插件的使用总结</h1><ol>
-<li><p>引包</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"uploadify/uploadify.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"jquery.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"uploadify/jquery.uploadify.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>调用uploadify提供的方法</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">id</span>=<span class="string">"file"</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#file"</span>).uploadify(&#123;</div><div class="line">	<span class="comment">//指定swf文件的路径！！！ 推荐使用绝对路径</span></div><div class="line">	swf: <span class="string">"/views/assets/uploadify/uploadify.swf"</span>,</div><div class="line">	<span class="comment">//指定上传文件的接口地址</span></div><div class="line">	uploader: <span class="string">"/api/uploader/avatar"</span>,</div><div class="line">	<span class="comment">//指定上传文件的时候，文件的键， 后台需要通过该值来获取文件的内容</span></div><div class="line">	fileObjName: <span class="string">"tc_avatar"</span>,</div><div class="line">	<span class="comment">//尺寸</span></div><div class="line">	width: <span class="number">100</span>,</div><div class="line">	<span class="attr">height</span>: <span class="number">100</span>,</div><div class="line">	<span class="comment">//类样式，附加一个类样式给上传按钮</span></div><div class="line">	buttonClass: <span class="string">"类名"</span>,</div><div class="line">	<span class="comment">//按钮的文字</span></div><div class="line">	buttonText: <span class="string">"上传图片"</span>,</div><div class="line">	<span class="comment">//设置上传图片的大小限制，可以是一个字符串单位可以是B KB MB GB</span></div><div class="line">	fileSizeLimit: <span class="string">"100KB"</span>,</div><div class="line">	<span class="comment">//设置上传文件的类型，也就是在选择文件的窗口中筛选指定类型的文件</span></div><div class="line">	fileTypeExts: <span class="string">'*.gif; *.jpg; *.png'</span>,</div><div class="line">	<span class="comment">//formData  在上传文件的时候，可以附带一些数据，类似于ajax提交数据</span></div><div class="line">	formData: &#123;<span class="attr">key</span>: value&#125;,</div><div class="line">	<span class="comment">//设置上传进度的模板！</span></div><div class="line">	itemTemplate : <span class="string">'&lt;p&gt;&lt;/p&gt;'</span></div><div class="line">	<span class="comment">//onUploadSuccess 上传成功之后的回调函数</span></div><div class="line">	onUploadSuccess: <span class="function"><span class="keyword">function</span>(<span class="params">file, data, response</span>)</span>&#123;</div><div class="line">		</div><div class="line">	&#125;,</div><div class="line">	<span class="comment">//onUploadComplete</span></div><div class="line">	<span class="comment">//onUploadError</span></div><div class="line">	<span class="comment">//onUploadProgress</span></div><div class="line">	<span class="comment">//onUploadStart</span></div><div class="line">	<span class="comment">//onUploadSuccess</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/立即执行函数表达式-数组的方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lilong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/87.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog of lilong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/07/立即执行函数表达式-数组的方法/" itemprop="url">立即执行函数表达式/数组的方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-07T17:04:59+08:00">
-                2017-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/webfront/" itemprop="url" rel="index">
-                    <span itemprop="name">webfront</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="立即执行函数表达式"><a href="#立即执行函数表达式" class="headerlink" title="立即执行函数表达式"></a>立即执行函数表达式</h2><p>将函数表达式直接加上()进行调用。<br>tip: 只要函数能被当做表达式，就可以直接加()调用<br>写法：</p>
-<ul>
-<li>(function(){})()</li>
-<li>(funciton(){}())</li>
-<li><ul>
-<li>function(){}()</li>
-</ul>
-</li>
-<li><ul>
-<li>function(){}()</li>
-</ul>
-</li>
-<li>! function(){}()</li>
-<li>~ function(){}()</li>
-<li>^ function(){}()</li>
-</ul>
-<h2 id="沙箱模式"><a href="#沙箱模式" class="headerlink" title="沙箱模式"></a>沙箱模式</h2><p>一个隔离的环境<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window</span>)</span>&#123;</div><div class="line">	<span class="comment">//变量的声明</span></div><div class="line"></div><div class="line">	<span class="comment">//功能代码</span></div><div class="line"></div><div class="line">	<span class="comment">//如果需要，就通过window对象向外界暴露接口</span></div><div class="line">	<span class="comment">//window.jQuery = window.$ = jQuery</span></div><div class="line">&#125;)(<span class="built_in">window</span>)</div></pre></td></tr></table></figure></p>
-<h3 id="传参的目的"><a href="#传参的目的" class="headerlink" title="传参的目的"></a>传参的目的</h3><ol>
-<li>为了实现逻辑上的隔离，沙箱内部不使用外部的内容，外部也不使用沙箱内部的内容</li>
-<li>便于代码压缩，因为内置对象无法被压缩，如果使用传参的方式，便可以压缩掉自己定义的这个形参</li>
-</ol>
-<h3 id="沙箱模式的用途"><a href="#沙箱模式的用途" class="headerlink" title="沙箱模式的用途"></a>沙箱模式的用途</h3><ol>
-<li>框架</li>
-<li>类库</li>
-<li>插件</li>
-<li>组件</li>
-</ol>
-<h2 id="数组的方法"><a href="#数组的方法" class="headerlink" title="数组的方法"></a>数组的方法</h2><ol>
-<li><p>forEach</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">数组.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">value, index, arr</span>)</span>&#123;</div><div class="line">	</div><div class="line">&#125;)</div><div class="line"><span class="comment">//遍历数组，遍历到每个元素的时候，都会调用这个回调函数，</span></div><div class="line"><span class="comment">//value： 当前正在遍历的元素</span></div><div class="line"><span class="comment">//index: 当前正在遍历的元素的索引</span></div><div class="line"><span class="comment">//arr； 当前正在遍历的数组对象</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>map</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">数组.map(<span class="function"><span class="keyword">function</span>(<span class="params">value, index, arr</span>)</span>&#123;</div><div class="line">	</div><div class="line">&#125;)</div><div class="line"><span class="comment">//遍历数组，遍历到每个元素的时候，都会调用这个回调函数，</span></div><div class="line"><span class="comment">//value： 当前正在遍历的元素</span></div><div class="line"><span class="comment">//index: 当前正在遍历的元素的索引</span></div><div class="line"><span class="comment">//arr； 当前正在遍历的数组对象</span></div><div class="line"></div><div class="line"><span class="comment">//map方法有返回值：</span></div><div class="line"><span class="comment">//每次调用回到函数，都会产生一个返回值，将所有调用返回的返回值组合成一个新的数组，就是map方法的返回值了</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/07/立即执行函数表达式-数组的方法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1975,7 +1960,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1986,7 +1971,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
