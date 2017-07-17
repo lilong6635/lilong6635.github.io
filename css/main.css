@@ -1678,7 +1678,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #96bd5d;
+  background: #fffb13;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2868,6 +2868,9 @@ body {
   color: #000;
 }
 a {
+  color: #00f;
+}
+.tag-cloud-tags a {
   color: #00f;
 }
 .header-inner {
