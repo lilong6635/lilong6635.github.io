@@ -1,0 +1,1286 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,node," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Node.js介绍什么是Node.js? Node.js是一个开发平台，就像Java开发平台、.Net开发平台、PHP开发平台、Apple开发平台一样 开发平台：有对应的编程语言、有语言运行时、有能实现特定功能的API（SDK：Software Development Kit）   在这个平台开发所使用的语言是 JavaScript 语言 在这个开发平台下可以开发控制台程序（CLI）、桌面程序GU">
+<meta name="keywords" content="javascript,node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodejs介绍">
+<meta property="og:url" content="http://yoursite.com/2017/07/19/nodejs介绍/index.html">
+<meta property="og:site_name" content="blog of lilong">
+<meta property="og:description" content="Node.js介绍什么是Node.js? Node.js是一个开发平台，就像Java开发平台、.Net开发平台、PHP开发平台、Apple开发平台一样 开发平台：有对应的编程语言、有语言运行时、有能实现特定功能的API（SDK：Software Development Kit）   在这个平台开发所使用的语言是 JavaScript 语言 在这个开发平台下可以开发控制台程序（CLI）、桌面程序GU">
+<meta property="og:image" content="http://yoursite.com/2017/07/19/nodejs介绍/imgs/node-modules.png">
+<meta property="og:image" content="http://yoursite.com/2017/07/19/nodejs介绍/imgs/51jobnode.png">
+<meta property="og:image" content="http://yoursite.com/2017/07/19/nodejs介绍/imgs/env_path.png">
+<meta property="og:image" content="http://yoursite.com/2017/07/19/nodejs介绍/imgs/Web.png">
+<meta property="og:image" content="http://yoursite.com/2017/07/19/nodejs介绍/imgs/nodeWeb.png">
+<meta property="og:updated_time" content="2017-07-19T14:57:19.467Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodejs介绍">
+<meta name="twitter:description" content="Node.js介绍什么是Node.js? Node.js是一个开发平台，就像Java开发平台、.Net开发平台、PHP开发平台、Apple开发平台一样 开发平台：有对应的编程语言、有语言运行时、有能实现特定功能的API（SDK：Software Development Kit）   在这个平台开发所使用的语言是 JavaScript 语言 在这个开发平台下可以开发控制台程序（CLI）、桌面程序GU">
+<meta name="twitter:image" content="http://yoursite.com/2017/07/19/nodejs介绍/imgs/node-modules.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/19/nodejs介绍/"/>
+
+
+
+
+
+  <title>nodejs介绍 | blog of lilong</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">blog of lilong</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/19/nodejs介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lilong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog of lilong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">nodejs介绍</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-19T22:55:07+08:00">
+                2017-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/nodejs/" itemprop="url" rel="index">
+                    <span itemprop="name">nodejs</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/nodejs/nodejs参考资料/" itemprop="url" rel="index">
+                    <span itemprop="name">nodejs参考资料</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Node-js介绍"><a href="#Node-js介绍" class="headerlink" title="Node.js介绍"></a>Node.js介绍</h1><h2 id="什么是Node-js"><a href="#什么是Node-js" class="headerlink" title="什么是Node.js?"></a>什么是Node.js?</h2><ul>
+<li>Node.js是一个开发平台，就像Java开发平台、.Net开发平台、PHP开发平台、Apple开发平台一样<ul>
+<li>开发平台：有对应的编程语言、有语言运行时、有能实现特定功能的API（SDK：Software Development Kit）</li>
+</ul>
+</li>
+<li>在这个平台开发所使用的语言是 JavaScript 语言</li>
+<li>在这个开发平台下可以开发控制台程序（CLI）、桌面程序GUI（参见atom编辑器）、Web程序</li>
+<li>Node.js 设计主要是为了开发网络应用程序</li>
+<li>Node.js 底层是通过C/C++语言实现的</li>
+<li>Node.js 内置部分API，通过 NPM 可以使用更多第三方功能模块</li>
+</ul>
+<h2 id="node-js-官方解释"><a href="#node-js-官方解释" class="headerlink" title="node.js 官方解释"></a>node.js 官方解释</h2><ol>
+<li><p>Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine.</p>
+<ul>
+<li>Node.js 是一个基于 Chrome V8 JavaScript 引擎构建的 JavaScript 运行时</li>
+</ul>
+</li>
+<li><p>Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. </p>
+<ul>
+<li>Node.js 使用 事件驱动、非阻塞 I/O 模型，使其更轻量级 和 更高效。</li>
+</ul>
+</li>
+<li><p>Node.js’ package ecosystem, npm, is the largest ecosystem of open source libraries in the world.</p>
+<ul>
+<li>Node.js 的 包生态系统 npm, 是世界开源库中最大的生态系统。</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li><p>Node is designed to build scalable network applications. </p>
+<ul>
+<li>Node 设计就是被用来构建可伸缩的网络应用程序</li>
+</ul>
+</li>
+<li><p>Almost no function in Node directly performs I/O, so the process never blocks. </p>
+<ul>
+<li>几乎在 node 中没有任何一个功能（函数）直接操作 I/O, 所以处理从来不会被阻塞</li>
+</ul>
+</li>
+<li><p>Node is designed without threads(单线程的), doesn’t mean you cannot take advantage of multiple cores in your environment. Child processes（子进程） can be spawned by using our child_process.fork() API.</p>
+<ul>
+<li>Node 设计的是单线程的，但是这并不表示它不能利用多核 CPU 的优势，在 node.js 中可以通过开启子进程的方式使用多核 CPU。</li>
+</ul>
+</li>
+</ol>
+<h2 id="Node-js-内置模块"><a href="#Node-js-内置模块" class="headerlink" title="Node.js 内置模块"></a>Node.js 内置模块</h2><p><img src="imgs/node-modules.png" alt="Node.js内置模块"></p>
+<h2 id="node-js-是单线程的解释"><a href="#node-js-是单线程的解释" class="headerlink" title="node.js 是单线程的解释"></a>node.js 是单线程的解释</h2><ul>
+<li>在 node.js 平台下执行的 JavaScript 语言都是单线程的</li>
+<li>所有 JavaScript 代码不能在子线程中执行</li>
+</ul>
+<h2 id="node-js-异步非阻塞-I-O-是什么意思？"><a href="#node-js-异步非阻塞-I-O-是什么意思？" class="headerlink" title="node.js 异步非阻塞 I/O 是什么意思？"></a>node.js 异步非阻塞 I/O 是什么意思？</h2><ul>
+<li>指的是，在 node.js 中，我们会调用一些非 JavaScript 实现的 API(函数、功能)</li>
+<li>这些 API 可以在内部通过 C、C++ 等方式开启一个新的线程执行 I/O操作</li>
+</ul>
+<h2 id="为什么要学习Node-js"><a href="#为什么要学习Node-js" class="headerlink" title="为什么要学习Node.js?"></a>为什么要学习Node.js?</h2><ol>
+<li>通过学习Node.js开发深入理解<strong>服务器开发</strong>、<strong>Web请求和响应过程</strong></li>
+<li>现在前端工程师面试，对 Node.js 开发有要求</li>
+<li>补充提问：<ul>
+<li>在Node.js平台开发时，能使用Dom API吗？比如：<code>document.getElementById(&#39;id&#39;); window.location 等</code>?</li>
+</ul>
+</li>
+<li>复习 JavaScript 组成：ECMAscript、Dom、Bom</li>
+</ol>
+<h2 id="招聘网站截图"><a href="#招聘网站截图" class="headerlink" title="招聘网站截图"></a>招聘网站截图</h2><p><img src="imgs/51jobnode.png" alt="51job招聘"></p>
+<h2 id="Node-js-的特点、优势"><a href="#Node-js-的特点、优势" class="headerlink" title="Node.js 的特点、优势?"></a>Node.js 的特点、优势?</h2><ol>
+<li>事件驱动</li>
+<li>非阻塞 I/O（异步 I/O）</li>
+<li>有强大的 npm 支持</li>
+<li>在 Node.js 平台下不仅可以编写处理请求的程序，也可以直接编写发请求的程序</li>
+<li>非常适合用作依赖其它 I/O 资源的中间层服务</li>
+<li>单线程的</li>
+</ol>
+<h2 id="写代码不知道该如何下手"><a href="#写代码不知道该如何下手" class="headerlink" title="写代码不知道该如何下手"></a>写代码不知道该如何下手</h2><ul>
+<li>思考：<ul>
+<li><ol>
+<li>在哪里写代码</li>
+</ol>
+</li>
+<li><ol>
+<li>写什么代码</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Node-js-使用场景-amp-实战"><a href="#Node-js-使用场景-amp-实战" class="headerlink" title="Node.js 使用场景 &amp; 实战"></a>Node.js 使用场景 &amp; 实战</h2><ul>
+<li><a href="http://www.undozen.com/slides/xueqiu2012a/#21.1" target="_blank" rel="external">Node.js雪球实战半年谈</a></li>
+<li><a href="http://mengxy.net/slides/nodejs-at-xueqiu/" target="_blank" rel="external">雪球上的 Node.js</a></li>
+<li><a href="https://cnodejs.org/topic/50613e6601d0b8014822b6b9" target="_blank" rel="external">国内有哪些网站使用了 Node.js</a></li>
+<li><a href="https://www.joyent.com/blog/node-js-office-hours-curtis-chambers-uber" target="_blank" rel="external">Node.js &amp; Uber</a></li>
+<li><a href="https://www.zhihu.com/question/19653241" target="_blank" rel="external">Node.js 的优势和劣势</a></li>
+<li><a href="http://www.devstore.cn/essay/essayInfo/2199.html" target="_blank" rel="external">node.js的15个应用场景</a></li>
+<li><a href="https://github.com/simongong/js-stackoverflow-highest-votes/blob/master/questions1-10/when-to-use-nodejs.md" target="_blank" rel="external">How to decide when to use Node.js?</a></li>
+<li><a href="http://www.cnblogs.com/sysuys/p/3460614.html" target="_blank" rel="external">优缺点及适用场景讨论</a></li>
+<li><a href="https://www.zhihu.com/question/19587881" target="_blank" rel="external">Node.js 发展前景如何？适用于哪些场景？</a></li>
+<li><a href="http://n.thepana.com/2014/01/06/node-yingyong-changjing/" target="_blank" rel="external">Node.js企业开发 一应用场景</a></li>
+<li><a href="http://www.sohu.com/a/150175393_465223" target="_blank" rel="external">10个最佳Node.js企业应用案例：从Uber到LinkedIn</a></li>
+<li><a href="http://blog.jobbole.com/40135/" target="_blank" rel="external">极速Node.js：来自LinkedIn的10个性能提升秘籍</a></li>
+<li>为分布式应用做中转</li>
+<li>前后端团队融合，节省成本</li>
+<li>Node.js 简单高效</li>
+<li>Node.js 是给前端用的，后端复杂的业务逻辑肯定不会用 Node.js</li>
+</ul>
+<h2 id="Node-js相关网站、学习资源介绍"><a href="#Node-js相关网站、学习资源介绍" class="headerlink" title="Node.js相关网站、学习资源介绍"></a>Node.js相关网站、学习资源介绍</h2><ul>
+<li><p>Node.js官网：</p>
+<ul>
+<li><a href="https://nodejs.org/zh-cn/" target="_blank" rel="external">https://nodejs.org/zh-cn/</a></li>
+<li><a href="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a></li>
+</ul>
+</li>
+<li><p>API文档：</p>
+<ul>
+<li><a href="https://nodejs.org/dist/latest-v6.x/docs/api/" target="_blank" rel="external">https://nodejs.org/dist/latest-v6.x/docs/api/</a></li>
+<li><a href="http://nodejs.cn/api/" target="_blank" rel="external">中文API</a></li>
+</ul>
+</li>
+<li><p>图书：</p>
+<ul>
+<li>《深入浅出Node.js》 作者：朴灵</li>
+</ul>
+</li>
+<li><p>Node.js学习网站</p>
+<ul>
+<li><a href="https://cnodejs.org/" target="_blank" rel="external">CNODE社区</a> 点击里面的<strong>“精华”</strong>帖子 和 <strong>“新手入门”</strong></li>
+<li><a href="http://www.runoob.com/nodejs/nodejs-tutorial.html" target="_blank" rel="external">Node.js 简易教程</a></li>
+<li><a href="https://www.nodebeginner.org/index-zh-cn.html" target="_blank" rel="external">Node入门</a></li>
+<li><a href="https://github.com/ppker/node-lessons" target="_blank" rel="external">Node.js包教不包会</a></li>
+<li><a href="http://cnodejs.org/getstart" target="_blank" rel="external">CNODE-新手入门</a></li>
+</ul>
+</li>
+<li><p>参考链接：</p>
+<ul>
+<li><a href="http://www.infoq.com/cn/articles/what-is-nodejs" target="_blank" rel="external">http://www.infoq.com/cn/articles/what-is-nodejs</a></li>
+<li><a href="https://www.ibm.com/developerworks/cn/opensource/os-nodejs/index.html" target="_blank" rel="external">https://www.ibm.com/developerworks/cn/opensource/os-nodejs/index.html</a></li>
+<li><a href="https://www.zhihu.com/question/33578075" target="_blank" rel="external">https://www.zhihu.com/question/33578075</a></li>
+</ul>
+</li>
+<li><p><strong>MDN (HTML、CSS、JavaScript 权威参考文档)</strong></p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/" target="_blank" rel="external">MDN</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="Node-js安装和配置"><a href="#Node-js安装和配置" class="headerlink" title="Node.js安装和配置"></a>Node.js安装和配置</h2><ul>
+<li><p>下载</p>
+<ul>
+<li><a href="https://nodejs.org/en/download/" target="_blank" rel="external">当前版本</a></li>
+<li><a href="https://nodejs.org/en/download/releases/" target="_blank" rel="external">历史版本</a></li>
+</ul>
+</li>
+<li><p>官网术语解释</p>
+<ul>
+<li>LTS版本：Long-term Support版本，长期支持版，即稳定版。</li>
+<li>Current版本：Latest Features版本，最新版本，新特性会在该版本中最先加入。</li>
+</ul>
+</li>
+<li><p>注意</p>
+<ul>
+<li>安装时看下安装路径【C:\Program Files\nodejs\】</li>
+<li>安装完毕后配置”环境变量”，如果需要则解释一下”环境变量”</li>
+<li>安装完毕后通过命令：<code>node -v</code>来确定是否安装成功【注意：打开”命令窗口”的时候建议使用”管理员方式”打开】</li>
+</ul>
+</li>
+<li><p>环境变量配置</p>
+</li>
+</ul>
+<p><img src="imgs/env_path.png" alt="配置环境变量"></p>
+<h2 id="Node-js-开发-Web-应用程序-和-PHP、Java、ASP-Net等传统模式开发Web应用程序区别"><a href="#Node-js-开发-Web-应用程序-和-PHP、Java、ASP-Net等传统模式开发Web应用程序区别" class="headerlink" title="Node.js 开发 Web 应用程序 和 PHP、Java、ASP.Net等传统模式开发Web应用程序区别"></a>Node.js 开发 Web 应用程序 和 PHP、Java、ASP.Net等传统模式开发Web应用程序区别</h2><ol>
+<li><strong>传统模式</strong><ul>
+<li>有 Web 容器</li>
+</ul>
+</li>
+</ol>
+<p><img src="imgs/Web.png" alt="有Web容器开发模型"></p>
+<ol>
+<li><strong>Node.js开发Web应用程序</strong><ul>
+<li>没有 Web 容器</li>
+</ul>
+</li>
+</ol>
+<p><img src="imgs/nodeWeb.png" alt="Node.js无Web容器开发模型"> </p>
+<ol>
+<li>补充提问：</li>
+</ol>
+<ul>
+<li>什么是动态网页？什么是静态网页？</li>
+</ul>
+<h2 id="Node-js-官网专题讲解"><a href="#Node-js-官网专题讲解" class="headerlink" title="Node.js 官网专题讲解"></a>Node.js 官网专题讲解</h2><p><a href="https://nodejs.org/en/docs/guides/" target="_blank" rel="external">Node.js Guides</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/node/" rel="tag"># node</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/17/服务器在处理get请求和post请求的实现原理/" rel="next" title="服务器在处理get请求和post请求的实现原理">
+                <i class="fa fa-chevron-left"></i> 服务器在处理get请求和post请求的实现原理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/19/npm介绍/" rel="prev" title="npm介绍">
+                npm介绍 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Lilong" />
+          <p class="site-author-name" itemprop="name">Lilong</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Node-js介绍"><span class="nav-number">1.</span> <span class="nav-text">Node.js介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是Node-js"><span class="nav-number">1.1.</span> <span class="nav-text">什么是Node.js?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#node-js-官方解释"><span class="nav-number">1.2.</span> <span class="nav-text">node.js 官方解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js-内置模块"><span class="nav-number">1.3.</span> <span class="nav-text">Node.js 内置模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#node-js-是单线程的解释"><span class="nav-number">1.4.</span> <span class="nav-text">node.js 是单线程的解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#node-js-异步非阻塞-I-O-是什么意思？"><span class="nav-number">1.5.</span> <span class="nav-text">node.js 异步非阻塞 I/O 是什么意思？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要学习Node-js"><span class="nav-number">1.6.</span> <span class="nav-text">为什么要学习Node.js?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#招聘网站截图"><span class="nav-number">1.7.</span> <span class="nav-text">招聘网站截图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js-的特点、优势"><span class="nav-number">1.8.</span> <span class="nav-text">Node.js 的特点、优势?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写代码不知道该如何下手"><span class="nav-number">1.9.</span> <span class="nav-text">写代码不知道该如何下手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js-使用场景-amp-实战"><span class="nav-number">1.10.</span> <span class="nav-text">Node.js 使用场景 & 实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js相关网站、学习资源介绍"><span class="nav-number">1.11.</span> <span class="nav-text">Node.js相关网站、学习资源介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js安装和配置"><span class="nav-number">1.12.</span> <span class="nav-text">Node.js安装和配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js-开发-Web-应用程序-和-PHP、Java、ASP-Net等传统模式开发Web应用程序区别"><span class="nav-number">1.13.</span> <span class="nav-text">Node.js 开发 Web 应用程序 和 PHP、Java、ASP.Net等传统模式开发Web应用程序区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js-官网专题讲解"><span class="nav-number">1.14.</span> <span class="nav-text">Node.js 官网专题讲解</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lilong</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

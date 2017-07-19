@@ -1,6 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[package.json文件介绍]]></title>
+    <url>%2F2017%2F07%2F19%2Fpackage-json%E6%96%87%E4%BB%B6%E4%BB%8B%E7%BB%8D%2F</url>
+    <content type="text"><![CDATA[package.json 文件package.json 文件的作用？ package.json 文件是一个包说明文件（项目描述文件），用来管理组织一个包（一个项目） package.json 文件是一个 json 格式的文件 位于当前项目的根目录下 package.json 文件中常见的项有哪些？ name 包的名字 version 包的版本 description 包描述 author 包的作者 main 包的入口js文件，从main字段这里指定的那个js文件开始执行 dependencies 当前包依赖的其他包 如何创建一个 package.json 文件 通过 npm init 命令 或者 npm init -y 或 npm init -yes 命令 手动创建一个 注意 通过 npm init -y 或 npm init -yes 创建 package.json 文件时，执行命令所在的目录接名称中不能包含大写字母 package.json 文件中，项目名称本身不能包含大写字母 官方介绍 package.json Using a package.json]]></content>
+      <categories>
+        <category>npm</category>
+        <category>package.json</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[网页端的相对路径和绝对路径]]></title>
+    <url>%2F2017%2F07%2F19%2F%E7%BD%91%E9%A1%B5%E7%AB%AF%E7%9A%84%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E5%92%8C%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84%2F</url>
+    <content type="text"><![CDATA[在 html 网页中路径的含义在 html 网页中相对路径 ‘./‘ 和 绝对路径 ‘/‘的含义 “相对路径” 到底 “相对” 的是什么？ 相对当前请求的路径 网页中的这个路径主要是告诉浏览器向哪个地址发起请求用的 ‘./‘ 表示本次请求从相对于当前页面的请求路径（即服务器返回当前页面时的请求路径,地址栏中的路径）开始 ‘/‘ 表示请求从根目录开始 打开浏览器来演示，最终主要体现在了请求报文的 url 上。演示步骤 找到之前的静态html页面中带有外部样式表连接的网页 请求该网页，查看http请求报文中的请求路径]]></content>
+      <tags>
+        <tag>javascript</tag>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[npm介绍]]></title>
+    <url>%2F2017%2F07%2F19%2Fnpm%E4%BB%8B%E7%BB%8D%2F</url>
+    <content type="text"><![CDATA[NPM - Node Package Manager - Node 包管理器NPM 是什么？ npm（全称Node Package Manager，即node包管理器）是Node.js默认的、以JavaScript编写的软件包管理系统。 npm 官方网站 npm 官方文档 一般当我们说npm的时候可能指3件事 NPM 网站：https://www.npmjs.com/ NPM 包管理库，存储了大量的JavaScript代码库 NPM 客户端，我们所使用的npm命令行工具。使用JavaScript开发的基于node.js的命令行工具，本身也是Node的一个包。 参考图片 NPM 官方解释： npm is the package manager for JavaScript and the world’s largest software registry. discover packages of reusable code — and assemble them in powerful new ways. npm makes it easy for JavaScript developers to share and reuse code, and it makes it easy to update the code that you’re sharing. npm与node.js npm是Node.js默认的软件包管理系统。安装完毕node后，会默认安装好npm npm本身也是基于Node.js开发的包（软件） 如何安装 NPM? npm会随着Node.js自动安装，安装完毕node.js后会自动安装npm 查看当前npm版本：npm -v 更新npm：npm install npm@latest -g NPM 使用 在 https://www.npmjs.com/ 网站找到需要的包 在项目的根目录下，执行npm install 包名称安装 在node.js代码中通过 require(&#39;包名&#39;); 加载该模块 注意：通过npm install 包名安装的包，会自动下载到当前目录下的node_modules目录下，如果该目录不存在，则创建，如果已存在则直接下载进去。 在代码中通过 require(&#39;包名&#39;); 加载该模块 NPM 全局安装介绍 什么是 npm 全局安装？ npm install 包名 -g npm 全局安装指的是把包安装成了一个命令行工具。 12345// 通过npm全局安装mimenpm install mime -g//安装完毕后可以在命令行中直接使用mime a.txt 命令来查看对应的结果 npm 全局安装实际做了2件事： 下载包到一个指定的目录C:\Users\username\AppData\Roaming\npm\node_modules 创建一段命令行执行的代码。C:\Users\username\AppData\Roaming\npm\mime -&gt; C:\Users\steve xiaohu zhao\AppData\Roaming\npm\node_modules\mime\cli.js NPM 安装建议 全局安装只是为了可以当做命令行使用而已 无论是否进行了全局安装，只要本地要通过require来使用，那么一定要进行一次本地安装 五、npm常用命令介绍 install，安装包。npm install 包名 uninstall，卸载包。·npm uninstall 包名` version，查看当前npm版本。npm version 或 npm -v init，创建一个package.json文件。npm init 注意：当使用 npm init -y 的时候，如果当前文件夹（目录）的名字比较怪（有大写、有中文等等）就会影响npm init -y 的一步生成操作，此时需要 npm init 根据向导来生成 “模块”（Modules）和”包”（Packages）的区别 A module is any file or directory that can be loaded by Node.js’ require(). A package is a file or directory that is described by a package.json. This can happen in a bunch of different ways!]]></content>
+      <categories>
+        <category>npm基本介绍</category>
+        <category>nodejs</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>webfront</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[nodejs介绍]]></title>
+    <url>%2F2017%2F07%2F19%2Fnodejs%E4%BB%8B%E7%BB%8D%2F</url>
+    <content type="text"><![CDATA[Node.js介绍什么是Node.js? Node.js是一个开发平台，就像Java开发平台、.Net开发平台、PHP开发平台、Apple开发平台一样 开发平台：有对应的编程语言、有语言运行时、有能实现特定功能的API（SDK：Software Development Kit） 在这个平台开发所使用的语言是 JavaScript 语言 在这个开发平台下可以开发控制台程序（CLI）、桌面程序GUI（参见atom编辑器）、Web程序 Node.js 设计主要是为了开发网络应用程序 Node.js 底层是通过C/C++语言实现的 Node.js 内置部分API，通过 NPM 可以使用更多第三方功能模块 node.js 官方解释 Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine. Node.js 是一个基于 Chrome V8 JavaScript 引擎构建的 JavaScript 运行时 Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js 使用 事件驱动、非阻塞 I/O 模型，使其更轻量级 和 更高效。 Node.js’ package ecosystem, npm, is the largest ecosystem of open source libraries in the world. Node.js 的 包生态系统 npm, 是世界开源库中最大的生态系统。 Node is designed to build scalable network applications. Node 设计就是被用来构建可伸缩的网络应用程序 Almost no function in Node directly performs I/O, so the process never blocks. 几乎在 node 中没有任何一个功能（函数）直接操作 I/O, 所以处理从来不会被阻塞 Node is designed without threads(单线程的), doesn’t mean you cannot take advantage of multiple cores in your environment. Child processes（子进程） can be spawned by using our child_process.fork() API. Node 设计的是单线程的，但是这并不表示它不能利用多核 CPU 的优势，在 node.js 中可以通过开启子进程的方式使用多核 CPU。 Node.js 内置模块 node.js 是单线程的解释 在 node.js 平台下执行的 JavaScript 语言都是单线程的 所有 JavaScript 代码不能在子线程中执行 node.js 异步非阻塞 I/O 是什么意思？ 指的是，在 node.js 中，我们会调用一些非 JavaScript 实现的 API(函数、功能) 这些 API 可以在内部通过 C、C++ 等方式开启一个新的线程执行 I/O操作 为什么要学习Node.js? 通过学习Node.js开发深入理解服务器开发、Web请求和响应过程 现在前端工程师面试，对 Node.js 开发有要求 补充提问： 在Node.js平台开发时，能使用Dom API吗？比如：document.getElementById(&#39;id&#39;); window.location 等? 复习 JavaScript 组成：ECMAscript、Dom、Bom 招聘网站截图 Node.js 的特点、优势? 事件驱动 非阻塞 I/O（异步 I/O） 有强大的 npm 支持 在 Node.js 平台下不仅可以编写处理请求的程序，也可以直接编写发请求的程序 非常适合用作依赖其它 I/O 资源的中间层服务 单线程的 写代码不知道该如何下手 思考： 在哪里写代码 写什么代码 Node.js 使用场景 &amp; 实战 Node.js雪球实战半年谈 雪球上的 Node.js 国内有哪些网站使用了 Node.js Node.js &amp; Uber Node.js 的优势和劣势 node.js的15个应用场景 How to decide when to use Node.js? 优缺点及适用场景讨论 Node.js 发展前景如何？适用于哪些场景？ Node.js企业开发 一应用场景 10个最佳Node.js企业应用案例：从Uber到LinkedIn 极速Node.js：来自LinkedIn的10个性能提升秘籍 为分布式应用做中转 前后端团队融合，节省成本 Node.js 简单高效 Node.js 是给前端用的，后端复杂的业务逻辑肯定不会用 Node.js Node.js相关网站、学习资源介绍 Node.js官网： https://nodejs.org/zh-cn/ https://nodejs.org/en/ API文档： https://nodejs.org/dist/latest-v6.x/docs/api/ 中文API 图书： 《深入浅出Node.js》 作者：朴灵 Node.js学习网站 CNODE社区 点击里面的“精华”帖子 和 “新手入门” Node.js 简易教程 Node入门 Node.js包教不包会 CNODE-新手入门 参考链接： http://www.infoq.com/cn/articles/what-is-nodejs https://www.ibm.com/developerworks/cn/opensource/os-nodejs/index.html https://www.zhihu.com/question/33578075 MDN (HTML、CSS、JavaScript 权威参考文档) MDN Node.js安装和配置 下载 当前版本 历史版本 官网术语解释 LTS版本：Long-term Support版本，长期支持版，即稳定版。 Current版本：Latest Features版本，最新版本，新特性会在该版本中最先加入。 注意 安装时看下安装路径【C:\Program Files\nodejs\】 安装完毕后配置”环境变量”，如果需要则解释一下”环境变量” 安装完毕后通过命令：node -v来确定是否安装成功【注意：打开”命令窗口”的时候建议使用”管理员方式”打开】 环境变量配置 Node.js 开发 Web 应用程序 和 PHP、Java、ASP.Net等传统模式开发Web应用程序区别 传统模式 有 Web 容器 Node.js开发Web应用程序 没有 Web 容器 补充提问： 什么是动态网页？什么是静态网页？ Node.js 官网专题讲解Node.js Guides]]></content>
+      <categories>
+        <category>nodejs</category>
+        <category>nodejs参考资料</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[服务器在处理get请求和post请求的实现原理]]></title>
+    <url>%2F2017%2F07%2F17%2F%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9C%A8%E5%A4%84%E7%90%86get%E8%AF%B7%E6%B1%82%E5%92%8Cpost%E8%AF%B7%E6%B1%82%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%2F</url>
+    <content type="text"><![CDATA[get 和 post 请求解释表单提交数据原理HTML 标签提交数据条件 HTML 元素中，只有 表单元素 才可以向服务器提交数据 表单元素 需要放在 form 元素内 表单元素 必须具有 name 属性 HTML FORM ELEMENT （HTML表单元素） 只有放在 form 表单中的 &amp; 带name属性的 &amp; HTML表单元素，才有资格向服务器提交数据。 但并不是所有的HTML表单元素都能提交数据，比如&lt;label&gt;&lt;/labele&gt;标签就不行。 表单元素参考链接 get 请求特点 没有请求报文体 请求参数都在url中以键值对的方式进行传递。例如：http://localhost:9000/?name=steve&amp;age=18 12345678GET /?name=steve&amp;age=18 HTTP/1.1Host: foo.comConnection: keep-aliveUpgrade-Insecure-Requests: 1User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8Accept-Encoding: gzip, deflate, sdchAccept-Language: zh-CN,zh;q=0.8,en;q=0.6 get 请求参考解释1231. The GET method is the method used by the browser to ask the server to send back a given resource: &quot;Hey server, I want to get this resource.&quot; In this case, the browser sends an empty body. Because the body is empty, if a form is sent using this method the data sent to the server is appended to the URL.2. The data is appended to the URL as a series of name/value pairs. After the URL web address has ended, we include a question mark (?) followed by the name/value pairs, each one separated by an ampersand (&amp;). post 请求特点 请求 url 中没有参数 有请求报文体 可以发送大量数据到服务器 1234567891011121314POST / HTTP/1.1Host: foo.comConnection: keep-aliveContent-Length: 13Cache-Control: max-age=0Origin: nullUpgrade-Insecure-Requests: 1User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36Content-Type: application/x-www-form-urlencodedAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8Accept-Encoding: gzip, deflateAccept-Language: zh-CN,zh;q=0.8,en;q=0.6name=steve&amp;age=18 post 请求参考解释：12345671. The POST method is a little different. It&apos;s the method the browser uses to talk to the server when asking for a response that takes into account(考虑到) the data provided in the body of the HTTP request: &quot;Hey server, take a look at this data and send me back an appropriate result.&quot; If a form is sent using this method, the data is appended to the body of the HTTP request.2. When the form is submitted using the POST method, you get no data appended to the URL3. If you need to send a password (or any other sensitive piece of data), never use the GET method or you risk displaying it in the URL bar, which would be very insecure.4. If you need to send a large amount of data, the POST method is preferred because some browsers limit the sizes of URLs. In addition, many servers limit the length of URLs they accept. 注意post 请求因为提交的数据量可能会比较大，所以可能会分多次进行上传数据，所以服务器也会采用一点一点接收数据的方式。 get 请求 和 post 请求的区别（参考连接） https://www.oschina.net/news/77354/http-get-post-different http://www.w3school.com.cn/tags/html_ref_httpmethods.asp http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html node.js中通过代码获取 get 请求 和 post 请求提交的数据get 请求具体实现思路123456789101112131415161718192021// 1. 加载url模块var url = require('url');var server = http.createServer(function (req, res) &#123; // 1. 获取用户请求的url, 并转化为url对象 var urlObj = url.parse(req.url, true); // 获取用户请求中的url部分, 不含参数 // 比如：用户请求的地址是 '/index?id=10&amp;name=steve', pathname 获取到的就是 '/index' reqUrl = urlObj.pathname.toLowerCase(); // 获取查询字符串（get 请求的参数）对象 // &#123;id: 10, name: 'steve'&#125; var query = urlObj.query;&#125;);// 开启监听服务server.listen(9000, function () &#123; // body... console.log('please visit: http://localhost:9000');&#125;); post 请求具体实现思路：1234567891011121314151617181920212223242526272829// 1. 为request对象注册data事件，接收用户提交过来的post数据// 2. 为requ对象注册end事件，当数据接收完毕后对数据进行操作 // 创建一个空的Buffer对象 var array = []; // 每次接到用户的数据都拼接到 array 中 req.on('data', function (chunk) &#123; // 每个chunk就是一个buffer对象 // 把每个buffer对象都push到array数组中 array.push(chunk); &#125;); // 数据接收完毕后，将 buffers 中的内容转换为字符串 req.on('end', function () &#123; var buffers = Buffer.concat(array); // 直接输出buffer对象 // console.log(buffers); // 将buffer对象转换为字符串，然后输出 // console.log(buffers.toString('utf8')); // 将提交过来的请求字符串"title=aaa%E5%95%8A%E5%95%8A&amp;url=bbb&amp;text=cccc"，转换为json对象 // 通过Node.js内置模块querystring来解析，将请求的"查询字符串" 解析为对象 var reqBody = querystring.parse(buffers.toString('utf8')); &#125;);]]></content>
+      <categories>
+        <category>get和post请求的实现原理</category>
+        <category>nodejs</category>
+      </categories>
+      <tags>
+        <tag>get &amp; post</tag>
+        <tag>server</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[angular中服务的创建方式]]></title>
     <url>%2F2017%2F07%2F16%2Fangular%E4%B8%AD%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F-1%2F</url>
     <content type="text"><![CDATA[服务的创建方式 service 12345678910模块对象 .service("服务名", ["注入服务", function(注入的服务)&#123; //通过this给服务添加属性和方法，最终提供给调用服务的人使用 //最终用户获取到的服务对象，其实就是使用本函数，构造出来 //也就是说用new的方式创建出来的 this.数据: 数据 this.方法= function()&#123; &#125; &#125;]) factory 12345678910模块对象 .factory("服务名", ["注入服务", function(注入的服务)&#123; //通过给obj对象添加属性和方法，最终提供给调用服务的人使用 //最终用户获取到的服务对象，其实就是使用本函数，使用工厂模式创建的 var obj = &#123;&#125;; 数据: 数据, 方法: function()&#123; &#125; return obj; &#125;]) value 12模块名称 .value("服务名称", &#123;//最终提供服务的对象，就是本对象！&#125;) constant 12模块名称 .constant("服务名称", &#123;//最终提供服务的对象，就是本对象！&#125;) provider 12345678910111213模块名称 .provider("服务名称", function()&#123; //这里可以声明一些变量，来保存服务的配置信息！ return &#123; //这个对象其实就是在config方法中获取到的 服务Provider 对象 //这个对象中必须包含一个$get方法 $get: function()&#123; return &#123; //这个对象就是最终的服务对象，用户所使用的服务就是本对象！ &#125; &#125; &#125; &#125;) Dirty-Check 脏检查机制，ng双向数据绑定的原理在angular初始化的时候，会先创建模块对象，初始化该模块，初始化模块的时候，会在该模块所管辖的view范围内，搜索所有的ng指令，找到指令之后，为每一个指令绑定一个$watcher,这个watcher会在数据或者dom元素发生改变的时候，被调用！ 每当有一个watcher被触发，那么就会开启一次新的$digest, $digest中，会对所有的$watcher，一次执行来检测是否有数据变化，如果有变换，会重新启动一次$digest, 依次循环，直到检测不到任何变化为止，最终开始更新dom操作！！ $apply 其实就是将相应的操作做了一个包装，先执行只写操作，然后再去调用$digest开始在脏检查 在angular中angular负责的所有的内容，都会默认的被$apply进行包裹，如果使用到了非angular控制的内容，比如setTimeout， 在这个里面的数据操作，将不会触发watcher，也就不会进行脏检查，所以，我们需要手动进行在脏检查 调用$apply来执行数据操作 123$scope.$apply(function()&#123; //做需要的数据操作&#125;) 做完数据操作之后，手动调用$digest方法 12//做完数据操作$scope.$digest(); angular-route使用步骤： 引入angular-route.js文件 在使用该angular-route模块的模块中加入依赖项 ngRoute 在模块的config方法中对angular-route进行配置 配置需要注入的内容为 $routeProvider 使用when方法进行配置12345678910111213141516171819202122232425262728angular .module("app", ["ngRoute"]) .config(["$routeProvider", function($routeProvider)&#123; $routeProvider.when("hash路径匹配规则", &#123; template: "视图html代码", //template属性和templateUrl只需要并且必须存在一个！ templateUrl: "视图路径", controller: "控制器" &#125;) //路由传参 在路由规则当中指定传参的形式，以及参数的名称 .when("hash路径/:参数名称", &#123; template: "视图html代码", templateUrl: "视图路径", controller: "控制器" &#125;) .otherwise(&#123; //这里做的就是当所有的匹配规则都不满足的情况下做的事情 //redierctTo: 就是进行路径跳转的操作 redirectTo: "hash路径" &#125;) &#125;]) //获取路由传进来的参数 .controller("c1", ["$route", "$routeParams", function($route, $routeParams)&#123; //1. 通过$route服务获取 $route.current.pathParams; //1. 通过$routeParams服务获取 $routeParams; &#125;]) 更改哈希路径前的字符 #!/ 感叹号这个东西是在1.6之后默认会加上的1234.config(["$locationProvider", function($locationProvider)&#123; //hashPrefix可以更改上面那个感叹号， 如果不想要就给空字符串 $locationProvider.hashPrefix("");&#125;])]]></content>
@@ -33,8 +94,8 @@
         <category>angularjs指令介绍</category>
       </categories>
       <tags>
-        <tag>javascript</tag>
         <tag>angular</tag>
+        <tag>javascript</tag>
       </tags>
   </entry>
   <entry>

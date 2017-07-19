@@ -297,6 +297,810 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/12/angular中服务的创建方式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lilong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog of lilong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/12/angular中服务的创建方式/" itemprop="url">angular中服务的创建方式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-12T21:06:43+08:00">
+                2017-07-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/angular/" itemprop="url" rel="index">
+                    <span itemprop="name">angular</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/angular/service/" itemprop="url" rel="index">
+                    <span itemprop="name">service</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="服务的创建方式"><a href="#服务的创建方式" class="headerlink" title="服务的创建方式"></a>服务的创建方式</h2><ol>
+<li><p>service</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">模块对象</div><div class="line">	.service(<span class="string">"服务名"</span>, [<span class="string">"注入服务"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">注入的服务</span>)</span>&#123;</div><div class="line">		<span class="comment">//通过this给服务添加属性和方法，最终提供给调用服务的人使用</span></div><div class="line">		<span class="comment">//最终用户获取到的服务对象，其实就是使用本函数，构造出来</span></div><div class="line">		<span class="comment">//也就是说用new的方式创建出来的</span></div><div class="line">		<span class="keyword">this</span>.数据: 数据</div><div class="line">		<span class="keyword">this</span>.方法= <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">		&#125;</div><div class="line">	&#125;])</div></pre></td></tr></table></figure>
+</li>
+<li><p>factory</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">模块对象</div><div class="line">	.factory(<span class="string">"服务名"</span>, [<span class="string">"注入服务"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">注入的服务</span>)</span>&#123;</div><div class="line">		<span class="comment">//通过给obj对象添加属性和方法，最终提供给调用服务的人使用</span></div><div class="line">		<span class="comment">//最终用户获取到的服务对象，其实就是使用本函数，使用工厂模式创建的</span></div><div class="line">		<span class="keyword">var</span> obj = &#123;&#125;;</div><div class="line">			数据: 数据,</div><div class="line">			方法: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> obj;</div><div class="line">	&#125;])</div></pre></td></tr></table></figure>
+</li>
+<li><p>value</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">模块名称</div><div class="line">	.value(<span class="string">"服务名称"</span>, &#123;<span class="comment">//最终提供服务的对象，就是本对象！&#125;)</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>constant</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">模块名称</div><div class="line">	.constant(<span class="string">"服务名称"</span>, &#123;<span class="comment">//最终提供服务的对象，就是本对象！&#125;)</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>provider</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">模块名称</div><div class="line">	.provider(<span class="string">"服务名称"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="comment">//这里可以声明一些变量，来保存服务的配置信息！</span></div><div class="line">		<span class="keyword">return</span> &#123;</div><div class="line">			<span class="comment">//这个对象其实就是在config方法中获取到的 服务Provider 对象</span></div><div class="line">			<span class="comment">//这个对象中必须包含一个$get方法</span></div><div class="line">			$get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">				<span class="keyword">return</span> &#123;</div><div class="line">					<span class="comment">//这个对象就是最终的服务对象，用户所使用的服务就是本对象！</span></div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Dirty-Check-脏检查机制，ng双向数据绑定的原理"><a href="#Dirty-Check-脏检查机制，ng双向数据绑定的原理" class="headerlink" title="Dirty-Check 脏检查机制，ng双向数据绑定的原理"></a>Dirty-Check 脏检查机制，ng双向数据绑定的原理</h2><p>在angular初始化的时候，会先创建模块对象，初始化该模块，初始化模块的时候，会在该模块所管辖的view范围内，搜索所有的ng指令，找到指令之后，为每一个指令绑定一个$watcher,这个watcher会在数据或者dom元素发生改变的时候，被调用！<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/12/angular中服务的创建方式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/10/angular基本介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lilong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog of lilong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/10/angular基本介绍/" itemprop="url">angular基本介绍</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-10T17:45:45+08:00">
+                2017-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/angular/" itemprop="url" rel="index">
+                    <span itemprop="name">angular</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/angular/基本介绍/" itemprop="url" rel="index">
+                    <span itemprop="name">基本介绍</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Angular"><a href="#Angular" class="headerlink" title="Angular"></a>Angular</h2><p>Angular是个框架<br>功能：HTML代码在展示静态页面的功能上非常强大，但是如果涉及到动态数据展示，那么HTML代码就显得非常无力了。Angular这个框架，就是给HTML扩展了新的功能，让他可以支持动态数据展示！</p>
+<p>在html标签当中可以直接使用Angular的指令，将html元素和数据进行绑定。数据更新元素就会相应的更新</p>
+<p>使用angular之后，几乎没有任何的DOM操作了</p>
+<p>angular适用于CRUD项目，如果说项目中DOM特别复杂并且频繁，那么angular就不适用了！</p>
+<p>angular一般被用来创建单页面应用！</p>
+<h2 id="SPA"><a href="#SPA" class="headerlink" title="SPA"></a>SPA</h2><p>Single Page Application<br>单页面应用</p>
+<p>整个网站只有一个页面，类似于一个客户端！</p>
+<h3 id="和多页面应用的区别"><a href="#和多页面应用的区别" class="headerlink" title="和多页面应用的区别"></a>和多页面应用的区别</h3><ol>
+<li><p>单页面应用页面只会加载一次，之后的页面中内容的更改，都是通过ajax向后台发送数据请求，拿到数据之后，对页面内容进行更新</p>
+</li>
+<li><p>多页面应用，每次用户切换功能，都会将整个页面重新加载，跳转到新的页面</p>
+</li>
+</ol>
+<h3 id="单页面应用的优点"><a href="#单页面应用的优点" class="headerlink" title="单页面应用的优点"></a>单页面应用的优点</h3><ol>
+<li>无刷新加载页面，用户体验好一些</li>
+<li>请求数据会大大减少，提升页面加载的速度</li>
+<li>实现多页面应用没法实现的功能，音乐在不同页面之间的连续播放<br>缺点:<br>不利于seo优化</li>
+</ol>
+<h3 id="单页面应用的实现原理"><a href="#单页面应用的实现原理" class="headerlink" title="单页面应用的实现原理"></a>单页面应用的实现原理</h3><p>通过判断当前页面的url地址中hash值的变化，来改变页面中的内容展示</p>
+<h3 id="onhashchange"><a href="#onhashchange" class="headerlink" title="onhashchange"></a>onhashchange</h3><p>这个事件可以用来监听hash值的改变</p>
+<h3 id="location-hash"><a href="#location-hash" class="headerlink" title="location.hash"></a>location.hash</h3><p>这个属性可以用来获取当前页面url中的hash部分</p>
+<p>可以在onhashchange事件当中通过location.hash获取到hash值，根据不同的hash值对页面内容进行相应更改。</p>
+<h2 id="Angular基本使用"><a href="#Angular基本使用" class="headerlink" title="Angular基本使用"></a>Angular基本使用</h2><h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> ng-app  设置模块控制的区域</div><div class="line"><span class="number">2.</span> ng-controller  设置控制器控制的区域</div><div class="line"><span class="number">3.</span> ng-model	 一般用来将表单元素和数据进行双向绑定</div><div class="line"><span class="number">4.</span> ng-click  注册点击事件</div><div class="line"><span class="number">5.</span> &#123;&#123;&#125;&#125; 插值表达式</div></pre></td></tr></table></figure>
+<h3 id="模块创建"><a href="#模块创建" class="headerlink" title="模块创建"></a>模块创建</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app = angular.module(<span class="string">"模块名称"</span>, []);</div><div class="line"><span class="comment">//第二个参数的数组中放的是当前模块的依赖项</span></div><div class="line"><span class="comment">//如果没有依赖项，那么也必须写一个空数组</span></div><div class="line"></div><div class="line"><span class="comment">//获取已经创建好的模块</span></div><div class="line"><span class="keyword">var</span> app = angular.module(<span class="string">"模块名称"</span>)</div></pre></td></tr></table></figure>
+<h3 id="创建控制器"><a href="#创建控制器" class="headerlink" title="创建控制器"></a>创建控制器</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">模块对象.controller(<span class="string">"控制器名称"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope</span>)</span>&#123;</div><div class="line">	<span class="comment">//$scope当前控制器范围内的数据模型</span></div><div class="line">	<span class="comment">//当前控制器要执行的功能代码</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li>引入angular.js</li>
+<li>创建模块，创建控制器</li>
+<li>指定模块以及控制器的作用范围</li>
+<li>在范围内书写ng- 指令，进行元素和数据之间的绑定</li>
+</ol>
+<h2 id="rootScope"><a href="#rootScope" class="headerlink" title="$rootScope"></a>$rootScope</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1. </span></div><div class="line">app.run(<span class="function"><span class="keyword">function</span>(<span class="params">$rootScope</span>)</span>&#123;</div><div class="line">	<span class="comment">//这个$rootScope就可以操作app控制区域内的数据模型</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">//2. </span></div><div class="line">app.controller(<span class="string">"c1"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope, $rootScope</span>)</span>&#123;</div><div class="line">	<span class="comment">//$rootScope在所有的controller中都可以使用</span></div><div class="line">	<span class="comment">//所以可能会造成全局污染</span></div><div class="line">	<span class="comment">//所以一般不在controller中使用它！</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/10/angular中模块的作用域和控制器依赖注入的介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lilong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog of lilong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/10/angular中模块的作用域和控制器依赖注入的介绍/" itemprop="url">angular中模块的作用域和控制器依赖注入的介绍</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-10T17:23:15+08:00">
+                2017-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/webfront/" itemprop="url" rel="index">
+                    <span itemprop="name">webfront</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>每一个控制器都拥有$scope，这个$scope可以看做是一个作用域，当前控制器中所有绑定的数据内容都会来这个$scope中进行查找</p>
+<p>在模块控制的范围内，有一个全局作用域，$rootScope</p>
+<p>控制器之间又可以进行嵌套，嵌套之后，作用域之间就形成了继承关系，其原理就是原型继承</p>
+<p>继承关系指的就是，绑定数据在查找的时候，会现在当前控制器中进行查找，如果找到了就直接使用，如果找不到就会去外层控制的作用域中进行查找，直到找到$rootScope为止！</p>
+<p>$rootScope可以被所有的控制器操作，所以很容易出现全局污染的情况，所以应该避免进行类似的操作</p>
+<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><h3 id="创建模块"><a href="#创建模块" class="headerlink" title="创建模块"></a>创建模块</h3><p>angular.module(“模块名称”, [“依赖项”]);</p>
+<h3 id="获取模块"><a href="#获取模块" class="headerlink" title="获取模块"></a>获取模块</h3><p>angular.module(“模块名称”);</p>
+<h3 id="模块注意事项"><a href="#模块注意事项" class="headerlink" title="模块注意事项"></a>模块注意事项</h3><p>angular推荐一个页面中只使用一个ng-app指定一个模块</p>
+<p>如果存在多个ng-app指令，angular只会自动启动第一个模块！</p>
+<p>如果要启动多个模块，需要手动启动<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">angular.bootstrap(模块要控制的dom元素, [<span class="string">"模块名称"</span>]);</div></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/10/angular中模块的作用域和控制器依赖注入的介绍/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/10/angular中ng-bind和ng-filter指令的使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lilong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog of lilong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/10/angular中ng-bind和ng-filter指令的使用/" itemprop="url">angular中ng-bind和ng-filter指令的使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-10T17:07:14+08:00">
+                2017-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/webfront/" itemprop="url" rel="index">
+                    <span itemprop="name">webfront</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="ng-bind"><a href="#ng-bind" class="headerlink" title="ng-bind"></a>ng-bind</h2><p>单向绑定数据，类似于innerText操作，会将标签中的内容全部替换！<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">ng-bind</span>=<span class="string">"数据"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="ngSanitize-ng-bind-html"><a href="#ngSanitize-ng-bind-html" class="headerlink" title="ngSanitize ng-bind-html"></a>ngSanitize ng-bind-html</h2><p>ngSanitize提供了可以将html代码渲染成dom元素的指令 ng-bind-html<br>使用方式</p>
+<ol>
+<li>引入文件 angular-sanitize.js</li>
+<li>作为模块的依赖项，引入到模块中</li>
+<li>直接使用ng-bind-html即可</li>
+</ol>
+<h2 id="ng-show-ng-hide-ng-if-ng-switch-ng-switch-when"><a href="#ng-show-ng-hide-ng-if-ng-switch-ng-switch-when" class="headerlink" title="ng-show ng-hide ng-if ng-switch ng-switch-when"></a>ng-show ng-hide ng-if ng-switch ng-switch-when</h2><p>都是布尔值，控制元素的显示和隐藏</p>
+<p>ng-show ng-hide 是给元素添加了display:none<br>ng-if 如果是false，就将元素直接删掉了</p>
+<p>ng-switch， 只有满足ng-switch-when 条件的才会出现，不满足的就删掉了</p>
+<h2 id="ng-submit-ng-blur-ng-change-ng-dblclick"><a href="#ng-submit-ng-blur-ng-change-ng-dblclick" class="headerlink" title="ng-submit ng-blur ng-change ng-dblclick"></a>ng-submit ng-blur ng-change ng-dblclick</h2><h2 id="过滤器的使用"><a href="#过滤器的使用" class="headerlink" title="过滤器的使用"></a>过滤器的使用</h2><p><a href="https://docs.angularjs.org/api/ng/filter" target="_blank" rel="external">官方文档</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">ng-bind</span>=<span class="string">"数据 | 过滤器名称 : 过滤器参数 : 过滤器参数 "</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/10/angular中ng-bind和ng-filter指令的使用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/jquery-validate/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lilong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog of lilong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/07/jquery-validate/" itemprop="url">jquery-validate</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-07T22:21:15+08:00">
+                2017-07-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/webfront/" itemprop="url" rel="index">
+                    <span itemprop="name">webfront</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="jquery-validate插件的使用介绍"><a href="#jquery-validate插件的使用介绍" class="headerlink" title="jquery-validate插件的使用介绍"></a>jquery-validate插件的使用介绍</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// validate方法是注册一个验证事件</span></div><div class="line"><span class="comment">// 而不是说调用该方法才会验证！</span></div><div class="line">$(<span class="string">"form"</span>).validate(&#123;</div><div class="line">	<span class="attr">sendForm</span>: <span class="literal">false</span>,</div><div class="line">	<span class="comment">// onKeyup: true,</span></div><div class="line">	<span class="comment">// onBlur: true,	</span></div><div class="line">	<span class="comment">// onChange: true,</span></div><div class="line">	<span class="comment">// onSubmit: false,</span></div><div class="line">	<span class="comment">// valid: function()&#123;</span></div><div class="line">	<span class="comment">// 	//当整个表单通过验证的时候，会调用该回调方法</span></div><div class="line">	<span class="comment">// 	console.log("验证通过了");</span></div><div class="line">	<span class="comment">// &#125;,</span></div><div class="line">	<span class="comment">// invalid: function()&#123;</span></div><div class="line">	<span class="comment">// 	console.log("验证不通过");</span></div><div class="line">	<span class="comment">// &#125;,</span></div><div class="line">	<span class="comment">// eachField: function()&#123;</span></div><div class="line">	<span class="comment">// 	console.log("eachField被调用了", this);</span></div><div class="line">	<span class="comment">// &#125;,</span></div><div class="line">	eachValidField: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="comment">// console.log("eachValidField,被调用了", this);</span></div><div class="line">		<span class="keyword">this</span>.next().show().removeClass(<span class="string">"error"</span>).addClass(<span class="string">"success"</span>);</div><div class="line">	&#125;,</div><div class="line">	<span class="attr">eachInvalidField</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="comment">// console.log("eachInvalidField,被调用了", this);</span></div><div class="line">		<span class="keyword">this</span>.next().show().removeClass(<span class="string">"success"</span>).addClass(<span class="string">"error"</span>);</div><div class="line">	&#125;,</div><div class="line">	<span class="attr">conditional</span>: &#123;</div><div class="line">		<span class="string">"isShuaiGe"</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">this</span>.val() == <span class="string">"潘明"</span>;</div><div class="line">		&#125;,</div><div class="line">		<span class="string">"isBeauty"</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">this</span>.val() == <span class="string">"教主"</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;,</div><div class="line">	<span class="attr">description</span>: &#123;</div><div class="line">		<span class="string">"username"</span>: &#123;</div><div class="line">			<span class="attr">required</span>: <span class="string">"用户名不能为空"</span>,</div><div class="line">			<span class="attr">conditional</span>: <span class="string">"你输入的不是美女"</span>,</div><div class="line">			<span class="attr">valid</span>: <span class="string">"输入正确！"</span></div><div class="line">		&#125;,</div><div class="line">		<span class="string">"phone"</span>: &#123;</div><div class="line">			<span class="attr">pattern</span>: <span class="string">"手机号码不正确"</span>,</div><div class="line">			<span class="attr">required</span>: <span class="string">"请输入手机号码"</span>,</div><div class="line">			<span class="attr">valid</span>: <span class="string">"输入正确"</span></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/uploadify的使用总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1168,820 +1972,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/面向对象基础知识/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lilong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog of lilong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/07/面向对象基础知识/" itemprop="url">面向对象基础知识</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-07T16:19:03+08:00">
-                2017-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/webfront/" itemprop="url" rel="index">
-                    <span itemprop="name">webfront</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="JavaScript的组成"><a href="#JavaScript的组成" class="headerlink" title="JavaScript的组成"></a>JavaScript的组成</h2><ul>
-<li>DOM: Document Object Model 提供了一整套操作页面元素的API</li>
-<li>BOM: Browser Object Model 提供了一整套操作浏览器相关内容的API</li>
-<li>ECMAScript: js的语法规范以及标准！</li>
-</ul>
-<h2 id="JavaScript中的数据类型"><a href="#JavaScript中的数据类型" class="headerlink" title="JavaScript中的数据类型"></a>JavaScript中的数据类型</h2><h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><ol>
-<li><code>string</code></li>
-<li><code>number</code></li>
-<li><code>boolean</code></li>
-</ol>
-<h3 id="复合数据类型"><a href="#复合数据类型" class="headerlink" title="复合数据类型"></a>复合数据类型</h3><ol>
-<li>Object</li>
-<li>function</li>
-<li>Array</li>
-<li>Date</li>
-<li>RegExp</li>
-<li>String</li>
-<li>Number</li>
-<li>Boolean</li>
-<li>Math</li>
-</ol>
-<h3 id="空类型"><a href="#空类型" class="headerlink" title="空类型"></a>空类型</h3><ol>
-<li><code>null</code></li>
-<li><code>undefined</code></li>
-</ol>
-<h3 id="获取数据类型的方式"><a href="#获取数据类型的方式" class="headerlink" title="获取数据类型的方式"></a>获取数据类型的方式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> res = <span class="keyword">typeof</span> 数据;</div><div class="line"><span class="comment">//typeof关键字可以用来获取数据的数据类型，他的返回值表示数据的数据类型，返回值是一个字符串类型的值</span></div><div class="line"></div><div class="line"><span class="comment">//typeof关键字获取除了function以外所有的引用类型的数据的类型的时候，获取到的都是 object</span></div><div class="line"></div><div class="line"><span class="comment">//typeof null 获取到的是 object</span></div><div class="line"><span class="comment">//typeof undefined 获取到的是 undefined</span></div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/07/面向对象基础知识/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/构造函数及原型/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lilong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog of lilong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/07/构造函数及原型/" itemprop="url">构造函数及原型</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-07T16:11:42+08:00">
-                2017-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/webfront/" itemprop="url" rel="index">
-                    <span itemprop="name">webfront</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="面向对象编程举例"><a href="#面向对象编程举例" class="headerlink" title="面向对象编程举例"></a>面向对象编程举例</h2><ol>
-<li>初步实现（面向过程的方式）</li>
-<li>函数封装 </li>
-<li>对象封装</li>
-</ol>
-<h2 id="创建对象的方式"><a href="#创建对象的方式" class="headerlink" title="创建对象的方式"></a>创建对象的方式</h2><ol>
-<li><p>字面量</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">	<span class="attr">key</span>: value,</div><div class="line">	<span class="attr">key1</span>: value1</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">//$().css(&#123;&#125;)</span></div><div class="line"><span class="comment">//$.ajax(&#123;&#125;)</span></div><div class="line"><span class="comment">//复用性差</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>内置构造函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">obj.key = value;</div><div class="line">obj.key1 = value1;</div><div class="line"></div><div class="line"><span class="comment">//复用性差</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>自定义构造函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.key = value;</div><div class="line">	<span class="keyword">this</span>.key1 = value1;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person();</div></pre></td></tr></table></figure>
-</li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/07/构造函数及原型/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/gulp使用方法总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lilong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog of lilong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/07/gulp使用方法总结/" itemprop="url">gulp使用方法总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-07T12:51:36+08:00">
-                2017-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/webfront/" itemprop="url" rel="index">
-                    <span itemprop="name">webfront</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="gulp使用方法总结"><a href="#gulp使用方法总结" class="headerlink" title="gulp使用方法总结"></a>gulp使用方法总结</h1><h2 id="需要安装的内容"><a href="#需要安装的内容" class="headerlink" title="需要安装的内容"></a>需要安装的内容</h2><h3 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h3><p><a href="https://nodejs.org/zh-cn/" target="_blank" rel="external">https://nodejs.org/zh-cn/</a>　　</p>
-<h3 id="装完node之后会自动装好npm-通过npm安装cnpm"><a href="#装完node之后会自动装好npm-通过npm安装cnpm" class="headerlink" title="装完node之后会自动装好npm, 通过npm安装cnpm"></a>装完node之后会自动装好npm, 通过npm安装cnpm</h3><p>npm install -g cnpm </p>
-<h3 id="安装全局的gulp命令"><a href="#安装全局的gulp命令" class="headerlink" title="安装全局的gulp命令"></a>安装全局的gulp命令</h3><p>cnpm install -g gulp-cli</p>
-<h3 id="初始化项目的npm包管理文件"><a href="#初始化项目的npm包管理文件" class="headerlink" title="初始化项目的npm包管理文件"></a>初始化项目的npm包管理文件</h3><p>cnpm init -y</p>
-<h3 id="给当前项目下载gulp相关的包"><a href="#给当前项目下载gulp相关的包" class="headerlink" title="给当前项目下载gulp相关的包"></a>给当前项目下载gulp相关的包</h3><p>cnpm install gulp -D</p>
-<h3 id="给当前项目创建一个gulp的任务文件-guilpfile-js"><a href="#给当前项目创建一个gulp的任务文件-guilpfile-js" class="headerlink" title="给当前项目创建一个gulp的任务文件 guilpfile.js"></a>给当前项目创建一个gulp的任务文件 guilpfile.js</h3><p>在这个文件中可以创建各种类型的任务，执行gulp命令的时候，会自动来这个文件中查找任务进行执行</p>
-<h3 id="在gulpfile-js中创建任务"><a href="#在gulpfile-js中创建任务" class="headerlink" title="在gulpfile.js中创建任务"></a>在gulpfile.js中创建任务</h3><ol>
-<li>引入gulp模块</li>
-<li>使用gulp.task方法创建任务</li>
-<li><p>使用gulp.src方法读取要操作的文件  方法的参数可以是一个文件的路径，也可以用数组传多个文件的路径，还可以写文件路径的通配符</p>
-</li>
-<li><p>下载需要使用的gulp插件，比如uglify    cnpm install uglify -D</p>
-</li>
-<li><p>在gulpfile.js中引入uglify模块</p>
-</li>
-<li><p>使用gulp.pipe方法将src方法获取到的文件传递给uglify插件进行使用</p>
-</li>
-<li><p>使用gulp.pipe方法将uglify插件处理后的文件交给gulp.dest方法进行存储  dest方法需要一个参数，这个参数就是文件最终存放的目录路径</p>
-</li>
-<li><p>在命令行中执行gulp命令   gulp js</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/gulp的使用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lilong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog of lilong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/07/gulp的使用/" itemprop="url">gulp的使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-07T10:24:09+08:00">
-                2017-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/webfront/" itemprop="url" rel="index">
-                    <span itemprop="name">webfront</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Gulp的安装和使用"><a href="#Gulp的安装和使用" class="headerlink" title="Gulp的安装和使用"></a>Gulp的安装和使用</h1><h2 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h2><p>Node是一个服务器端的js运行环境，还是当做web服务器来使用</p>
-<h2 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h2><p>Node Package Manager</p>
-<p>npm可以非常方便帮助我们管理项目开发当中的各种包资源！</p>
-<p>npm init<br>在项目文件夹中创建一个package.json文件，这个文件中包含当前项目所需的所有的包的信息</p>
-<p>npm install 包名称@版本号 –save<br>安装（下载）一个包</p>
-<p>–save -S将当前的包信息保存到package.json<br>–save-dev  -D</p>
-<p>npm install<br>会去将package.json中包含的所有的包进行下载安装！</p>
-<p>npm info 包<br>查看包的信息，包含版本信息</p>
-<p>npm search 包名<br>搜索相关的包！</p>
-<h3 id="browser-sync-的使用"><a href="#browser-sync-的使用" class="headerlink" title="browser-sync 的使用"></a>browser-sync 的使用</h3><h4 id="和gulp集成使用"><a href="#和gulp集成使用" class="headerlink" title="和gulp集成使用"></a>和gulp集成使用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1. 为gulp安装browser-sync的包</span></div><div class="line">npm install browser-sync --save-dev</div><div class="line"></div><div class="line"><span class="comment">//2. 在gulpfile中应用模块</span></div><div class="line"><span class="keyword">var</span> browserSync = <span class="built_in">require</span>(<span class="string">"browser-sync"</span>).create();</div><div class="line"></div><div class="line"><span class="comment">//3. 创建任务</span></div><div class="line">gulp.task(<span class="string">"browser"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">//3.1 创建一个静态服务器</span></div><div class="line">	browserSync.init(&#123;</div><div class="line">		<span class="attr">server</span>: &#123;</div><div class="line">			<span class="comment">//设置网站的根目录</span></div><div class="line">			baseDir: <span class="string">"./"</span></div><div class="line">		&#125;</div><div class="line">	&#125;)</div><div class="line">	<span class="comment">//3.2 监视文件的变化，执行指定的任务并且刷新浏览器</span></div><div class="line">	gulp.watch(<span class="string">"要监视的文件"</span>, [<span class="string">"需要在文件改变后执行的任务"</span>]);</div><div class="line"></div><div class="line">	gulp.watch(<span class="string">"要监视的文件"</span>, browserSync.reload);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<h4 id="单独使用browser-sync"><a href="#单独使用browser-sync" class="headerlink" title="单独使用browser-sync"></a>单独使用browser-sync</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1. 全局安装browser-sync</span></div><div class="line">npm install -g browser-sync</div><div class="line"></div><div class="line"><span class="comment">//2. 执行browsersync命令</span></div><div class="line">browser-sync start --server --files <span class="string">"*.js, *.html, *.less"</span></div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/07/gulp的使用/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/29/模块化的总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lilong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog of lilong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/29/模块化的总结/" itemprop="url">模块化的总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-29T20:54:54+08:00">
-                2017-06-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/frontend/" itemprop="url" rel="index">
-                    <span itemprop="name">frontend</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><h3 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a>CommonJS</h3><p>js代码的模块化标准，不适用于前端开发，NodeJS在使用该标准实现模块化</p>
-<h3 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h3><p>Async Module Definition 异步模块定义</p>
-<p>尽可能早的加载所有需要用到的模块，模块的加载都是异步的，如果要在模块加载完成后，利用模块中的内容实现某些功能，需要将代码写在 require的第二个参数的回调函数中<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">	<span class="comment">//正确的写法</span></div><div class="line">	<span class="built_in">require</span>([<span class="string">"views/assets/jquery/jquery"</span>],<span class="function"><span class="keyword">function</span>(<span class="params">value</span>))</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(value);</div><div class="line">	<span class="comment">//错误的写法</span></div><div class="line">	<span class="built_in">require</span>([<span class="string">"views/assets/jquery/jquery"</span>]);</div><div class="line">	<span class="comment">//因为加载是异步的,执行下面的代码console.log(value)的时候,第三方块的内容还没有加载完成,所以value是undefined;</span></div><div class="line">	<span class="built_in">console</span>.log(value);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/29/模块化的总结/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2031,7 +2021,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">38</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2042,7 +2032,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2053,7 +2043,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
